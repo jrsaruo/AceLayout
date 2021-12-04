@@ -24,3 +24,31 @@ extension LayoutAnchor {
         anchor.constraint(equalTo: another[keyPath: keyPath])
     }
 }
+
+/// Namespace for layout anchors.
+public enum LayoutRect {
+    
+    public struct XAxis: LayoutAnchor {
+        
+        public typealias AnchorType = NSLayoutXAxisAnchor
+        
+        public let target: LayoutTarget
+        public let keyPath: KeyPath<LayoutTarget, NSLayoutXAxisAnchor>
+    }
+    
+    public struct YAxis: LayoutAnchor {
+        
+        public typealias AnchorType = NSLayoutYAxisAnchor
+        
+        public let target: LayoutTarget
+        public let keyPath: KeyPath<LayoutTarget, NSLayoutYAxisAnchor>
+    }
+    
+    public struct Dimension: LayoutAnchor {
+        
+        public typealias AnchorType = NSLayoutDimension
+        
+        public let target: LayoutTarget
+        public let keyPath: KeyPath<LayoutTarget, NSLayoutDimension>
+    }
+}
