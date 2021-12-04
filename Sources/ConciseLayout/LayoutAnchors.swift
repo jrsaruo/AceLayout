@@ -52,3 +52,46 @@ public enum LayoutRect {
         public let keyPath: KeyPath<LayoutTarget, NSLayoutDimension>
     }
 }
+
+extension LayoutRect {
+    
+    public struct Point {
+        public var x: XAxis
+        public var y: YAxis
+        
+        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
+            [
+                x.equal(to: another),
+                y.equal(to: another)
+            ]
+        }
+    }
+    
+    public struct Size {
+        public var width: Dimension
+        public var height: Dimension
+        
+        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
+            [
+                width.equal(to: another),
+                height.equal(to: another)
+            ]
+        }
+    }
+    
+    public struct Edges {
+        public var top: YAxis
+        public var leading: XAxis
+        public var trailing: XAxis
+        public var bottom: YAxis
+        
+        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
+            [
+                top.equal(to: another),
+                leading.equal(to: another),
+                trailing.equal(to: another),
+                bottom.equal(to: another)
+            ]
+        }
+    }
+}
