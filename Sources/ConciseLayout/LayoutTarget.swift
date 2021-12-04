@@ -27,6 +27,18 @@ public protocol LayoutTarget {
 
 extension LayoutTarget {
     
+    var superview: UIView? {
+        switch self {
+        case let view as UIView:
+            return view.superview
+        case let layoutGuide as UILayoutGuide:
+            return layoutGuide.owningView
+        default:
+            assertionFailure("Unknown target")
+            return nil
+        }
+    }
+    
     /// Default implement of `autoLayout(activates:, builder:)`.
     /// - Parameters:
     ///   - activates: Whether to immediately activate built constraints.

@@ -15,6 +15,7 @@ public protocol LayoutAnchor {
     var keyPath: KeyPath<LayoutTarget, BaseLayoutAnchor> { get }
     
     func equal<Target>(to another: Target) -> NSLayoutConstraint where Target: LayoutTarget
+    func equalToSuperview() -> NSLayoutConstraint
 }
 
 extension LayoutAnchor {
@@ -22,6 +23,13 @@ extension LayoutAnchor {
     
     public func equal<Target>(to another: Target) -> NSLayoutConstraint where Target: LayoutTarget {
         anchor.constraint(equalTo: another[keyPath: keyPath])
+    }
+    
+    public func equalToSuperview() -> NSLayoutConstraint {
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview)
     }
 }
 
