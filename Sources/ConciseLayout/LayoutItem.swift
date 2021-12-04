@@ -32,4 +32,10 @@ public struct LayoutItem {
     
     public var width: LayoutRect.Dimension { .init(target: base, keyPath: \.widthAnchor) }
     public var height: LayoutRect.Dimension { .init(target: base, keyPath: \.heightAnchor) }
+    
+    // MARK: - Conveniences
+    
+    public var center: LayoutRect.Point { .init(x: centerX, y: centerY) }
+    public var size: LayoutRect.Size { .init(width: width, height: height) }
+    public var edges: LayoutRect.Edges { .init(top: top, leading: leading, trailing: trailing, bottom: bottom) }
 }
