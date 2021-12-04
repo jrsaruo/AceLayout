@@ -81,6 +81,20 @@ extension LayoutRect {
                 height.equal(to: another)
             ]
         }
+        
+        public func equal(to size: CGSize) -> [NSLayoutConstraint] {
+            [
+                width.equal(to: size.width),
+                height.equal(to: size.height)
+            ]
+        }
+        
+        public func equal(toSquare sideLength: CGFloat) -> [NSLayoutConstraint] {
+            [
+                width.equal(to: sideLength),
+                height.equal(to: sideLength)
+            ]
+        }
     }
     
     public struct Edges {
