@@ -50,6 +50,10 @@ public enum LayoutRect {
         
         public let target: LayoutTarget
         public let keyPath: KeyPath<LayoutTarget, NSLayoutDimension>
+        
+        public func equal(to constant: CGFloat) -> NSLayoutConstraint {
+            anchor.constraint(equalToConstant: constant)
+        }
     }
 }
 
