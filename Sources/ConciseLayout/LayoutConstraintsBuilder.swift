@@ -21,4 +21,12 @@ public struct LayoutConstraintsBuilder {
     public static func buildOptional(_ component: [NSLayoutConstraint]?) -> [NSLayoutConstraint] {
         component ?? []
     }
+    
+    public static func buildEither(first component: [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+        component
+    }
+    
+    public static func buildEither(second component: [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+        component
+    }
 }
