@@ -77,6 +77,13 @@ extension LayoutRect {
                 y.equal(to: another)
             ]
         }
+        
+        public func equalToSuperview() -> [NSLayoutConstraint] {
+            [
+                x.equalToSuperview(),
+                y.equalToSuperview()
+            ]
+        }
     }
     
     public struct Size {
@@ -103,6 +110,13 @@ extension LayoutRect {
                 height.equal(to: sideLength)
             ]
         }
+        
+        public func equalToSuperview() -> [NSLayoutConstraint] {
+            [
+                width.equalToSuperview(),
+                height.equalToSuperview()
+            ]
+        }
     }
     
     public struct Edges {
@@ -117,6 +131,15 @@ extension LayoutRect {
                 leading.equal(to: another),
                 trailing.equal(to: another),
                 bottom.equal(to: another)
+            ]
+        }
+        
+        public func equalToSuperview() -> [NSLayoutConstraint] {
+            [
+                top.equalToSuperview(),
+                leading.equalToSuperview(),
+                trailing.equalToSuperview(),
+                bottom.equalToSuperview()
             ]
         }
     }
