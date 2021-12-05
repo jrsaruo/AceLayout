@@ -161,6 +161,12 @@ extension LayoutRect {
             ]
         }
         
+        @inlinable
+        public func equal<Target>(to another: Target,
+                                  inside inset: CGFloat) -> [NSLayoutConstraint] where Target: LayoutTarget {
+            equal(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        }
+        
         public func equalToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.equalToSuperview(plus: insets.top),
@@ -168,6 +174,11 @@ extension LayoutRect {
                 right.equalToSuperview(plus: -insets.right),
                 bottom.equalToSuperview(plus: -insets.bottom)
             ]
+        }
+        
+        @inlinable
+        public func equalToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
+            equalToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
     }
 }
