@@ -14,34 +14,34 @@ public protocol LayoutAnchor {
     var target: LayoutTarget { get }
     var keyPath: KeyPath<LayoutTarget, BaseLayoutAnchor> { get }
     
-    func equal<Target>(to another: Target) -> NSLayoutConstraint where Target: LayoutTarget
-    func equal(to anotherAnchor: BaseLayoutAnchor) -> NSLayoutConstraint
-    func equal(to another: Self) -> NSLayoutConstraint
+    func equal<Target>(to another: Target, plus offset: CGFloat) -> NSLayoutConstraint where Target: LayoutTarget
+    func equal(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat) -> NSLayoutConstraint
+    func equal(to another: Self, plus offset: CGFloat) -> NSLayoutConstraint
     
-    func equalToSuperview() -> NSLayoutConstraint
+    func equalToSuperview(plus offset: CGFloat) -> NSLayoutConstraint
 }
 
 extension LayoutAnchor {
     @usableFromInline var anchor: BaseLayoutAnchor { target[keyPath: keyPath] }
     
     @inlinable
-    public func equal<Target>(to another: Target) -> NSLayoutConstraint where Target: LayoutTarget {
-        anchor.constraint(equalTo: another[keyPath: keyPath])
+    public func equal<Target>(to another: Target, plus offset: CGFloat = 0) -> NSLayoutConstraint where Target: LayoutTarget {
+        anchor.constraint(equalTo: another[keyPath: keyPath], constant: offset)
     }
     
-    public func equal(to anotherAnchor: BaseLayoutAnchor) -> NSLayoutConstraint {
-        anchor.constraint(equalTo: anotherAnchor)
+    public func equal(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+        anchor.constraint(equalTo: anotherAnchor, constant: offset)
     }
     
-    public func equal(to another: Self) -> NSLayoutConstraint {
-        anchor.constraint(equalTo: another.anchor)
+    public func equal(to another: Self, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+        anchor.constraint(equalTo: another.anchor, constant: offset)
     }
     
-    public func equalToSuperview() -> NSLayoutConstraint {
+    public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
             preconditionFailure("The layout target must have a superview before making constraints on it.")
         }
-        return equal(to: superview)
+        return equal(to: superview, plus: offset)
     }
 }
 
