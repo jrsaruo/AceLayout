@@ -69,8 +69,8 @@ public enum LayoutRect {
 extension LayoutRect {
     
     public struct Point {
-        public var x: XAxis
-        public var y: YAxis
+        var x: XAxis
+        var y: YAxis
         
         public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
             [
@@ -88,8 +88,8 @@ extension LayoutRect {
     }
     
     public struct Size {
-        public var width: Dimension
-        public var height: Dimension
+        var width: Dimension
+        var height: Dimension
         
         public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
             [
@@ -121,10 +121,10 @@ extension LayoutRect {
     }
     
     public struct Edges {
-        public var top: YAxis
-        public var leading: XAxis
-        public var trailing: XAxis
-        public var bottom: YAxis
+        var top: YAxis
+        var leading: XAxis
+        var trailing: XAxis
+        var bottom: YAxis
         
         public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
             [
