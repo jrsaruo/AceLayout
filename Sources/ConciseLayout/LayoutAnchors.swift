@@ -151,21 +151,22 @@ extension LayoutRect {
         var right: XAxis
         var bottom: YAxis
         
-        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
+        public func equal<Target>(to another: Target,
+                                  inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Target: LayoutTarget {
             [
-                top.equal(to: another),
-                left.equal(to: another),
-                right.equal(to: another),
-                bottom.equal(to: another)
+                top.equal(to: another, plus: insets.top),
+                left.equal(to: another, plus: insets.left),
+                right.equal(to: another, plus: -insets.right),
+                bottom.equal(to: another, plus: -insets.bottom)
             ]
         }
         
-        public func equalToSuperview() -> [NSLayoutConstraint] {
+        public func equalToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
-                top.equalToSuperview(),
-                left.equalToSuperview(),
-                right.equalToSuperview(),
-                bottom.equalToSuperview()
+                top.equalToSuperview(plus: insets.top),
+                left.equalToSuperview(plus: insets.left),
+                right.equalToSuperview(plus: -insets.right),
+                bottom.equalToSuperview(plus: -insets.bottom)
             ]
         }
     }
