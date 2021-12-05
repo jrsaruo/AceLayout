@@ -37,5 +37,5 @@ public struct LayoutItem {
     
     public var center: LayoutRect.Point { .init(x: centerX, y: centerY) }
     public var size: LayoutRect.Size { .init(width: width, height: height) }
-    public var edges: LayoutRect.Edges { .init(top: top, leading: leading, trailing: trailing, bottom: bottom) }
+    public var edges: LayoutRect.Edges { .init(top: top, left: left, right: right, bottom: bottom) }
 }

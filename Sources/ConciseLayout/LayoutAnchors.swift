@@ -147,15 +147,15 @@ extension LayoutRect {
     
     public struct Edges {
         var top: YAxis
-        var leading: XAxis
-        var trailing: XAxis
+        var left: XAxis
+        var right: XAxis
         var bottom: YAxis
         
         public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
             [
                 top.equal(to: another),
-                leading.equal(to: another),
-                trailing.equal(to: another),
+                left.equal(to: another),
+                right.equal(to: another),
                 bottom.equal(to: another)
             ]
         }
@@ -163,8 +163,8 @@ extension LayoutRect {
         public func equalToSuperview() -> [NSLayoutConstraint] {
             [
                 top.equalToSuperview(),
-                leading.equalToSuperview(),
-                trailing.equalToSuperview(),
+                left.equalToSuperview(),
+                right.equalToSuperview(),
                 bottom.equalToSuperview()
             ]
         }
