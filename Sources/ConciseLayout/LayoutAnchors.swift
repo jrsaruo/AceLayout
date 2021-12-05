@@ -16,6 +16,8 @@ public protocol LayoutAnchor {
     
     func equal<Target>(to another: Target) -> NSLayoutConstraint where Target: LayoutTarget
     func equal(to anotherAnchor: BaseLayoutAnchor) -> NSLayoutConstraint
+    func equal(to another: Self) -> NSLayoutConstraint
+    
     func equalToSuperview() -> NSLayoutConstraint
 }
 
@@ -29,6 +31,10 @@ extension LayoutAnchor {
     
     public func equal(to anotherAnchor: BaseLayoutAnchor) -> NSLayoutConstraint {
         anchor.constraint(equalTo: anotherAnchor)
+    }
+    
+    public func equal(to another: Self) -> NSLayoutConstraint {
+        anchor.constraint(equalTo: another.anchor)
     }
     
     public func equalToSuperview() -> NSLayoutConstraint {
