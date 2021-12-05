@@ -19,8 +19,9 @@ public protocol LayoutAnchor {
 }
 
 extension LayoutAnchor {
-    var anchor: BaseLayoutAnchor { target[keyPath: keyPath] }
+    @usableFromInline var anchor: BaseLayoutAnchor { target[keyPath: keyPath] }
     
+    @inlinable
     public func equal<Target>(to another: Target) -> NSLayoutConstraint where Target: LayoutTarget {
         anchor.constraint(equalTo: another[keyPath: keyPath])
     }
