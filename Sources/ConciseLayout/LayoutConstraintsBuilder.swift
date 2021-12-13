@@ -14,6 +14,10 @@ public struct LayoutConstraintsBuilder {
         [expression]
     }
     
+    public static func buildExpression(_ expression: [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+        expression
+    }
+    
     public static func buildBlock(_ components: [NSLayoutConstraint]...) -> [NSLayoutConstraint] {
         components.flatMap { $0 }
     }
