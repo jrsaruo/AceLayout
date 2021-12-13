@@ -29,6 +29,32 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
         superview = nil
     }
     
+    func testAutoLayout() {
+        XCTContext.runActivity(named: "translatesAutoresizingMaskIntoConstraintsがfalseになること") { _ in
+            let view = UIView()
+            XCTAssert(view.translatesAutoresizingMaskIntoConstraints)
+            view.autoLayout { item in
+                item.width.equal(to: 100)
+            }
+            XCTAssertFalse(view.translatesAutoresizingMaskIntoConstraints)
+        }
+        XCTContext.runActivity(named: "引数activatesによるisActiveの制御") { _ in
+            let view = UIView()
+            XCTContext.runActivity(named: "デフォルトで全制約のisActiveがtrueになること") { _ in
+                let constraints = view.autoLayout { item in
+                    item.width.equal(to: 100)
+                }
+                XCTAssert(constraints.allSatisfy { $0.isActive })
+            }
+            XCTContext.runActivity(named: "activates: falseのとき全制約のisActiveがfalseになること") { _ in
+                let constraints = view.autoLayout(activates: false) { item in
+                    item.width.equal(to: 100)
+                }
+                XCTAssert(constraints.allSatisfy { !$0.isActive })
+            }
+        }
+    }
+    
     func testXAxisConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
             let constraints = subview.autoLayout { item in
