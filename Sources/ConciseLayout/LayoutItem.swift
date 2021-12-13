@@ -7,35 +7,38 @@
 
 import UIKit
 
-public struct LayoutItem {
-    let base: LayoutTarget
+public struct LayoutItem<Base> {
+    let base: Base
     
-    init(_ target: LayoutTarget) {
-        base = target
+    public init(base: Base) {
+        self.base = base
     }
+}
+
+extension LayoutItem where Base: XAxesConstrainable {
+    public var leading: LayoutRect.XAxis { .init(target: base, anchorKeyPath: \.leadingAnchor) }
+    public var trailing: LayoutRect.XAxis { .init(target: base, anchorKeyPath: \.trailingAnchor) }
+    public var left: LayoutRect.XAxis { .init(target: base, anchorKeyPath: \.leftAnchor) }
+    public var right: LayoutRect.XAxis { .init(target: base, anchorKeyPath: \.rightAnchor) }
     
-    // MARK: - XAxes
+    public var centerX: LayoutRect.XAxis { .init(target: base, anchorKeyPath: \.centerXAnchor) }
+}
+
+extension LayoutItem where Base: YAxesConstrainable {
+    public var top: LayoutRect.YAxis { .init(target: base, anchorKeyPath: \.topAnchor) }
+    public var bottom: LayoutRect.YAxis { .init(target: base, anchorKeyPath: \.bottomAnchor) }
     
-    public var leading: LayoutRect.XAxis { .init(target: base, keyPath: \.leadingAnchor) }
-    public var trailing: LayoutRect.XAxis { .init(target: base, keyPath: \.trailingAnchor) }
-    public var left: LayoutRect.XAxis { .init(target: base, keyPath: \.leftAnchor) }
-    public var right: LayoutRect.XAxis { .init(target: base, keyPath: \.rightAnchor) }
-    public var centerX: LayoutRect.XAxis { .init(target: base, keyPath: \.centerXAnchor) }
-    
-    // MARK: - YAxes
-    
-    public var top: LayoutRect.YAxis { .init(target: base, keyPath: \.topAnchor) }
-    public var bottom: LayoutRect.YAxis { .init(target: base, keyPath: \.bottomAnchor) }
-    public var centerY: LayoutRect.YAxis { .init(target: base, keyPath: \.centerYAnchor) }
-    
-    // MARK: - Dimensions
-    
-    public var width: LayoutRect.Dimension { .init(target: base, keyPath: \.widthAnchor) }
-    public var height: LayoutRect.Dimension { .init(target: base, keyPath: \.heightAnchor) }
-    
-    // MARK: - Conveniences
-    
+    public var centerY: LayoutRect.YAxis { .init(target: base, anchorKeyPath: \.centerYAnchor) }
+}
+
+extension LayoutItem where Base: XYAxesConstrainable {
     public var center: LayoutRect.Point { .init(x: centerX, y: centerY) }
-    public var size: LayoutRect.Size { .init(width: width, height: height) }
     public var edges: LayoutRect.Edges { .init(top: top, left: left, right: right, bottom: bottom) }
+}
+
+extension LayoutItem where Base: DimensionsConstrainable {
+    public var width: LayoutRect.Dimension { .init(target: base, anchorKeyPath: \.widthAnchor) }
+    public var height: LayoutRect.Dimension { .init(target: base, anchorKeyPath: \.heightAnchor) }
+    
+    public var size: LayoutRect.Size { .init(width: width, height: height) }
 }

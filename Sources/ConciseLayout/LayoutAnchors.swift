@@ -10,11 +10,12 @@ import UIKit
 public protocol LayoutAnchor {
     associatedtype AnchorType: AnyObject
     associatedtype BaseLayoutAnchor: NSLayoutAnchor<AnchorType>
+    associatedtype Target
     
-    var target: LayoutTarget { get }
-    var keyPath: KeyPath<LayoutTarget, BaseLayoutAnchor> { get }
+    var target: Target { get }
+    var anchorKeyPath: KeyPath<Target, BaseLayoutAnchor> { get }
     
-    func equal<Target>(to another: Target, plus offset: CGFloat) -> NSLayoutConstraint where Target: LayoutTarget
+    func equal(to another: Target, plus offset: CGFloat) -> NSLayoutConstraint
     func equal(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat) -> NSLayoutConstraint
     func equal(to another: Self, plus offset: CGFloat) -> NSLayoutConstraint
     
@@ -22,11 +23,10 @@ public protocol LayoutAnchor {
 }
 
 extension LayoutAnchor {
-    @usableFromInline var anchor: BaseLayoutAnchor { target[keyPath: keyPath] }
+    @usableFromInline var anchor: BaseLayoutAnchor { target[keyPath: anchorKeyPath] }
     
-    @inlinable
-    public func equal<Target>(to another: Target, plus offset: CGFloat = 0) -> NSLayoutConstraint where Target: LayoutTarget {
-        anchor.constraint(equalTo: another[keyPath: keyPath], constant: offset)
+    public func equal(to another: Target, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+        anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
     public func equal(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat = 0) -> NSLayoutConstraint {
@@ -38,10 +38,7 @@ extension LayoutAnchor {
     }
     
     public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
-        guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
-        }
-        return equal(to: superview, plus: offset)
+        fatalError("Not implemented.")
     }
 }
 
@@ -49,11 +46,9 @@ extension LayoutAnchor {
 public enum LayoutRect {
     
     public struct XAxis: LayoutAnchor {
-        
         public typealias AnchorType = NSLayoutXAxisAnchor
-        
-        public let target: LayoutTarget
-        public let keyPath: KeyPath<LayoutTarget, NSLayoutXAxisAnchor>
+        public let target: XAxesConstrainable
+        public let anchorKeyPath: KeyPath<XAxesConstrainable, NSLayoutXAxisAnchor>
         
         @available(iOS 11.0, tvOS 11.0, *)
         @inlinable
@@ -64,11 +59,9 @@ public enum LayoutRect {
     }
     
     public struct YAxis: LayoutAnchor {
-        
         public typealias AnchorType = NSLayoutYAxisAnchor
-        
-        public let target: LayoutTarget
-        public let keyPath: KeyPath<LayoutTarget, NSLayoutYAxisAnchor>
+        public let target: YAxesConstrainable
+        public let anchorKeyPath: KeyPath<YAxesConstrainable, NSLayoutYAxisAnchor>
         
         @available(iOS 11.0, tvOS 11.0, *)
         @inlinable
@@ -79,11 +72,9 @@ public enum LayoutRect {
     }
     
     public struct Dimension: LayoutAnchor {
-        
         public typealias AnchorType = NSLayoutDimension
-        
-        public let target: LayoutTarget
-        public let keyPath: KeyPath<LayoutTarget, NSLayoutDimension>
+        public let target: DimensionsConstrainable
+        public let anchorKeyPath: KeyPath<DimensionsConstrainable, NSLayoutDimension>
         
         public func equal(to constant: CGFloat) -> NSLayoutConstraint {
             anchor.constraint(equalToConstant: constant)
@@ -97,7 +88,7 @@ extension LayoutRect {
         var x: XAxis
         var y: YAxis
         
-        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
+        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: XYAxesConstrainable {
             [
                 x.equal(to: another),
                 y.equal(to: another)
@@ -116,7 +107,7 @@ extension LayoutRect {
         var width: Dimension
         var height: Dimension
         
-        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: LayoutTarget {
+        public func equal<Another>(to another: Another) -> [NSLayoutConstraint] where Another: DimensionsConstrainable {
             [
                 width.equal(to: another),
                 height.equal(to: another)
@@ -151,8 +142,8 @@ extension LayoutRect {
         var right: XAxis
         var bottom: YAxis
         
-        public func equal<Target>(to another: Target,
-                                  inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Target: LayoutTarget {
+        public func equal<Another>(to another: Another,
+                                   inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.equal(to: another, plus: insets.top),
                 left.equal(to: another, plus: insets.left),
@@ -162,8 +153,8 @@ extension LayoutRect {
         }
         
         @inlinable
-        public func equal<Target>(to another: Target,
-                                  inside inset: CGFloat) -> [NSLayoutConstraint] where Target: LayoutTarget {
+        public func equal<Another>(to another: Another,
+                                   inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             equal(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
