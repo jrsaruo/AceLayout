@@ -36,9 +36,45 @@ extension LayoutAnchor {
     public func equal(to another: Self, plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another.anchor, constant: offset)
     }
+}
+
+extension LayoutAnchor where Target == XAxesConstrainable {
     
     public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
-        fatalError("Not implemented.")
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview, plus: offset)
+    }
+}
+
+extension LayoutAnchor where Target == YAxesConstrainable {
+    
+    public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview, plus: offset)
+    }
+}
+
+extension LayoutAnchor where Target == DimensionsConstrainable {
+    
+    public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview, plus: offset)
+    }
+}
+
+extension LayoutAnchor where Target == BaselinesConstrainable {
+    
+    public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview, plus: offset)
     }
 }
 
