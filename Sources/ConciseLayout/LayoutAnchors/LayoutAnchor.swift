@@ -24,10 +24,12 @@ public protocol LayoutAnchor {
 extension LayoutAnchor {
     @usableFromInline var anchor: BaseLayoutAnchor { target[keyPath: anchorKeyPath] }
     
+    @inlinable
     public func equal(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: anotherAnchor, constant: offset)
     }
     
+    @inlinable
     public func equal(to another: Self, plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another.anchor, constant: offset)
     }
