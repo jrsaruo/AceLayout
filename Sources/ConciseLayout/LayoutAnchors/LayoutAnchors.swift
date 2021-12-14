@@ -33,21 +33,6 @@ extension LayoutAnchor {
     }
 }
 
-extension LayoutAnchor where Target == DimensionsConstrainable {
-    
-    public func equal<Another>(to another: Another,
-                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: DimensionsConstrainable {
-        anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
-    }
-    
-    public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
-        guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
-        }
-        return equal(to: superview, plus: offset)
-    }
-}
-
 extension LayoutAnchor where Target == BaselinesConstrainable {
     
     public func equal<Another>(to another: Another,
@@ -76,8 +61,7 @@ public enum LayoutRect {
         public let anchorKeyPath: KeyPath<YAxesConstrainable, NSLayoutYAxisAnchor>
     }
     
-    public struct Dimension: LayoutAnchor {
-        public typealias AnchorType = NSLayoutDimension
+    public struct Dimension: LayoutDimension {
         public let target: DimensionsConstrainable
         public let anchorKeyPath: KeyPath<DimensionsConstrainable, NSLayoutDimension>
         
