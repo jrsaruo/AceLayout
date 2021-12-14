@@ -93,6 +93,26 @@ extension LayoutAnchor where Target == BaselinesConstrainable {
     }
 }
 
+extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
+    
+    @available(iOS 11.0, tvOS 11.0, *)
+    @inlinable
+    func equal(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+               multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+        anchor.constraint(equalToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
+    }
+}
+
+extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
+    
+    @available(iOS 11.0, tvOS 11.0, *)
+    @inlinable
+    func equal(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+               multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+        anchor.constraint(equalToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
+    }
+}
+
 /// Namespace for layout anchors.
 public enum LayoutRect {
     
@@ -100,26 +120,12 @@ public enum LayoutRect {
         public typealias AnchorType = NSLayoutXAxisAnchor
         public let target: XAxesConstrainable
         public let anchorKeyPath: KeyPath<XAxesConstrainable, NSLayoutXAxisAnchor>
-        
-        @available(iOS 11.0, tvOS 11.0, *)
-        @inlinable
-        func equal(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-                   multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-            anchor.constraint(equalToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
-        }
     }
     
     public struct YAxis: LayoutAnchor {
         public typealias AnchorType = NSLayoutYAxisAnchor
         public let target: YAxesConstrainable
         public let anchorKeyPath: KeyPath<YAxesConstrainable, NSLayoutYAxisAnchor>
-        
-        @available(iOS 11.0, tvOS 11.0, *)
-        @inlinable
-        func equal(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-                   multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-            anchor.constraint(equalToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
-        }
     }
     
     public struct Dimension: LayoutAnchor {
