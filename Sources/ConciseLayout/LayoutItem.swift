@@ -42,3 +42,10 @@ extension LayoutItem where Base: DimensionsConstrainable {
     
     public var size: LayoutRect.Size { .init(width: width, height: height) }
 }
+
+extension LayoutItem where Base: BaselinesConstrainable {
+    public var firstBaseline: LayoutRect.Baseline { .init(target: base,
+                                                          anchorKeyPath: \.firstBaselineAnchor) }
+    public var lastBaseline: LayoutRect.Baseline { .init(target: base,
+                                                         anchorKeyPath: \.lastBaselineAnchor) }
+}
