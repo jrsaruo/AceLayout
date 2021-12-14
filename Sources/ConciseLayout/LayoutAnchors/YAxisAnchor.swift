@@ -25,11 +25,4 @@ extension YAxisAnchor {
         }
         return equal(to: superview, plus: offset)
     }
-    
-    @available(iOS 11.0, tvOS 11.0, *)
-    @inlinable
-    func equal(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-               multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        anchor.constraint(equalToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
-    }
 }

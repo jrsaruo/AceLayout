@@ -25,11 +25,4 @@ extension XAxisAnchor {
         }
         return equal(to: superview, plus: offset)
     }
-    
-    @available(iOS 11.0, tvOS 11.0, *)
-    @inlinable
-    func equal(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-               multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        anchor.constraint(equalToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
-    }
 }
