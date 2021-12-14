@@ -7,6 +7,10 @@
 
 import UIKit
 
+public protocol SuperviewProviding {
+    var superview: UIView? { get }
+}
+
 public protocol XAxesConstrainable {
     var leadingAnchor: NSLayoutXAxisAnchor { get }
     var trailingAnchor: NSLayoutXAxisAnchor { get }
