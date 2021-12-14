@@ -11,7 +11,7 @@ public protocol SuperviewProviding {
     var superview: UIView? { get }
 }
 
-public protocol XAxesConstrainable {
+public protocol XAxesConstrainable: SuperviewProviding {
     var leadingAnchor: NSLayoutXAxisAnchor { get }
     var trailingAnchor: NSLayoutXAxisAnchor { get }
     var leftAnchor: NSLayoutXAxisAnchor { get }
@@ -20,7 +20,7 @@ public protocol XAxesConstrainable {
     var centerXAnchor: NSLayoutXAxisAnchor { get }
 }
 
-public protocol YAxesConstrainable {
+public protocol YAxesConstrainable: SuperviewProviding {
     var topAnchor: NSLayoutYAxisAnchor { get }
     var bottomAnchor: NSLayoutYAxisAnchor { get }
     
@@ -29,12 +29,12 @@ public protocol YAxesConstrainable {
 
 public typealias XYAxesConstrainable = XAxesConstrainable & YAxesConstrainable
 
-public protocol DimensionsConstrainable {
+public protocol DimensionsConstrainable: SuperviewProviding {
     var widthAnchor: NSLayoutDimension { get }
     var heightAnchor: NSLayoutDimension { get }
 }
 
-public protocol BaselinesConstrainable {
+public protocol BaselinesConstrainable: SuperviewProviding {
     var firstBaselineAnchor: NSLayoutYAxisAnchor { get }
     var lastBaselineAnchor: NSLayoutYAxisAnchor { get }
 }
@@ -45,4 +45,6 @@ extension UIView: XYAxesConstrainable, DimensionsConstrainable, BaselinesConstra
 
 // MARK: - UILayoutGuide: Constrainable -
 
-extension UILayoutGuide: XYAxesConstrainable, DimensionsConstrainable {}
+extension UILayoutGuide: XYAxesConstrainable, DimensionsConstrainable {
+    public var superview: UIView? { owningView }
+}
