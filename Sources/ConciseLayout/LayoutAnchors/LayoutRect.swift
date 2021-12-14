@@ -23,10 +23,6 @@ public enum LayoutRect {
     public struct Dimension: LayoutDimension {
         public let target: DimensionsConstrainable
         public let anchorKeyPath: KeyPath<DimensionsConstrainable, NSLayoutDimension>
-        
-        public func equal(to constant: CGFloat) -> NSLayoutConstraint {
-            anchor.constraint(equalToConstant: constant)
-        }
     }
     
     public struct Baseline: BaselineAnchor {

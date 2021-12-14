@@ -19,6 +19,11 @@ extension LayoutDimension {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
+    @inlinable
+    public func equal(to constant: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(equalToConstant: constant)
+    }
+    
     public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
             preconditionFailure("The layout target must have a superview before making constraints on it.")
