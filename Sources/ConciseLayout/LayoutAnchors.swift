@@ -137,6 +137,12 @@ public enum LayoutRect {
             anchor.constraint(equalToConstant: constant)
         }
     }
+    
+    public struct Baseline: LayoutAnchor {
+        public typealias AnchorType = NSLayoutYAxisAnchor
+        public let target: BaselinesConstrainable
+        public let anchorKeyPath: KeyPath<BaselinesConstrainable, NSLayoutYAxisAnchor>
+    }
 }
 
 extension LayoutRect {
