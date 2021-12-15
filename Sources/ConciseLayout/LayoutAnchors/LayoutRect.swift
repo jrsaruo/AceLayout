@@ -37,7 +37,7 @@ extension LayoutRect {
         var x: XAxis
         var y: YAxis
         
-        public func equal<Target>(to another: Target) -> [NSLayoutConstraint] where Target: XYAxesConstrainable {
+        public func equal<Another>(to another: Another) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 x.equal(to: another),
                 y.equal(to: another)
