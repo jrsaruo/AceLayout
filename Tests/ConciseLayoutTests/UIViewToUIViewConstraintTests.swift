@@ -170,12 +170,14 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
+        XCTContext.runActivity(named: "equalToSuperview()") { _ in
             let constraints = subview.autoLayout { item in
                 item.width.equalToSuperview(plus: 8)
+                item.height.equalToSuperview(multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8)
+                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
