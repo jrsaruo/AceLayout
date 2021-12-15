@@ -42,13 +42,13 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let view = UIView()
             XCTContext.runActivity(named: "デフォルトで全制約のisActiveがtrueになること") { _ in
                 let constraints = view.autoLayout { item in
-                    item.width.equal(to: 100)
+                    item.size.equal(toSquare: 100)
                 }
                 XCTAssert(constraints.allSatisfy { $0.isActive })
             }
             XCTContext.runActivity(named: "activates: falseのとき全制約のisActiveがfalseになること") { _ in
                 let constraints = view.autoLayout(activates: false) { item in
-                    item.width.equal(to: 100)
+                    item.size.equal(toSquare: 100)
                 }
                 XCTAssert(constraints.allSatisfy { !$0.isActive })
             }
