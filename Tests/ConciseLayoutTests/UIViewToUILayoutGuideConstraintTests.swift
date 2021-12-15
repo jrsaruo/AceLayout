@@ -84,10 +84,12 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
             let constraints = subview.autoLayout { item in
                 item.width.equal(to: superview.layoutMarginsGuide)
                 item.height.equal(to: superview.layoutMarginsGuide, plus: 8)
+                item.height.equal(to: superview.layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8)
+                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8),
+                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
