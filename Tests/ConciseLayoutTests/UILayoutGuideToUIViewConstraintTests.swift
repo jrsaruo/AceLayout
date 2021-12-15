@@ -99,7 +99,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
     }
     
     func testDimensionConstraints() {
-        XCTContext.runActivity(named: "equal(to another: LayoutTarget)") { _ in
+        XCTContext.runActivity(named: "equal(to another: SizeConstrainable)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.width.equal(to: superview)
                 item.height.equal(to: superview, plus: 8)

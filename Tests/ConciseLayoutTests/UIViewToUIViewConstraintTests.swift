@@ -126,7 +126,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
     }
     
     func testDimensionConstraints() {
-        XCTContext.runActivity(named: "equal(to another: LayoutTarget)") { _ in
+        XCTContext.runActivity(named: "equal(to another: SizeConstrainable)") { _ in
             let constraints = subview.autoLayout { item in
                 item.width.equal(to: superview)
                 item.height.equal(to: superview, plus: 8)
@@ -174,6 +174,41 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8)
+            ]
+            expectedConstraints.forEach { $0.isActive = true }
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testBaselineConstraints() {
+        XCTContext.runActivity(named: "equal(to another:)") { _ in
+            let constraints = subview.autoLayout { item in
+                item.firstBaseline.equal(to: superview)
+                item.lastBaseline.equal(to: superview, plus: 8)
+            }
+            let expectedConstraints = [
+                subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor),
+                subview.lastBaselineAnchor.constraint(equalTo: superview.lastBaselineAnchor, constant: 8)
+            ]
+            expectedConstraints.forEach { $0.isActive = true }
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
+            let constraints = subview.autoLayout { item in
+                item.firstBaseline.equal(to: superview.bottomAnchor, plus: 8)
+            }
+            let expectedConstraints = [
+                subview.firstBaselineAnchor.constraint(equalTo: superview.bottomAnchor, constant: 8)
+            ]
+            expectedConstraints.forEach { $0.isActive = true }
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
+            let constraints = subview.autoLayout { item in
+                item.firstBaseline.equalToSuperview(plus: 8)
+            }
+            let expectedConstraints = [
+                subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor, constant: 8)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)

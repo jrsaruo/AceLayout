@@ -8,36 +8,12 @@
 import UIKit
 
 public protocol LayoutTarget {
-    var leadingAnchor: NSLayoutXAxisAnchor { get }
-    var trailingAnchor: NSLayoutXAxisAnchor { get }
-    var leftAnchor: NSLayoutXAxisAnchor { get }
-    var rightAnchor: NSLayoutXAxisAnchor { get }
-    var centerXAnchor: NSLayoutXAxisAnchor { get }
-    
-    var topAnchor: NSLayoutYAxisAnchor { get }
-    var bottomAnchor: NSLayoutYAxisAnchor { get }
-    var centerYAnchor: NSLayoutYAxisAnchor { get }
-    
-    var widthAnchor: NSLayoutDimension { get }
-    var heightAnchor: NSLayoutDimension { get }
-    
+    associatedtype LayoutBase
     func autoLayout(activates: Bool,
-                    @LayoutConstraintsBuilder builder: (LayoutItem) -> [NSLayoutConstraint]) -> [NSLayoutConstraint]
+                    @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint]
 }
 
-extension LayoutTarget {
-    
-    var superview: UIView? {
-        switch self {
-        case let view as UIView:
-            return view.superview
-        case let layoutGuide as UILayoutGuide:
-            return layoutGuide.owningView
-        default:
-            assertionFailure("Unknown target")
-            return nil
-        }
-    }
+extension LayoutTarget where LayoutBase == Self {
     
     /// Default implement of `autoLayout(activates:, builder:)`.
     /// - Parameters:
@@ -45,8 +21,8 @@ extension LayoutTarget {
     ///   - builder: AutoLayout constraints builder.
     /// - Returns: Built constraints.
     fileprivate func _autoLayout(activates: Bool,
-                                 @LayoutConstraintsBuilder builder: (LayoutItem) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
-        let constraints = builder(LayoutItem(self))
+                                 @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+        let constraints = builder(LayoutItem(base: self))
         if activates {
             NSLayoutConstraint.activate(constraints)
         }
@@ -55,7 +31,7 @@ extension LayoutTarget {
     
     @discardableResult
     public func autoLayout(activates: Bool = true,
-                           @LayoutConstraintsBuilder builder: (LayoutItem) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+                           @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
         _autoLayout(activates: activates, builder: builder)
     }
 }
@@ -64,10 +40,12 @@ extension UIView: LayoutTarget {
     
     @discardableResult
     public func autoLayout(activates: Bool = true,
-                           @LayoutConstraintsBuilder builder: (LayoutItem) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+                           @LayoutConstraintsBuilder builder: (LayoutItem<UIView>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         return _autoLayout(activates: activates, builder: builder)
     }
 }
 
-extension UILayoutGuide: LayoutTarget {}
+extension UILayoutGuide: LayoutTarget {
+    public typealias LayoutBase = UILayoutGuide
+}
