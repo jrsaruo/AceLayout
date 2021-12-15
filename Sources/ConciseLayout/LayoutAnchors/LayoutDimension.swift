@@ -36,4 +36,11 @@ extension LayoutDimension {
         }
         return equal(to: superview, plus: offset)
     }
+    
+    public func equalToSuperview(multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview, multipliedBy: multiplier)
+    }
 }
