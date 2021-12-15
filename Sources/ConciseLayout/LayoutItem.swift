@@ -36,7 +36,7 @@ extension LayoutItem where Base: XYAxesConstrainable {
     public var edges: LayoutRect.Edges { .init(top: top, left: left, right: right, bottom: bottom) }
 }
 
-extension LayoutItem where Base: DimensionsConstrainable {
+extension LayoutItem where Base: SizeConstrainable {
     public var width: LayoutRect.Dimension { .init(target: base, anchorKeyPath: \.widthAnchor) }
     public var height: LayoutRect.Dimension { .init(target: base, anchorKeyPath: \.heightAnchor) }
     

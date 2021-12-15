@@ -9,13 +9,13 @@ import UIKit
 
 public protocol LayoutDimension: LayoutAnchor where AnchorType == NSLayoutDimension,
                                                     BaseLayoutAnchor == NSLayoutDimension,
-                                                    Target == DimensionsConstrainable {}
+                                                    Target == SizeConstrainable {}
 
 extension LayoutDimension {
     
     @inlinable
     public func equal<Another>(to another: Another,
-                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: DimensionsConstrainable {
+                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: SizeConstrainable {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     

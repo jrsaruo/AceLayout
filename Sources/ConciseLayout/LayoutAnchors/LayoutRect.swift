@@ -21,8 +21,8 @@ public enum LayoutRect {
     }
     
     public struct Dimension: LayoutDimension {
-        public let target: DimensionsConstrainable
-        public let anchorKeyPath: KeyPath<DimensionsConstrainable, NSLayoutDimension>
+        public let target: SizeConstrainable
+        public let anchorKeyPath: KeyPath<SizeConstrainable, NSLayoutDimension>
     }
     
     public struct Baseline: BaselineAnchor {
@@ -56,7 +56,7 @@ extension LayoutRect {
         var width: Dimension
         var height: Dimension
         
-        public func equal<Another>(to another: Another) -> [NSLayoutConstraint] where Another: DimensionsConstrainable {
+        public func equal<Another>(to another: Another) -> [NSLayoutConstraint] where Another: SizeConstrainable {
             [
                 width.equal(to: another),
                 height.equal(to: another)

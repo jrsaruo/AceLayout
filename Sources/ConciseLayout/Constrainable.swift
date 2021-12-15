@@ -29,7 +29,7 @@ public protocol YAxesConstrainable: SuperviewProviding {
 
 public typealias XYAxesConstrainable = XAxesConstrainable & YAxesConstrainable
 
-public protocol DimensionsConstrainable: SuperviewProviding {
+public protocol SizeConstrainable: SuperviewProviding {
     var widthAnchor: NSLayoutDimension { get }
     var heightAnchor: NSLayoutDimension { get }
 }
@@ -41,10 +41,10 @@ public protocol BaselinesConstrainable: SuperviewProviding {
 
 // MARK: - UIView: Constrainable -
 
-extension UIView: XYAxesConstrainable, DimensionsConstrainable, BaselinesConstrainable {}
+extension UIView: XYAxesConstrainable, SizeConstrainable, BaselinesConstrainable {}
 
 // MARK: - UILayoutGuide: Constrainable -
 
-extension UILayoutGuide: XYAxesConstrainable, DimensionsConstrainable {
+extension UILayoutGuide: XYAxesConstrainable, SizeConstrainable {
     public var superview: UIView? { owningView }
 }
