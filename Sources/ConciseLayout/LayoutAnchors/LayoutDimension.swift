@@ -20,6 +20,12 @@ extension LayoutDimension {
     }
     
     @inlinable
+    public func equal<Another>(to another: Another,
+                               multipliedBy multiplier: CGFloat) -> NSLayoutConstraint where Another: SizeConstrainable {
+        anchor.constraint(equalTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
+    }
+    
+    @inlinable
     public func equal(to constant: CGFloat) -> NSLayoutConstraint {
         anchor.constraint(equalToConstant: constant)
     }
