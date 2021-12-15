@@ -56,10 +56,11 @@ extension LayoutRect {
         var width: Dimension
         var height: Dimension
         
-        public func equal<Another>(to another: Another) -> [NSLayoutConstraint] where Another: SizeConstrainable {
+        public func equal<Another>(to another: Another,
+                                   multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] where Another: SizeConstrainable {
             [
-                width.equal(to: another),
-                height.equal(to: another)
+                width.equal(to: another, multipliedBy: multiplier),
+                height.equal(to: another, multipliedBy: multiplier)
             ]
         }
         
@@ -77,10 +78,10 @@ extension LayoutRect {
             ]
         }
         
-        public func equalToSuperview() -> [NSLayoutConstraint] {
+        public func equalToSuperview(multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] {
             [
-                width.equalToSuperview(),
-                height.equalToSuperview()
+                width.equalToSuperview(multipliedBy: multiplier),
+                height.equalToSuperview(multipliedBy: multiplier)
             ]
         }
     }
