@@ -158,24 +158,30 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
     }
     
     func testPointConstraints() {
-        XCTContext.runActivity(named: "equal(to another:)") { _ in
+        XCTContext.runActivity(named: "equal(to another:, shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.center.equal(to: superview)
+                item.center.equal(to: superview, shiftedBy: .init(width: 10, height: 20))
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+                layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
+                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalSuperview()") { _ in
+        XCTContext.runActivity(named: "equalSuperview(shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.center.equalToSuperview()
+                item.center.equalToSuperview(shiftedBy: .init(width: 10, height: 20))
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+                layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
+                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
