@@ -10,14 +10,14 @@ import XCTest
 
 final class UIViewLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
     
-    private var superview: UIView!
-    private var subview: UIView!
+    private var superview: View!
+    private var subview: View!
     
     override func setUp() {
         super.setUp()
         
-        superview = UIView()
-        subview = UIView()
+        superview = View()
+        subview = View()
         superview.addSubview(subview)
     }
     

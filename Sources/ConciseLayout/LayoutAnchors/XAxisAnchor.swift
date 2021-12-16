@@ -5,7 +5,11 @@
 //  Created by Yusaku Nishi on 2021/12/14.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public protocol XAxisAnchor: LayoutAnchor where AnchorType == NSLayoutXAxisAnchor,
                                                 BaseLayoutAnchor == NSLayoutXAxisAnchor,

@@ -10,14 +10,14 @@ import XCTest
 
 final class UILayoutGuideEqualToUILayoutGuideConstraintTests: XCTestCase {
     
-    private var superview: UIView!
-    private var layoutGuide: UILayoutGuide!
+    private var superview: View!
+    private var layoutGuide: LayoutGuide!
     
     override func setUp() {
         super.setUp()
         
-        superview = UIView()
-        layoutGuide = UILayoutGuide()
+        superview = View()
+        layoutGuide = LayoutGuide()
         superview.addLayoutGuide(layoutGuide)
     }
     
@@ -204,7 +204,7 @@ final class UILayoutGuideEqualToUILayoutGuideConstraintTests: XCTestCase {
         XCTContext.runActivity(named: "insideOrEqual(to another:, inside:)") { _ in
             XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
                 let layoutMarginsGuide = superview.layoutMarginsGuide
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = layoutGuide.autoLayout { item in
                     item.edges.insideOrEqual(to: layoutMarginsGuide, inside: insets)
                 }

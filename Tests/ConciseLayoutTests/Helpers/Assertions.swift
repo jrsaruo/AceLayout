@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import ConciseLayout
 
 func assertEqual(_ constraints1: [NSLayoutConstraint],
                  _ constraints2: [NSLayoutConstraint],
@@ -39,9 +40,9 @@ private func assertEqual(_ layoutItem1: AnyObject?,
                          file: StaticString = #file,
                          line: UInt = #line) {
     switch (layoutItem1, layoutItem2) {
-    case let (view1 as UIView?, view2 as UIView?):
+    case let (view1 as View?, view2 as View?):
         XCTAssertEqual(view1, view2, message(), file: file, line: line)
-    case let (layoutGuide1 as UILayoutGuide?, layoutGuide2 as UILayoutGuide?):
+    case let (layoutGuide1 as LayoutGuide?, layoutGuide2 as LayoutGuide?):
         XCTAssertEqual(layoutGuide1, layoutGuide2, message(), file: file, line: line)
     default:
         XCTAssert(false, message(), file: file, line: line)

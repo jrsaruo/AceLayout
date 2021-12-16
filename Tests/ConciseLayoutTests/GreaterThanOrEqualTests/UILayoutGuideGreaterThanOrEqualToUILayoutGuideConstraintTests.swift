@@ -10,14 +10,14 @@ import XCTest
 
 final class UILayoutGuideGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
     
-    private var superview: UIView!
-    private var layoutGuide: UILayoutGuide!
+    private var superview: View!
+    private var layoutGuide: LayoutGuide!
     
     override func setUp() {
         super.setUp()
         
-        superview = UIView()
-        layoutGuide = UILayoutGuide()
+        superview = View()
+        layoutGuide = LayoutGuide()
         superview.addLayoutGuide(layoutGuide)
     }
     
