@@ -1,0 +1,355 @@
+//
+//  UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests.swift
+//
+//
+//  Created by Yusaku Nishi on 2021/12/13.
+//
+
+import XCTest
+@testable import ConciseLayout
+
+final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
+    
+    private var superview: UIView!
+    private var layoutGuide: UILayoutGuide!
+    
+    override func setUp() {
+        super.setUp()
+        
+        superview = UIView()
+        layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        layoutGuide = nil
+        superview = nil
+    }
+    
+    func testXAxisConstraints() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leading.greaterThanOrEqual(to: superview)
+                item.trailing.greaterThanOrEqual(to: superview, plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor),
+                layoutGuide.trailingAnchor.constraint(greaterThanOrEqualTo: superview.trailingAnchor,
+                                                      constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(to anotherAnchor:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leading.greaterThanOrEqual(to: superview.trailingAnchor, plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(greaterThanOrEqualTo: superview.trailingAnchor,
+                                                     constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualToSuperview(plus:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leading.greaterThanOrEqualToSuperview(plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor,
+                                                     constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testYAxisConstraints() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.top.greaterThanOrEqual(to: superview)
+                item.bottom.greaterThanOrEqual(to: superview, plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor,
+                                                    constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(to anotherAnchor:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.top.greaterThanOrEqual(to: superview.bottomAnchor, plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor,
+                                                 constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualToSuperview(plus:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.top.greaterThanOrEqualToSuperview(plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    @available(iOS 11.0, tvOS 11.0, *)
+    func testXYConstraintsWithSystemSpacing() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(toSystemSpacingAfter/Below:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.top.greaterThanOrEqual(toSystemSpacingBelow: superview.topAnchor)
+                item.leading.greaterThanOrEqual(toSystemSpacingAfter: superview.leadingAnchor)
+                item.trailing.greaterThanOrEqual(toSystemSpacingAfter: superview.trailingAnchor,
+                                                 multipliedBy: -1)
+                item.bottom.greaterThanOrEqual(toSystemSpacingBelow: superview.bottomAnchor,
+                                               multipliedBy: -1)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: superview.topAnchor,
+                                                 multiplier: 1),
+                layoutGuide.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: superview.leadingAnchor,
+                                                     multiplier: 1),
+                layoutGuide.trailingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: superview.trailingAnchor,
+                                                      multiplier: -1),
+                layoutGuide.bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: superview.bottomAnchor,
+                                                    multiplier: -1)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testDimensionConstraints() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another: SizeConstrainable)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.width.greaterThanOrEqual(to: superview)
+                item.height.greaterThanOrEqual(to: superview, plus: 8)
+                item.height.greaterThanOrEqual(to: superview, multipliedBy: 2)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                    constant: 8),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                    multiplier: 2)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(to anotherAnchor:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.width.greaterThanOrEqual(to: superview.heightAnchor, plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                   constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another: Dimension)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.width.greaterThanOrEqual(to: item.height, plus: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: layoutGuide.heightAnchor,
+                                                   constant: 8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(to constant:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.width.greaterThanOrEqual(to: 100)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualToConstant: 100)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.width.greaterThanOrEqualToSuperview(plus: 8)
+                item.height.greaterThanOrEqualToSuperview(multipliedBy: 2)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor,
+                                                   constant: 8),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                    multiplier: 2)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testPointConstraints() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another:, shiftedBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.center.greaterThanOrEqual(to: superview)
+                let offset = CGSize(width: 10, height: 20)
+                item.center.greaterThanOrEqual(to: superview, shiftedBy: offset)
+            }
+            let expectedConstraints = [
+                layoutGuide.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor),
+                layoutGuide.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor),
+                layoutGuide.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor,
+                                                     constant: 10),
+                layoutGuide.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor,
+                                                     constant: 20)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualSuperview(shiftedBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.center.greaterThanOrEqualToSuperview()
+                item.center.greaterThanOrEqualToSuperview(shiftedBy: .init(width: 10, height: 20))
+            }
+            let expectedConstraints = [
+                layoutGuide.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor),
+                layoutGuide.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor),
+                layoutGuide.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor,
+                                                     constant: 10),
+                layoutGuide.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor,
+                                                     constant: 20)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testSizeConstraints() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another:, multipliedBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.size.greaterThanOrEqual(to: superview)
+                item.size.greaterThanOrEqual(to: superview, multipliedBy: 2)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor),
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor,
+                                                   multiplier: 2),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                    multiplier: 2)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(to size:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.size.greaterThanOrEqual(to: CGSize(width: 100, height: 200))
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqual(toSquare:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.size.greaterThanOrEqual(toSquare: 100)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualToConstant: 100)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualSuperview(multipliedBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.size.greaterThanOrEqualToSuperview()
+                item.size.greaterThanOrEqualToSuperview(multipliedBy: 2)
+            }
+            let expectedConstraints = [
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor),
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor,
+                                                   multiplier: 2),
+                layoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                    multiplier: 2)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testEdgesConstraints() {
+        XCTContext.runActivity(named: "greaterThanOrEqual(to another:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.edges.greaterThanOrEqual(to: superview)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+                layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor),
+                layoutGuide.rightAnchor.constraint(greaterThanOrEqualTo: superview.rightAnchor),
+                layoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.edges.greaterThanOrEqualToSuperview()
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+                layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor),
+                layoutGuide.rightAnchor.constraint(greaterThanOrEqualTo: superview.rightAnchor),
+                layoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "greaterThanOrEqualToSuperview(inside:)") { _ in
+            XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let constraints = layoutGuide.autoLayout { item in
+                    item.edges.greaterThanOrEqualToSuperview(inside: insets)
+                }
+                let expectedConstraints = [
+                    layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor,
+                                                     constant: 10),
+                    layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor,
+                                                      constant: 20),
+                    layoutGuide.rightAnchor.constraint(greaterThanOrEqualTo: superview.rightAnchor,
+                                                       constant: -40),
+                    layoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor
+                                                        , constant: -30)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+            XCTContext.runActivity(named: "inside inset: CGFloat") { _ in
+                let constraints = layoutGuide.autoLayout { item in
+                    item.edges.greaterThanOrEqualToSuperview(inside: 20)
+                }
+                let expectedConstraints = [
+                    layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor,
+                                                     constant: 20),
+                    layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor,
+                                                      constant: 20),
+                    layoutGuide.rightAnchor.constraint(greaterThanOrEqualTo: superview.rightAnchor,
+                                                       constant: -20),
+                    layoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor,
+                                                        constant: -20)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+        }
+    }
+}
