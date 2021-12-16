@@ -52,4 +52,14 @@ final class CommonTests: XCTestCase {
             }
         }
     }
+    
+    func testPriority() {
+        let constraints = subview.autoLayout { item in
+            item.width.equal(to: 100)
+            item.height.equal(to: 100).priority(.defaultLow)
+            item.center.equal(to: superview).priority(.defaultHigh)
+        }
+        XCTAssertEqual(constraints.map { $0.priority },
+                       [.required, .defaultLow, .defaultHigh, .defaultHigh])
+    }
 }
