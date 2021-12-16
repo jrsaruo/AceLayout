@@ -182,21 +182,4 @@ final class UILayoutGuideGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTes
             assertEqual(constraints, expectedConstraints)
         }
     }
-    
-    func testEdgesConstraints() {
-        XCTContext.runActivity(named: "greaterThanOrEqual(to another:)") { _ in
-            let layoutMarginsGuide = superview.layoutMarginsGuide
-            let constraints = layoutGuide.autoLayout { item in
-                item.edges.greaterThanOrEqual(to: layoutMarginsGuide)
-            }
-            let expectedConstraints = [
-                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor),
-                layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.leftAnchor),
-                layoutGuide.rightAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.rightAnchor),
-                layoutGuide.bottomAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor)
-            ]
-            NSLayoutConstraint.activate(expectedConstraints)
-            assertEqual(constraints, expectedConstraints)
-        }
-    }
 }

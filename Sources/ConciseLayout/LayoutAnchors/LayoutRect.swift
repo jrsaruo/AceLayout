@@ -205,44 +205,10 @@ extension LayoutRect {
             ]
         }
         
-        public func lessThanOrEqual<Another>(to another: Another,
-                                             inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
-            [
-                top.lessThanOrEqual(to: another, plus: insets.top),
-                left.lessThanOrEqual(to: another, plus: insets.left),
-                right.lessThanOrEqual(to: another, plus: -insets.right),
-                bottom.lessThanOrEqual(to: another, plus: -insets.bottom)
-            ]
-        }
-        
-        public func greaterThanOrEqual<Another>(to another: Another,
-                                                inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
-            [
-                top.greaterThanOrEqual(to: another, plus: insets.top),
-                left.greaterThanOrEqual(to: another, plus: insets.left),
-                right.greaterThanOrEqual(to: another, plus: -insets.right),
-                bottom.greaterThanOrEqual(to: another, plus: -insets.bottom)
-            ]
-        }
-        
         @inlinable
         public func equal<Another>(to another: Another,
                                    inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             equal(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
-        }
-        
-        @inlinable
-        public func lessThanOrEqual<Another>(to another: Another,
-                                             inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
-            lessThanOrEqual(to: another,
-                            inside: .init(top: inset, left: inset, bottom: inset, right: inset))
-        }
-        
-        @inlinable
-        public func greaterThanOrEqual<Another>(to another: Another,
-                                                inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
-            greaterThanOrEqual(to: another,
-                               inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
         // MARK: - Constraints with superview
@@ -256,37 +222,9 @@ extension LayoutRect {
             ]
         }
         
-        public func lessThanOrEqualToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
-            [
-                top.lessThanOrEqualToSuperview(plus: insets.top),
-                left.lessThanOrEqualToSuperview(plus: insets.left),
-                right.lessThanOrEqualToSuperview(plus: -insets.right),
-                bottom.lessThanOrEqualToSuperview(plus: -insets.bottom)
-            ]
-        }
-        
-        public func greaterThanOrEqualToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
-            [
-                top.greaterThanOrEqualToSuperview(plus: insets.top),
-                left.greaterThanOrEqualToSuperview(plus: insets.left),
-                right.greaterThanOrEqualToSuperview(plus: -insets.right),
-                bottom.greaterThanOrEqualToSuperview(plus: -insets.bottom)
-            ]
-        }
-        
         @inlinable
         public func equalToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
             equalToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
-        }
-        
-        @inlinable
-        public func lessThanOrEqualToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
-            lessThanOrEqualToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
-        }
-        
-        @inlinable
-        public func greaterThanOrEqualToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
-            greaterThanOrEqualToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
     }
 }

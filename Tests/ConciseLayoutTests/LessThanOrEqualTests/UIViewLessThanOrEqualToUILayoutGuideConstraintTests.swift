@@ -203,21 +203,4 @@ final class UIViewLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
             assertEqual(constraints, expectedConstraints)
         }
     }
-    
-    func testEdgesConstraints() {
-        XCTContext.runActivity(named: "lessThanOrEqual(to another:)") { _ in
-            let layoutMarginsGuide = superview.layoutMarginsGuide
-            let constraints = subview.autoLayout { item in
-                item.edges.lessThanOrEqual(to: layoutMarginsGuide)
-            }
-            let expectedConstraints = [
-                subview.topAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.topAnchor),
-                subview.leftAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.leftAnchor),
-                subview.rightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.rightAnchor),
-                subview.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor)
-            ]
-            NSLayoutConstraint.activate(expectedConstraints)
-            assertEqual(constraints, expectedConstraints)
-        }
-    }
 }
