@@ -103,10 +103,12 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let constraints = layoutGuide.autoLayout { item in
                 item.width.equal(to: superview)
                 item.height.equal(to: superview, plus: 8)
+                item.height.equal(to: superview, multipliedBy: 2)
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, constant: 8)
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, constant: 8),
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -141,12 +143,14 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
+        XCTContext.runActivity(named: "equalToSuperview()") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.width.equalToSuperview(plus: 8)
+                item.height.equalToSuperview(multipliedBy: 2)
             }
             let expectedConstraints = [
-                layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8)
+                layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8),
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -179,13 +183,16 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
     }
     
     func testSizeConstraints() {
-        XCTContext.runActivity(named: "equal(to another:)") { _ in
+        XCTContext.runActivity(named: "equal(to another:, multipliedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.size.equal(to: superview)
+                item.size.equal(to: superview, multipliedBy: 2)
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor)
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor),
+                layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -212,13 +219,16 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalSuperview()") { _ in
+        XCTContext.runActivity(named: "equalSuperview(multipliedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.size.equalToSuperview()
+                item.size.equalToSuperview(multipliedBy: 2)
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor)
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor),
+                layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
+                layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)

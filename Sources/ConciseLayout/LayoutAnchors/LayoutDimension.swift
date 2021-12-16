@@ -20,6 +20,12 @@ extension LayoutDimension {
     }
     
     @inlinable
+    public func equal<Another>(to another: Another,
+                               multipliedBy multiplier: CGFloat) -> NSLayoutConstraint where Another: SizeConstrainable {
+        anchor.constraint(equalTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
+    }
+    
+    @inlinable
     public func equal(to constant: CGFloat) -> NSLayoutConstraint {
         anchor.constraint(equalToConstant: constant)
     }
@@ -29,5 +35,12 @@ extension LayoutDimension {
             preconditionFailure("The layout target must have a superview before making constraints on it.")
         }
         return equal(to: superview, plus: offset)
+    }
+    
+    public func equalToSuperview(multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        guard let superview = target.superview else {
+            preconditionFailure("The layout target must have a superview before making constraints on it.")
+        }
+        return equal(to: superview, multipliedBy: multiplier)
     }
 }

@@ -42,13 +42,13 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let view = UIView()
             XCTContext.runActivity(named: "デフォルトで全制約のisActiveがtrueになること") { _ in
                 let constraints = view.autoLayout { item in
-                    item.width.equal(to: 100)
+                    item.size.equal(toSquare: 100)
                 }
                 XCTAssert(constraints.allSatisfy { $0.isActive })
             }
             XCTContext.runActivity(named: "activates: falseのとき全制約のisActiveがfalseになること") { _ in
                 let constraints = view.autoLayout(activates: false) { item in
-                    item.width.equal(to: 100)
+                    item.size.equal(toSquare: 100)
                 }
                 XCTAssert(constraints.allSatisfy { !$0.isActive })
             }
@@ -130,10 +130,12 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let constraints = subview.autoLayout { item in
                 item.width.equal(to: superview)
                 item.height.equal(to: superview, plus: 8)
+                item.height.equal(to: superview, multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, constant: 8)
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, constant: 8),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -168,12 +170,14 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
+        XCTContext.runActivity(named: "equalToSuperview()") { _ in
             let constraints = subview.autoLayout { item in
                 item.width.equalToSuperview(plus: 8)
+                item.height.equalToSuperview(multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8)
+                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -241,13 +245,16 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
     }
     
     func testSizeConstraints() {
-        XCTContext.runActivity(named: "equal(to another:)") { _ in
+        XCTContext.runActivity(named: "equal(to another:, multipliedBy:)") { _ in
             let constraints = subview.autoLayout { item in
                 item.size.equal(to: superview)
+                item.size.equal(to: superview, multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.heightAnchor)
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor),
+                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -274,13 +281,16 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalSuperview()") { _ in
+        XCTContext.runActivity(named: "equalSuperview(multipliedBy:)") { _ in
             let constraints = subview.autoLayout { item in
                 item.size.equalToSuperview()
+                item.size.equalToSuperview(multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.heightAnchor)
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor),
+                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
