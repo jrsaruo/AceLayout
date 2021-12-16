@@ -245,13 +245,16 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
     }
     
     func testSizeConstraints() {
-        XCTContext.runActivity(named: "equal(to another:)") { _ in
+        XCTContext.runActivity(named: "equal(to another:, multipliedBy:)") { _ in
             let constraints = subview.autoLayout { item in
                 item.size.equal(to: superview)
+                item.size.equal(to: superview, multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.heightAnchor)
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor),
+                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
@@ -278,13 +281,16 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "equalSuperview()") { _ in
+        XCTContext.runActivity(named: "equalSuperview(multipliedBy:)") { _ in
             let constraints = subview.autoLayout { item in
                 item.size.equalToSuperview()
+                item.size.equalToSuperview(multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.heightAnchor)
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor),
+                subview.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
+                subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)

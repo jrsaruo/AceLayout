@@ -136,13 +136,18 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
     }
     
     func testSizeConstraints() {
-        XCTContext.runActivity(named: "equal(to another:)") { _ in
+        XCTContext.runActivity(named: "equal(to another:, multipliedBy:)") { _ in
             let constraints = subview.autoLayout { item in
                 item.size.equal(to: superview.layoutMarginsGuide)
+                item.size.equal(to: superview.layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor)
+                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor),
+                subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor,
+                                               multiplier: 2),
+                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                                                multiplier: 2)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
