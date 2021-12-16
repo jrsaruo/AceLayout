@@ -31,24 +31,26 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testXAxisConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.leading.equal(to: superview.layoutMarginsGuide)
-                item.trailing.equal(to: superview.layoutMarginsGuide, plus: 8)
+                item.leading.equal(to: layoutMarginsGuide)
+                item.trailing.equal(to: layoutMarginsGuide, plus: 8)
             }
             let expectedConstraints = [
-                subview.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor),
-                subview.trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor,
+                subview.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+                subview.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,
                                                   constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.leading.equal(to: superview.layoutMarginsGuide.trailingAnchor, plus: 8)
+                item.leading.equal(to: layoutMarginsGuide.trailingAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor,
+                subview.leadingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,
                                                  constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
@@ -58,24 +60,26 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testYAxisConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.top.equal(to: superview.layoutMarginsGuide)
-                item.bottom.equal(to: superview.layoutMarginsGuide, plus: 8)
+                item.top.equal(to: layoutMarginsGuide)
+                item.bottom.equal(to: layoutMarginsGuide, plus: 8)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
-                subview.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor,
+                subview.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+                subview.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor,
                                                 constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.top.equal(to: superview.layoutMarginsGuide.bottomAnchor, plus: 8)
+                item.top.equal(to: layoutMarginsGuide.bottomAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor,
+                subview.topAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor,
                                              constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
@@ -86,20 +90,21 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     @available(iOS 11.0, tvOS 11.0, *)
     func testXYConstraintsWithSystemSpacing() {
         XCTContext.runActivity(named: "equal(toSystemSpacingAfter:), equal(toSystemSpacingBelow:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.top.equal(toSystemSpacingBelow: superview.layoutMarginsGuide.topAnchor)
-                item.leading.equal(toSystemSpacingAfter: superview.layoutMarginsGuide.leadingAnchor)
-                item.trailing.equal(toSystemSpacingAfter: superview.layoutMarginsGuide.trailingAnchor, multipliedBy: -1)
-                item.bottom.equal(toSystemSpacingBelow: superview.layoutMarginsGuide.bottomAnchor, multipliedBy: -1)
+                item.top.equal(toSystemSpacingBelow: layoutMarginsGuide.topAnchor)
+                item.leading.equal(toSystemSpacingAfter: layoutMarginsGuide.leadingAnchor)
+                item.trailing.equal(toSystemSpacingAfter: layoutMarginsGuide.trailingAnchor, multipliedBy: -1)
+                item.bottom.equal(toSystemSpacingBelow: layoutMarginsGuide.bottomAnchor, multipliedBy: -1)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(equalToSystemSpacingBelow: superview.layoutMarginsGuide.topAnchor,
+                subview.topAnchor.constraint(equalToSystemSpacingBelow: layoutMarginsGuide.topAnchor,
                                              multiplier: 1),
-                subview.leadingAnchor.constraint(equalToSystemSpacingAfter: superview.layoutMarginsGuide.leadingAnchor,
+                subview.leadingAnchor.constraint(equalToSystemSpacingAfter: layoutMarginsGuide.leadingAnchor,
                                                  multiplier: 1),
-                subview.trailingAnchor.constraint(equalToSystemSpacingAfter: superview.layoutMarginsGuide.trailingAnchor,
+                subview.trailingAnchor.constraint(equalToSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
                                                   multiplier: -1),
-                subview.bottomAnchor.constraint(equalToSystemSpacingBelow: superview.layoutMarginsGuide.bottomAnchor,
+                subview.bottomAnchor.constraint(equalToSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
                                                 multiplier: -1)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
@@ -109,27 +114,29 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testDimensionConstraints() {
         XCTContext.runActivity(named: "equal(to another: SizeConstrainable)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.width.equal(to: superview.layoutMarginsGuide)
-                item.height.equal(to: superview.layoutMarginsGuide, plus: 8)
-                item.height.equal(to: superview.layoutMarginsGuide, multipliedBy: 2)
+                item.width.equal(to: layoutMarginsGuide)
+                item.height.equal(to: layoutMarginsGuide, plus: 8)
+                item.height.equal(to: layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                subview.widthAnchor.constraint(equalTo: layoutMarginsGuide.widthAnchor),
+                subview.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor,
                                                 constant: 8),
-                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                subview.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor,
                                                 multiplier: 2)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.width.equal(to: superview.layoutMarginsGuide.heightAnchor, plus: 8)
+                item.width.equal(to: layoutMarginsGuide.heightAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                subview.widthAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor,
                                                constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
@@ -139,13 +146,14 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testBaselineConstraints() {
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.firstBaseline.equal(to: superview.layoutMarginsGuide.topAnchor)
-                item.firstBaseline.equal(to: superview.layoutMarginsGuide.bottomAnchor, plus: 8)
+                item.firstBaseline.equal(to: layoutMarginsGuide.topAnchor)
+                item.firstBaseline.equal(to: layoutMarginsGuide.bottomAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.firstBaselineAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
-                subview.firstBaselineAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor,
+                subview.firstBaselineAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+                subview.firstBaselineAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor,
                                                        constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
@@ -155,18 +163,19 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testPointConstraints() {
         XCTContext.runActivity(named: "equal(to another:, shiftedBy:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.center.equal(to: superview.layoutMarginsGuide)
+                item.center.equal(to: layoutMarginsGuide)
                 let offset = CGSize(width: 10, height: 20)
-                item.center.equal(to: superview.layoutMarginsGuide, shiftedBy: offset)
+                item.center.equal(to: layoutMarginsGuide, shiftedBy: offset)
             }
             let expectedConstraints = [
-                subview.centerXAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerXAnchor),
-                subview.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor),
-                subview.centerXAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerXAnchor,
-                                                constant: 10),
-                subview.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor,
-                                                constant: 20)
+                subview.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor),
+                subview.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
+                subview.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor,
+                                                 constant: 10),
+                subview.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor,
+                                                 constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -175,16 +184,17 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testSizeConstraints() {
         XCTContext.runActivity(named: "equal(to another:, multipliedBy:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.size.equal(to: superview.layoutMarginsGuide)
-                item.size.equal(to: superview.layoutMarginsGuide, multipliedBy: 2)
+                item.size.equal(to: layoutMarginsGuide)
+                item.size.equal(to: layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor),
-                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor),
-                subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor,
+                subview.widthAnchor.constraint(equalTo: layoutMarginsGuide.widthAnchor),
+                subview.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor),
+                subview.widthAnchor.constraint(equalTo: layoutMarginsGuide.widthAnchor,
                                                multiplier: 2),
-                subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                subview.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor,
                                                 multiplier: 2)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
@@ -194,14 +204,15 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
     func testEdgesConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
+            let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
-                item.edges.equal(to: superview.layoutMarginsGuide)
+                item.edges.equal(to: layoutMarginsGuide)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
-                subview.leftAnchor.constraint(equalTo: superview.layoutMarginsGuide.leftAnchor),
-                subview.rightAnchor.constraint(equalTo: superview.layoutMarginsGuide.rightAnchor),
-                subview.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor)
+                subview.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+                subview.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor),
+                subview.rightAnchor.constraint(equalTo: layoutMarginsGuide.rightAnchor),
+                subview.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
