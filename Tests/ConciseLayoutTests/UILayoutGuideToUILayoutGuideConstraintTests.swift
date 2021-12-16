@@ -109,8 +109,8 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
         XCTContext.runActivity(named: "equal(to another:, shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.center.equal(to: superview.layoutMarginsGuide)
-                item.center.equal(to: superview.layoutMarginsGuide,
-                                  shiftedBy: .init(width: 10, height: 20))
+                let offset = CGSize(width: 10, height: 20)
+                item.center.equal(to: superview.layoutMarginsGuide, shiftedBy: offset)
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerXAnchor),
