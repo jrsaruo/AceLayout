@@ -38,7 +38,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
                 layoutGuide.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -48,7 +48,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.leadingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
@@ -58,7 +58,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -73,7 +73,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor),
                 layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -83,7 +83,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.topAnchor.constraint(equalTo: superview.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
@@ -93,7 +93,31 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    @available(iOS 11.0, tvOS 11.0, *)
+    func testXYConstraintsWithSystemSpacing() {
+        XCTContext.runActivity(named: "equal(toSystemSpacingAfter:), equal(toSystemSpacingBelow:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.top.equal(toSystemSpacingBelow: superview.topAnchor)
+                item.leading.equal(toSystemSpacingAfter: superview.leadingAnchor)
+                item.trailing.equal(toSystemSpacingAfter: superview.trailingAnchor, multipliedBy: -1)
+                item.bottom.equal(toSystemSpacingBelow: superview.bottomAnchor, multipliedBy: -1)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalToSystemSpacingBelow: superview.topAnchor,
+                                                 multiplier: 1),
+                layoutGuide.leadingAnchor.constraint(equalToSystemSpacingAfter: superview.leadingAnchor,
+                                                     multiplier: 1),
+                layoutGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: superview.trailingAnchor,
+                                                      multiplier: -1),
+                layoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: superview.bottomAnchor,
+                                                    multiplier: -1)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -110,7 +134,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, constant: 8),
                 layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -120,7 +144,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: superview.heightAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to another: Dimension)") { _ in
@@ -130,7 +154,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: layoutGuide.heightAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to constant:)") { _ in
@@ -140,7 +164,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalToConstant: 100)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview()") { _ in
@@ -152,7 +176,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8),
                 layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -170,7 +194,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
                 layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalSuperview(shiftedBy:)") { _ in
@@ -184,7 +208,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
                 layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -201,7 +225,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
                 layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to size:)") { _ in
@@ -212,7 +236,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.widthAnchor.constraint(equalToConstant: 100),
                 layoutGuide.heightAnchor.constraint(equalToConstant: 200)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(toSquare:)") { _ in
@@ -223,7 +247,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.widthAnchor.constraint(equalToConstant: 100),
                 layoutGuide.heightAnchor.constraint(equalToConstant: 100)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalSuperview(multipliedBy:)") { _ in
@@ -237,7 +261,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
                 layoutGuide.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -253,7 +277,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor),
                 layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview()") { _ in
@@ -266,7 +290,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                 layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor),
                 layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(inside:)") { _ in
@@ -281,7 +305,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                     layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -40),
                     layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -30)
                 ]
-                expectedConstraints.forEach { $0.isActive = true }
+                NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
             }
             XCTContext.runActivity(named: "inside inset: CGFloat") { _ in
@@ -294,7 +318,7 @@ final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
                     layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -20),
                     layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20)
                 ]
-                expectedConstraints.forEach { $0.isActive = true }
+                NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
             }
         }
