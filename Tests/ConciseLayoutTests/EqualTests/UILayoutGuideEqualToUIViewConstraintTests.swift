@@ -1,5 +1,5 @@
 //
-//  UILayoutGuideToUIViewConstraintTests.swift
+//  UILayoutGuideEqualToUIViewConstraintTests.swift
 //  ConciseLayout
 //
 //  Created by Yusaku Nishi on 2021/12/13.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import ConciseLayout
 
-final class UILayoutGuideToUIViewConstraintTests: XCTestCase {
+final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
     
     private var superview: UIView!
     private var layoutGuide: UILayoutGuide!
