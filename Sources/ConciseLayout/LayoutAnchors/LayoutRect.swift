@@ -37,17 +37,18 @@ extension LayoutRect {
         var x: XAxis
         var y: YAxis
         
-        public func equal<Another>(to another: Another) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func equal<Another>(to another: Another,
+                                   shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
-                x.equal(to: another),
-                y.equal(to: another)
+                x.equal(to: another, plus: offset.width),
+                y.equal(to: another, plus: offset.height)
             ]
         }
         
-        public func equalToSuperview() -> [NSLayoutConstraint] {
+        public func equalToSuperview(shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] {
             [
-                x.equalToSuperview(),
-                y.equalToSuperview()
+                x.equalToSuperview(plus: offset.width),
+                y.equalToSuperview(plus: offset.height)
             ]
         }
     }

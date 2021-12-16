@@ -106,13 +106,19 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
     }
     
     func testPointConstraints() {
-        XCTContext.runActivity(named: "equal(to another:)") { _ in
+        XCTContext.runActivity(named: "equal(to another:, shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.center.equal(to: superview.layoutMarginsGuide)
+                item.center.equal(to: superview.layoutMarginsGuide,
+                                  shiftedBy: .init(width: 10, height: 20))
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerXAnchor),
-                layoutGuide.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor)
+                layoutGuide.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor),
+                layoutGuide.centerXAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerXAnchor,
+                                                     constant: 10),
+                layoutGuide.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor,
+                                                     constant: 20)
             ]
             expectedConstraints.forEach { $0.isActive = true }
             assertEqual(constraints, expectedConstraints)
