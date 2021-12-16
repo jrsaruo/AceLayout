@@ -217,5 +217,44 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
+        XCTContext.runActivity(named: "insideOrEqual(to another:, inside:)") { _ in
+            XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
+                let layoutMarginsGuide = superview.layoutMarginsGuide
+                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let constraints = subview.autoLayout { item in
+                    item.edges.insideOrEqual(to: layoutMarginsGuide, inside: insets)
+                }
+                let expectedConstraints = [
+                    subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
+                                                 constant: 10),
+                    subview.leftAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.leftAnchor,
+                                                  constant: 20),
+                    subview.rightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.rightAnchor,
+                                                   constant: -40),
+                    subview.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                                                    constant: -30)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+            XCTContext.runActivity(named: "inside inset: CGFloat") { _ in
+                let layoutMarginsGuide = superview.layoutMarginsGuide
+                let constraints = subview.autoLayout { item in
+                    item.edges.insideOrEqual(to: layoutMarginsGuide, inside: 20)
+                }
+                let expectedConstraints = [
+                    subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
+                                                 constant: 20),
+                    subview.leftAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.leftAnchor,
+                                                  constant: 20),
+                    subview.rightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.rightAnchor,
+                                                   constant: -20),
+                    subview.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                                                    constant: -20)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+        }
     }
 }
