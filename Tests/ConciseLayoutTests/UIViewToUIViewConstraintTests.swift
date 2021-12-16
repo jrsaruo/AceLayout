@@ -99,6 +99,30 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    @available(iOS 11.0, tvOS 11.0, *)
+    func testXYConstraintsWithSystemSpacing() {
+        XCTContext.runActivity(named: "equal(toSystemSpacingAfter:), equal(toSystemSpacingBelow:)") { _ in
+            let constraints = subview.autoLayout { item in
+                item.top.equal(toSystemSpacingBelow: superview.topAnchor)
+                item.leading.equal(toSystemSpacingAfter: superview.leadingAnchor)
+                item.trailing.equal(toSystemSpacingAfter: superview.trailingAnchor, multipliedBy: -1)
+                item.bottom.equal(toSystemSpacingBelow: superview.bottomAnchor, multipliedBy: -1)
+            }
+            let expectedConstraints = [
+                subview.topAnchor.constraint(equalToSystemSpacingBelow: superview.topAnchor,
+                                             multiplier: 1),
+                subview.leadingAnchor.constraint(equalToSystemSpacingAfter: superview.leadingAnchor,
+                                                 multiplier: 1),
+                subview.trailingAnchor.constraint(equalToSystemSpacingAfter: superview.trailingAnchor,
+                                                  multiplier: -1),
+                subview.bottomAnchor.constraint(equalToSystemSpacingBelow: superview.bottomAnchor,
+                                                multiplier: -1)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
     func testDimensionConstraints() {
         XCTContext.runActivity(named: "equal(to another: SizeConstrainable)") { _ in
             let constraints = subview.autoLayout { item in
