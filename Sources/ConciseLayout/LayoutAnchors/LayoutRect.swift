@@ -31,6 +31,8 @@ public enum LayoutRect {
     }
 }
 
+// MARK: - Convenient anchor combinations -
+
 extension LayoutRect {
     
     public struct Point {
@@ -211,6 +213,22 @@ extension LayoutRect {
             equal(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
+        public func insideOrEqual<Another>(to another: Another,
+                                           inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            [
+                top.greaterThanOrEqual(to: another, plus: insets.top),
+                left.greaterThanOrEqual(to: another, plus: insets.left),
+                right.lessThanOrEqual(to: another, plus: -insets.right),
+                bottom.lessThanOrEqual(to: another, plus: -insets.bottom)
+            ]
+        }
+        
+        @inlinable
+        public func insideOrEqual<Another>(to another: Another,
+                                           inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            insideOrEqual(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        }
+        
         // MARK: - Constraints with superview
         
         public func equalToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
@@ -225,6 +243,20 @@ extension LayoutRect {
         @inlinable
         public func equalToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
             equalToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        }
+        
+        public func insideOrEqualToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+            [
+                top.greaterThanOrEqualToSuperview(plus: insets.top),
+                left.greaterThanOrEqualToSuperview(plus: insets.left),
+                right.lessThanOrEqualToSuperview(plus: -insets.right),
+                bottom.lessThanOrEqualToSuperview(plus: -insets.bottom)
+            ]
+        }
+        
+        @inlinable
+        public func insideOrEqualToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
+            insideOrEqualToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
     }
 }
