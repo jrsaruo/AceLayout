@@ -5,10 +5,14 @@
 //  Created by Yusaku Nishi on 2021/12/13.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public protocol SuperviewProviding {
-    var superview: UIView? { get }
+    var superview: View? { get }
 }
 
 public protocol XAxesConstrainable: SuperviewProviding {
@@ -39,12 +43,12 @@ public protocol BaselinesConstrainable: SuperviewProviding {
     var lastBaselineAnchor: NSLayoutYAxisAnchor { get }
 }
 
-// MARK: - UIView: Constrainable -
+// MARK: - UIView, NSView: Constrainable -
 
-extension UIView: XYAxesConstrainable, SizeConstrainable, BaselinesConstrainable {}
+extension View: XYAxesConstrainable, SizeConstrainable, BaselinesConstrainable {}
 
-// MARK: - UILayoutGuide: Constrainable -
+// MARK: - UILayoutGuide, NSLayoutGuide: Constrainable -
 
-extension UILayoutGuide: XYAxesConstrainable, SizeConstrainable {
-    public var superview: UIView? { owningView }
+extension LayoutGuide: XYAxesConstrainable, SizeConstrainable {
+    public var superview: View? { owningView }
 }

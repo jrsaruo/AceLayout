@@ -5,9 +5,13 @@
 //  Created by Yusaku Nishi on 2021/12/15.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
-@available(iOS 11.0, tvOS 11.0, *)
+@available(iOS 11.0, macOS 11.0, tvOS 11.0, *)
 extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     
     @inlinable
@@ -29,7 +33,7 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     }
 }
 
-@available(iOS 11.0, tvOS 11.0, *)
+@available(iOS 11.0, macOS 11.0, tvOS 11.0, *)
 extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     
     @inlinable

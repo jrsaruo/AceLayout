@@ -5,7 +5,11 @@
 //  Created by Yusaku Nishi on 2021/12/15.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 /// Namespace for layout anchors.
 public enum LayoutRect {
@@ -198,7 +202,7 @@ extension LayoutRect {
         // MARK: - Constraints with XYAxesConstrainable
         
         public func equal<Another>(to another: Another,
-                                   inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+                                   inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.equal(to: another, plus: insets.top),
                 left.equal(to: another, plus: insets.left),
@@ -214,7 +218,7 @@ extension LayoutRect {
         }
         
         public func insideOrEqual<Another>(to another: Another,
-                                           inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+                                           inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.greaterThanOrEqual(to: another, plus: insets.top),
                 left.greaterThanOrEqual(to: another, plus: insets.left),
@@ -231,7 +235,7 @@ extension LayoutRect {
         
         // MARK: - Constraints with superview
         
-        public func equalToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+        public func equalToSuperview(inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.equalToSuperview(plus: insets.top),
                 left.equalToSuperview(plus: insets.left),
@@ -245,7 +249,7 @@ extension LayoutRect {
             equalToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
-        public func insideOrEqualToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+        public func insideOrEqualToSuperview(inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.greaterThanOrEqualToSuperview(plus: insets.top),
                 left.greaterThanOrEqualToSuperview(plus: insets.left),

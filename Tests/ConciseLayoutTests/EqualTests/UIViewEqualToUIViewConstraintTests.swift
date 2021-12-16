@@ -10,14 +10,14 @@ import XCTest
 
 final class UIViewEqualToUIViewConstraintTests: XCTestCase {
     
-    private var superview: UIView!
-    private var subview: UIView!
+    private var superview: View!
+    private var subview: View!
     
     override func setUp() {
         super.setUp()
         
-        superview = UIView()
-        subview = UIView()
+        superview = View()
+        subview = View()
         superview.addSubview(subview)
     }
     
@@ -319,7 +319,7 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
         }
         XCTContext.runActivity(named: "insideOrEqual(to another:, inside:)") { _ in
             XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = subview.autoLayout { item in
                     item.edges.insideOrEqual(to: superview, inside: insets)
                 }
@@ -361,7 +361,7 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
         }
         XCTContext.runActivity(named: "equalToSuperview(inside:)") { _ in
             XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = subview.autoLayout { item in
                     item.edges.equalToSuperview(inside: insets)
                 }
@@ -390,7 +390,7 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
         }
         XCTContext.runActivity(named: "insideOrEqualToSuperview(inside:)") { _ in
             XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
-                let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = subview.autoLayout { item in
                     item.edges.insideOrEqualToSuperview(inside: insets)
                 }

@@ -5,7 +5,11 @@
 //  Created by Yusaku Nishi on 2021/12/04.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public struct LayoutItem<Base> {
     let base: Base
