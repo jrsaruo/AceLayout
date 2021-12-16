@@ -36,7 +36,8 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
             }
             let expectedConstraints = [
                 layoutGuide.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor),
-                layoutGuide.trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor, constant: 8)
+                layoutGuide.trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor,
+                                                      constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -46,7 +47,8 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 item.leading.equal(to: superview.layoutMarginsGuide.trailingAnchor, plus: 8)
             }
             let expectedConstraints = [
-                layoutGuide.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor, constant: 8)
+                layoutGuide.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor,
+                                                     constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -61,7 +63,8 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
             }
             let expectedConstraints = [
                 layoutGuide.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
-                layoutGuide.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor,
+                                                    constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -71,7 +74,8 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 item.top.equal(to: superview.layoutMarginsGuide.bottomAnchor, plus: 8)
             }
             let expectedConstraints = [
-                layoutGuide.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
+                layoutGuide.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor,
+                                                 constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -87,8 +91,10 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.widthAnchor),
-                layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8),
-                layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, multiplier: 2)
+                layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                                                    constant: 8),
+                layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                                                    multiplier: 2)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -98,7 +104,8 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 item.width.equal(to: superview.layoutMarginsGuide.heightAnchor, plus: 8)
             }
             let expectedConstraints = [
-                layoutGuide.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8)
+                layoutGuide.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
+                                                   constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)

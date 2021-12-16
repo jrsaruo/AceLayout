@@ -186,7 +186,8 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 item.firstBaseline.equalToSuperview(plus: 8)
             }
             let expectedConstraints = [
-                subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor, constant: 8)
+                subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor,
+                                                       constant: 8)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
