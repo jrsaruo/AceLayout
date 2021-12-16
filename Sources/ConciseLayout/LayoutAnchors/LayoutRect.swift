@@ -55,6 +55,14 @@ extension LayoutRect {
             ]
         }
         
+        public func greaterThanOrEqual<Another>(to another: Another,
+                                                shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            [
+                x.greaterThanOrEqual(to: another, plus: offset.width),
+                y.greaterThanOrEqual(to: another, plus: offset.height)
+            ]
+        }
+        
         // MARK: - Constraints with superview
         
         public func equalToSuperview(shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] {
@@ -68,6 +76,13 @@ extension LayoutRect {
             [
                 x.lessThanOrEqualToSuperview(plus: offset.width),
                 y.lessThanOrEqualToSuperview(plus: offset.height)
+            ]
+        }
+        
+        public func greaterThanOrEqualToSuperview(shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] {
+            [
+                x.greaterThanOrEqualToSuperview(plus: offset.width),
+                y.greaterThanOrEqualToSuperview(plus: offset.height)
             ]
         }
     }
@@ -94,6 +109,14 @@ extension LayoutRect {
             ]
         }
         
+        public func greaterThanOrEqual<Another>(to another: Another,
+                                                multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] where Another: SizeConstrainable {
+            [
+                width.greaterThanOrEqual(to: another, multipliedBy: multiplier),
+                height.greaterThanOrEqual(to: another, multipliedBy: multiplier)
+            ]
+        }
+        
         // MARK: - Constraints with CGSize
         
         public func equal(to size: CGSize) -> [NSLayoutConstraint] {
@@ -107,6 +130,13 @@ extension LayoutRect {
             [
                 width.lessThanOrEqual(to: size.width),
                 height.lessThanOrEqual(to: size.height)
+            ]
+        }
+        
+        public func greaterThanOrEqual(to size: CGSize) -> [NSLayoutConstraint] {
+            [
+                width.greaterThanOrEqual(to: size.width),
+                height.greaterThanOrEqual(to: size.height)
             ]
         }
         
@@ -126,6 +156,13 @@ extension LayoutRect {
             ]
         }
         
+        public func greaterThanOrEqual(toSquare sideLength: CGFloat) -> [NSLayoutConstraint] {
+            [
+                width.greaterThanOrEqual(to: sideLength),
+                height.greaterThanOrEqual(to: sideLength)
+            ]
+        }
+        
         // MARK: - Constraints with superview
         
         public func equalToSuperview(multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] {
@@ -139,6 +176,13 @@ extension LayoutRect {
             [
                 width.lessThanOrEqualToSuperview(multipliedBy: multiplier),
                 height.lessThanOrEqualToSuperview(multipliedBy: multiplier)
+            ]
+        }
+        
+        public func greaterThanOrEqualToSuperview(multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] {
+            [
+                width.greaterThanOrEqualToSuperview(multipliedBy: multiplier),
+                height.greaterThanOrEqualToSuperview(multipliedBy: multiplier)
             ]
         }
     }
@@ -171,6 +215,16 @@ extension LayoutRect {
             ]
         }
         
+        public func greaterThanOrEqual<Another>(to another: Another,
+                                                inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            [
+                top.greaterThanOrEqual(to: another, plus: insets.top),
+                left.greaterThanOrEqual(to: another, plus: insets.left),
+                right.greaterThanOrEqual(to: another, plus: -insets.right),
+                bottom.greaterThanOrEqual(to: another, plus: -insets.bottom)
+            ]
+        }
+        
         @inlinable
         public func equal<Another>(to another: Another,
                                    inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
@@ -182,6 +236,13 @@ extension LayoutRect {
                                              inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             lessThanOrEqual(to: another,
                             inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        }
+        
+        @inlinable
+        public func greaterThanOrEqual<Another>(to another: Another,
+                                                inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            greaterThanOrEqual(to: another,
+                               inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
         // MARK: - Constraints with superview
@@ -204,6 +265,15 @@ extension LayoutRect {
             ]
         }
         
+        public func greaterThanOrEqualToSuperview(inside insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+            [
+                top.greaterThanOrEqualToSuperview(plus: insets.top),
+                left.greaterThanOrEqualToSuperview(plus: insets.left),
+                right.greaterThanOrEqualToSuperview(plus: -insets.right),
+                bottom.greaterThanOrEqualToSuperview(plus: -insets.bottom)
+            ]
+        }
+        
         @inlinable
         public func equalToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
             equalToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
@@ -212,6 +282,11 @@ extension LayoutRect {
         @inlinable
         public func lessThanOrEqualToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
             lessThanOrEqualToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        }
+        
+        @inlinable
+        public func greaterThanOrEqualToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
+            greaterThanOrEqualToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
     }
 }
