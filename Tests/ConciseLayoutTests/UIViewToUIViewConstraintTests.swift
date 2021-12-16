@@ -39,7 +39,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
                 subview.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -49,7 +49,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.leadingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
@@ -59,7 +59,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -74,7 +74,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.topAnchor.constraint(equalTo: superview.topAnchor),
                 subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -84,7 +84,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.topAnchor.constraint(equalTo: superview.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
@@ -94,7 +94,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.topAnchor.constraint(equalTo: superview.topAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -111,7 +111,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.heightAnchor.constraint(equalTo: superview.heightAnchor, constant: 8),
                 subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -121,7 +121,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.heightAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to another: Dimension)") { _ in
@@ -131,7 +131,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: subview.heightAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to constant:)") { _ in
@@ -141,7 +141,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalToConstant: 100)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview()") { _ in
@@ -153,7 +153,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor, constant: 8),
                 subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -168,7 +168,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor),
                 subview.lastBaselineAnchor.constraint(equalTo: superview.lastBaselineAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -178,7 +178,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.firstBaselineAnchor.constraint(equalTo: superview.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(plus:)") { _ in
@@ -188,7 +188,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -206,7 +206,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
                 subview.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalSuperview(shiftedBy:)") { _ in
@@ -220,7 +220,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
                 subview.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -237,7 +237,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
                 subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to size:)") { _ in
@@ -248,7 +248,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.widthAnchor.constraint(equalToConstant: 100),
                 subview.heightAnchor.constraint(equalToConstant: 200)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(toSquare:)") { _ in
@@ -259,7 +259,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.widthAnchor.constraint(equalToConstant: 100),
                 subview.heightAnchor.constraint(equalToConstant: 100)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalSuperview(multipliedBy:)") { _ in
@@ -273,7 +273,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 2),
                 subview.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -289,7 +289,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.rightAnchor.constraint(equalTo: superview.rightAnchor),
                 subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview()") { _ in
@@ -302,7 +302,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                 subview.rightAnchor.constraint(equalTo: superview.rightAnchor),
                 subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(inside:)") { _ in
@@ -317,7 +317,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                     subview.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -40),
                     subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -30)
                 ]
-                expectedConstraints.forEach { $0.isActive = true }
+                NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
             }
             XCTContext.runActivity(named: "inside inset: CGFloat") { _ in
@@ -330,7 +330,7 @@ final class UIViewToUIViewConstraintTests: XCTestCase {
                     subview.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -20),
                     subview.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20)
                 ]
-                expectedConstraints.forEach { $0.isActive = true }
+                NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
             }
         }

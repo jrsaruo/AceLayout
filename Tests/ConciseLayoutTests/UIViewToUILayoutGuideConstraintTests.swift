@@ -39,7 +39,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor),
                 subview.trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -49,7 +49,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -64,7 +64,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
                 subview.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -74,7 +74,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -91,7 +91,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8),
                 subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -101,7 +101,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
             let expectedConstraints = [
                 subview.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -116,7 +116,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.firstBaselineAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
                 subview.firstBaselineAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -136,7 +136,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor,
                                                 constant: 20)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -155,7 +155,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
                                                 multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -171,7 +171,7 @@ final class UIViewToUILayoutGuideConstraintTests: XCTestCase {
                 subview.rightAnchor.constraint(equalTo: superview.layoutMarginsGuide.rightAnchor),
                 subview.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }

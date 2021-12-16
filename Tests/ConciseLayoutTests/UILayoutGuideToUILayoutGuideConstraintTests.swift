@@ -38,7 +38,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 layoutGuide.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor),
                 layoutGuide.trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -48,7 +48,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -63,7 +63,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 layoutGuide.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
                 layoutGuide.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -73,7 +73,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.topAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -90,7 +90,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8),
                 layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
@@ -100,7 +100,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor, constant: 8)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -120,7 +120,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 layoutGuide.centerYAnchor.constraint(equalTo: superview.layoutMarginsGuide.centerYAnchor,
                                                      constant: 20)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -139,7 +139,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 layoutGuide.heightAnchor.constraint(equalTo: superview.layoutMarginsGuide.heightAnchor,
                                                     multiplier: 2)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
@@ -155,7 +155,7 @@ final class UILayoutGuideToUILayoutGuideConstraintTests: XCTestCase {
                 layoutGuide.rightAnchor.constraint(equalTo: superview.layoutMarginsGuide.rightAnchor),
                 layoutGuide.bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor)
             ]
-            expectedConstraints.forEach { $0.isActive = true }
+            NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
     }
