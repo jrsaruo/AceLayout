@@ -15,20 +15,20 @@ import AppKit
 extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     
     @inlinable
-    func equal(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-               multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func equal(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+                      multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
         anchor.constraint(equalToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
     }
     
     @inlinable
-    func lessThanOrEqual(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-                         multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func lessThanOrEqual(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+                                multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
     }
     
     @inlinable
-    func greaterThanOrEqual(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-                            multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+                                   multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
     }
 }
@@ -37,20 +37,20 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
 extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     
     @inlinable
-    func equal(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-               multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func equal(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+                      multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
         anchor.constraint(equalToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
     }
     
     @inlinable
-    func lessThanOrEqual(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-                         multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func lessThanOrEqual(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+                                multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
     }
     
     @inlinable
-    func greaterThanOrEqual(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-                            multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+                                   multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
     }
 }

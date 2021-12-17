@@ -132,10 +132,13 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
             let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = layoutGuide.autoLayout { item in
                 item.width.lessThanOrEqual(to: layoutMarginsGuide.heightAnchor, plus: 8)
+                item.width.lessThanOrEqual(to: layoutMarginsGuide.heightAnchor, multipliedBy: 2)
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                   constant: 8)
+                                                   constant: 8),
+                layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                                                   multiplier: 2)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
