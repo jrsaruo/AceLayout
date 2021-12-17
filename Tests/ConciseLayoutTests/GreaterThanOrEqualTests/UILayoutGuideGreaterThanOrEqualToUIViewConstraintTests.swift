@@ -149,10 +149,13 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         XCTContext.runActivity(named: "greaterThanOrEqual(to anotherAnchor:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.width.greaterThanOrEqual(to: superview.heightAnchor, plus: 8)
+                item.width.greaterThanOrEqual(to: superview.heightAnchor, multipliedBy: 2)
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
-                                                   constant: 8)
+                                                   constant: 8),
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor,
+                                                   multiplier: 2)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -160,10 +163,13 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         XCTContext.runActivity(named: "greaterThanOrEqual(to another: Dimension)") { _ in
             let constraints = layoutGuide.autoLayout { item in
                 item.width.greaterThanOrEqual(to: item.height, plus: 8)
+                item.width.greaterThanOrEqual(to: item.height, multipliedBy: 2)
             }
             let expectedConstraints = [
                 layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: layoutGuide.heightAnchor,
-                                                   constant: 8)
+                                                   constant: 8),
+                layoutGuide.widthAnchor.constraint(greaterThanOrEqualTo: layoutGuide.heightAnchor,
+                                                   multiplier: 2)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
