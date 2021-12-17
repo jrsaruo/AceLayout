@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import ConciseLayout
+@testable import AceLayout
 
 func assertEqual(_ constraints1: [NSLayoutConstraint],
                  _ constraints2: [NSLayoutConstraint],

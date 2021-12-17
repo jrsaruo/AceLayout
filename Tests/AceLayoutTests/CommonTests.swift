@@ -1,12 +1,12 @@
 //
 //  CommonTests.swift
-//  ConciseLayout
+//
 //
 //  Created by Yusaku Nishi on 2021/12/16.
 //
 
 import XCTest
-@testable import ConciseLayout
+@testable import AceLayout
 
 final class CommonTests: XCTestCase {
     
