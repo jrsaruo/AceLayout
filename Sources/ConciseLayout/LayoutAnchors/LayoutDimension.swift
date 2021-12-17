@@ -55,6 +55,46 @@ extension LayoutDimension {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
     }
     
+    // MARK: - Constraints with BaseLayoutAnchor
+    
+    @inlinable
+    public func equal(to anotherAnchor: BaseLayoutAnchor,
+                      multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(equalTo: anotherAnchor, multiplier: multiplier)
+    }
+    
+    @inlinable
+    public func lessThanOrEqual(to anotherAnchor: BaseLayoutAnchor,
+                                multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(lessThanOrEqualTo: anotherAnchor, multiplier: multiplier)
+    }
+    
+    @inlinable
+    public func greaterThanOrEqual(to anotherAnchor: BaseLayoutAnchor,
+                                   multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(greaterThanOrEqualTo: anotherAnchor, multiplier: multiplier)
+    }
+    
+    // MARK: - Constraints with LayoutDimension
+    
+    @inlinable
+    public func equal(to another: Self,
+                      multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(equalTo: another.anchor, multiplier: multiplier)
+    }
+    
+    @inlinable
+    public func lessThanOrEqual(to another: Self,
+                                multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(lessThanOrEqualTo: another.anchor, multiplier: multiplier)
+    }
+    
+    @inlinable
+    public func greaterThanOrEqual(to another: Self,
+                                   multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+        anchor.constraint(greaterThanOrEqualTo: another.anchor, multiplier: multiplier)
+    }
+    
     // MARK: - Constraints with constant
     
     @inlinable
