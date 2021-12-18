@@ -11,10 +11,12 @@ import UIKit
 import AppKit
 #endif
 
+/// A type that provides `superview`.
 public protocol SuperviewProviding {
     var superview: View? { get }
 }
 
+/// A type that provides layout anchors for creating horizontal layout constraints.
 public protocol XAxesConstrainable: SuperviewProviding {
     var leadingAnchor: NSLayoutXAxisAnchor { get }
     var trailingAnchor: NSLayoutXAxisAnchor { get }
@@ -24,6 +26,7 @@ public protocol XAxesConstrainable: SuperviewProviding {
     var centerXAnchor: NSLayoutXAxisAnchor { get }
 }
 
+/// A type that provides layout anchors for creating vertical layout constraints.
 public protocol YAxesConstrainable: SuperviewProviding {
     var topAnchor: NSLayoutYAxisAnchor { get }
     var bottomAnchor: NSLayoutYAxisAnchor { get }
@@ -31,13 +34,16 @@ public protocol YAxesConstrainable: SuperviewProviding {
     var centerYAnchor: NSLayoutYAxisAnchor { get }
 }
 
+/// A type that provides layout anchors for creating horizontal and vertical layout constraints.
 public typealias XYAxesConstrainable = XAxesConstrainable & YAxesConstrainable
 
+/// A type that provides layout anchors for creating size-based layout constraints.
 public protocol SizeConstrainable: SuperviewProviding {
     var widthAnchor: NSLayoutDimension { get }
     var heightAnchor: NSLayoutDimension { get }
 }
 
+/// A type that provides layout anchors for creating baseline layout constraints.
 public protocol BaselinesConstrainable: SuperviewProviding {
     var firstBaselineAnchor: NSLayoutYAxisAnchor { get }
     var lastBaselineAnchor: NSLayoutYAxisAnchor { get }
