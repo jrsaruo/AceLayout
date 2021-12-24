@@ -99,7 +99,7 @@ view.autoLayout { item in
 
 ```swift
 view.autoLayout { item in
-    item.edges.equalToSuperview(inside: 16)
+    item.edges.equalToSuperview(insetBy: 16)
 }
 ```
 

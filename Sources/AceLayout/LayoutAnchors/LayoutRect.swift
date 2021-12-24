@@ -506,7 +506,7 @@ extension LayoutRect {
         ///     // view.right == layoutGuide.right - 40
         ///     // view.bottom == layoutGuide.bottom - 30
         ///     let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
-        ///     item.edges.equal(to: layoutGuide, inside: insets)
+        ///     item.edges.equal(to: layoutGuide, insetBy: insets)
         /// }
         /// ```
         ///
@@ -515,7 +515,7 @@ extension LayoutRect {
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `insets`.
         public func equal<Another>(to another: Another,
-                                   inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+                                   insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.equal(to: another, plus: insets.top),
                 left.equal(to: another, plus: insets.left),
@@ -532,7 +532,7 @@ extension LayoutRect {
         ///     // view.left == anotherView.left + 16
         ///     // view.right == anotherView.right - 16
         ///     // view.bottom == anotherView.bottom - 16
-        ///     item.edges.equal(to: anotherView, inside: 16)
+        ///     item.edges.equal(to: anotherView, insetBy: 16)
         /// }
         /// ```
         ///
@@ -542,8 +542,8 @@ extension LayoutRect {
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `inset`.
         @inlinable
         public func equal<Another>(to another: Another,
-                                   inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
-            equal(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+                                   insetBy inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            equal(to: another, insetBy: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
         /// Returns a constraint that represents `self` edges are inside of `another` edges adjusted by `insets`.
@@ -561,7 +561,7 @@ extension LayoutRect {
         ///     // view.right <= layoutGuide.right - 40
         ///     // view.bottom <= layoutGuide.bottom - 30
         ///     let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
-        ///     item.edges.insideOrEqual(to: layoutGuide, inside: insets)
+        ///     item.edges.insideOrEqual(to: layoutGuide, insetBy: insets)
         /// }
         /// ```
         ///
@@ -570,7 +570,7 @@ extension LayoutRect {
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `insets`.
         public func insideOrEqual<Another>(to another: Another,
-                                           inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+                                           insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.greaterThanOrEqual(to: another, plus: insets.top),
                 left.greaterThanOrEqual(to: another, plus: insets.left),
@@ -587,7 +587,7 @@ extension LayoutRect {
         ///     // view.left >= anotherView.left + 16
         ///     // view.right <= anotherView.right - 16
         ///     // view.bottom <= anotherView.bottom - 16
-        ///     item.edges.insideOrEqual(to: anotherView, inside: 16)
+        ///     item.edges.insideOrEqual(to: anotherView, insetBy: 16)
         /// }
         /// ```
         ///
@@ -597,8 +597,8 @@ extension LayoutRect {
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `inset`.
         @inlinable
         public func insideOrEqual<Another>(to another: Another,
-                                           inside inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
-            insideOrEqual(to: another, inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+                                           insetBy inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+            insideOrEqual(to: another, insetBy: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
         // MARK: - Constraints with superview
@@ -615,14 +615,14 @@ extension LayoutRect {
         ///     // view.right == superview.right - 40
         ///     // view.bottom == superview.bottom - 30
         ///     let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
-        ///     item.edges.equalToSuperview(inside: insets)
+        ///     item.edges.equalToSuperview(insetBy: insets)
         /// }
         /// ```
         ///
         /// - Parameters:
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `superview` edges adjusted by `insets`.
-        public func equalToSuperview(inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
+        public func equalToSuperview(insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.equalToSuperview(plus: insets.top),
                 left.equalToSuperview(plus: insets.left),
@@ -639,7 +639,7 @@ extension LayoutRect {
         ///     // view.left == superview.left + 16
         ///     // view.right == superview.right - 16
         ///     // view.bottom == superview.bottom - 16
-        ///     item.edges.equalToSuperview(inside: 16)
+        ///     item.edges.equalToSuperview(insetBy: 16)
         /// }
         /// ```
         ///
@@ -647,8 +647,8 @@ extension LayoutRect {
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `superview` edges adjusted by `inset`.
         @inlinable
-        public func equalToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
-            equalToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        public func equalToSuperview(insetBy inset: CGFloat) -> [NSLayoutConstraint] {
+            equalToSuperview(insetBy: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
         /// Returns a constraint that represents `self` edges are inside of `another` edges adjusted by `insets`.
@@ -666,14 +666,14 @@ extension LayoutRect {
         ///     // view.right <= superview.right - 40
         ///     // view.bottom <= superview.bottom - 30
         ///     let insets = UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
-        ///     item.edges.insideOrEqualToSuperview(inside: insets)
+        ///     item.edges.insideOrEqualToSuperview(insetBy: insets)
         /// }
         /// ```
         ///
         /// - Parameters:
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `superview` edges adjusted by `insets`.
-        public func insideOrEqualToSuperview(inside insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
+        public func insideOrEqualToSuperview(insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.greaterThanOrEqualToSuperview(plus: insets.top),
                 left.greaterThanOrEqualToSuperview(plus: insets.left),
@@ -690,7 +690,7 @@ extension LayoutRect {
         ///     // view.left >= superview.left + 16
         ///     // view.right <= superview.right - 16
         ///     // view.bottom <= superview.bottom - 16
-        ///     item.edges.insideOrEqualToSuperview(inside: 16)
+        ///     item.edges.insideOrEqualToSuperview(insetBy: 16)
         /// }
         /// ```
         ///
@@ -698,8 +698,8 @@ extension LayoutRect {
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `superview` edges adjusted by `inset`.
         @inlinable
-        public func insideOrEqualToSuperview(inside inset: CGFloat) -> [NSLayoutConstraint] {
-            insideOrEqualToSuperview(inside: .init(top: inset, left: inset, bottom: inset, right: inset))
+        public func insideOrEqualToSuperview(insetBy inset: CGFloat) -> [NSLayoutConstraint] {
+            insideOrEqualToSuperview(insetBy: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
     }
 }
