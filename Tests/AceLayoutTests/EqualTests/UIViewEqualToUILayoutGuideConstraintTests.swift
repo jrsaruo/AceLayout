@@ -10,14 +10,14 @@ import AceLayout
 
 final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     
-    private var superview: View!
-    private var subview: View!
+    private var superview: AL.View!
+    private var subview: AL.View!
     
     override func setUp() {
         super.setUp()
         
-        superview = View()
-        subview = View()
+        superview = AL.View()
+        subview = AL.View()
         superview.addSubview(subview)
     }
     
@@ -221,9 +221,9 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "insideOrEqual(to another:, insetBy:)") { _ in
-            XCTContext.runActivity(named: "insetBy insets: UIEdgeInsets") { _ in
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
                 let layoutMarginsGuide = superview.layoutMarginsGuide
-                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = subview.autoLayout { item in
                     item.edges.insideOrEqual(to: layoutMarginsGuide, insetBy: insets)
                 }

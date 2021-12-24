@@ -17,7 +17,7 @@ extension NSLayoutConstraint {
     /// - Parameter priority: The layout priority.
     /// - Returns: The updated `self` with the specified `priority`.
     @discardableResult
-    public func priority(_ priority: LayoutPriority) -> Self {
+    public func priority(_ priority: AL.LayoutPriority) -> Self {
         self.priority = priority
         return self
     }
@@ -29,7 +29,7 @@ extension Sequence where Element: NSLayoutConstraint {
     /// - Parameter priority: The layout priority.
     /// - Returns: The updated `self` with the specified `priority`.
     @discardableResult
-    public func priority(_ priority: LayoutPriority) -> Self {
+    public func priority(_ priority: AL.LayoutPriority) -> Self {
         forEach { $0.priority = priority }
         return self
     }

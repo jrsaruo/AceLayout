@@ -515,7 +515,7 @@ extension LayoutRect {
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `insets`.
         public func equal<Another>(to another: Another,
-                                   insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+                                   insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.equal(to: another, plus: insets.top),
                 left.equal(to: another, plus: insets.left),
@@ -570,7 +570,7 @@ extension LayoutRect {
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `insets`.
         public func insideOrEqual<Another>(to another: Another,
-                                           insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+                                           insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
                 top.greaterThanOrEqual(to: another, plus: insets.top),
                 left.greaterThanOrEqual(to: another, plus: insets.left),
@@ -622,7 +622,7 @@ extension LayoutRect {
         /// - Parameters:
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `superview` edges adjusted by `insets`.
-        public func equalToSuperview(insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
+        public func equalToSuperview(insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.equalToSuperview(plus: insets.top),
                 left.equalToSuperview(plus: insets.left),
@@ -673,7 +673,7 @@ extension LayoutRect {
         /// - Parameters:
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `superview` edges adjusted by `insets`.
-        public func insideOrEqualToSuperview(insetBy insets: EdgeInsets = .zero) -> [NSLayoutConstraint] {
+        public func insideOrEqualToSuperview(insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.greaterThanOrEqualToSuperview(plus: insets.top),
                 left.greaterThanOrEqualToSuperview(plus: insets.left),

@@ -13,7 +13,7 @@ import AppKit
 
 /// A type that provides `superview`.
 public protocol SuperviewProviding {
-    var superview: View? { get }
+    var superview: AL.View? { get }
 }
 
 /// A type that provides layout anchors for creating horizontal layout constraints.
@@ -51,10 +51,10 @@ public protocol BaselinesConstrainable: SuperviewProviding {
 
 // MARK: - UIView, NSView: Constrainable -
 
-extension View: XYAxesConstrainable, SizeConstrainable, BaselinesConstrainable {}
+extension AL.View: XYAxesConstrainable, SizeConstrainable, BaselinesConstrainable {}
 
 // MARK: - UILayoutGuide, NSLayoutGuide: Constrainable -
 
-extension LayoutGuide: XYAxesConstrainable, SizeConstrainable {
-    public var superview: View? { owningView }
+extension AL.LayoutGuide: XYAxesConstrainable, SizeConstrainable {
+    public var superview: AL.View? { owningView }
 }

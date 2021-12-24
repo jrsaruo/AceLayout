@@ -10,14 +10,14 @@ import AceLayout
 
 final class UIViewLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
     
-    private var superview: View!
-    private var subview: View!
+    private var superview: AL.View!
+    private var subview: AL.View!
     
     override func setUp() {
         super.setUp()
         
-        superview = View()
-        subview = View()
+        superview = AL.View()
+        subview = AL.View()
         superview.addSubview(subview)
     }
     

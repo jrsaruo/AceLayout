@@ -10,14 +10,14 @@ import AceLayout
 
 final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
     
-    private var superview: View!
-    private var layoutGuide: LayoutGuide!
+    private var superview: AL.View!
+    private var layoutGuide: AL.LayoutGuide!
     
     override func setUp() {
         super.setUp()
         
-        superview = View()
-        layoutGuide = LayoutGuide()
+        superview = AL.View()
+        layoutGuide = AL.LayoutGuide()
         superview.addLayoutGuide(layoutGuide)
     }
     
@@ -285,8 +285,8 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "insideOrEqual(to another:, insetBy:)") { _ in
-            XCTContext.runActivity(named: "insetBy insets: UIEdgeInsets") { _ in
-                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = layoutGuide.autoLayout { item in
                     item.edges.insideOrEqual(to: superview, insetBy: insets)
                 }
@@ -335,8 +335,8 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalToSuperview(insetBy:)") { _ in
-            XCTContext.runActivity(named: "insetBy insets: UIEdgeInsets") { _ in
-                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = layoutGuide.autoLayout { item in
                     item.edges.equalToSuperview(insetBy: insets)
                 }
@@ -364,8 +364,8 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
             }
         }
         XCTContext.runActivity(named: "insideOrEqualToSuperview(insetBy:)") { _ in
-            XCTContext.runActivity(named: "insetBy insets: UIEdgeInsets") { _ in
-                let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = layoutGuide.autoLayout { item in
                     item.edges.insideOrEqualToSuperview(insetBy: insets)
                 }
