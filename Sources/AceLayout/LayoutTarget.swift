@@ -14,15 +14,14 @@ import AppKit
 /// A type that represents layout target such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
 public protocol LayoutTarget {
     /// A type that represents layout target such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
-    ///
-    /// This is `Self` in common usage.
-    associatedtype LayoutBase
+    /// This is equal to `Self`.
+    associatedtype LayoutBase where LayoutBase == Self
     
     func autoLayout(activates: Bool,
                     @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint]
 }
 
-extension LayoutTarget where LayoutBase == Self {
+extension LayoutTarget {
     
     /// The default implementation of `autoLayout(activates:, builder:)`.
     /// - Parameters:
@@ -30,7 +29,7 @@ extension LayoutTarget where LayoutBase == Self {
     ///   - builder: A layout constraints builder that creates constraints on the specified item.
     /// - Returns: An array of built `NSLayoutConstraint` objects.
     fileprivate func _autoLayout(activates: Bool,
-                                 @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+                                 @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
         let constraints = builder(LayoutItem(base: self))
         if activates {
             NSLayoutConstraint.activate(constraints)
@@ -55,7 +54,7 @@ extension LayoutTarget where LayoutBase == Self {
     /// - Returns: An array of built `NSLayoutConstraint` objects.
     @discardableResult
     public func autoLayout(activates: Bool = true,
-                           @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+                           @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
         _autoLayout(activates: activates, builder: builder)
     }
 }
@@ -86,6 +85,4 @@ extension View: LayoutTarget {
     }
 }
 
-extension LayoutGuide: LayoutTarget {
-    public typealias LayoutBase = LayoutGuide
-}
+extension LayoutGuide: LayoutTarget {}
