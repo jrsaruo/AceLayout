@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import AceLayout
+import AceLayout
 
 final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
     
