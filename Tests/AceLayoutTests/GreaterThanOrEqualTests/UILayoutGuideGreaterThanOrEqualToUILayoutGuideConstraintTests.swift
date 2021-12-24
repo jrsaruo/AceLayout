@@ -10,14 +10,14 @@ import AceLayout
 
 final class UILayoutGuideGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
     
-    private var superview: View!
-    private var layoutGuide: LayoutGuide!
+    private var superview: AL.View!
+    private var layoutGuide: AL.LayoutGuide!
     
     override func setUp() {
         super.setUp()
         
-        superview = View()
-        layoutGuide = LayoutGuide()
+        superview = AL.View()
+        layoutGuide = AL.LayoutGuide()
         superview.addLayoutGuide(layoutGuide)
     }
     

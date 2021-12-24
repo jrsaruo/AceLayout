@@ -59,7 +59,7 @@ extension LayoutTarget {
     }
 }
 
-extension View: LayoutTarget {
+extension AL.View: LayoutTarget {
     
     /// Creates layout constraints.
     ///
@@ -79,10 +79,10 @@ extension View: LayoutTarget {
     /// - Returns: An array of built `NSLayoutConstraint` objects.
     @discardableResult
     public func autoLayout(activates: Bool = true,
-                           @LayoutConstraintsBuilder builder: (LayoutItem<View>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+                           @LayoutConstraintsBuilder builder: (LayoutItem<AL.View>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         return _autoLayout(activates: activates, builder: builder)
     }
 }
 
-extension LayoutGuide: LayoutTarget {}
+extension AL.LayoutGuide: LayoutTarget {}
