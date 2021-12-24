@@ -220,12 +220,12 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
-        XCTContext.runActivity(named: "insideOrEqual(to another:, inside:)") { _ in
-            XCTContext.runActivity(named: "inside insets: UIEdgeInsets") { _ in
+        XCTContext.runActivity(named: "insideOrEqual(to another:, insetBy:)") { _ in
+            XCTContext.runActivity(named: "insetBy insets: UIEdgeInsets") { _ in
                 let layoutMarginsGuide = superview.layoutMarginsGuide
                 let insets = EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
                 let constraints = subview.autoLayout { item in
-                    item.edges.insideOrEqual(to: layoutMarginsGuide, inside: insets)
+                    item.edges.insideOrEqual(to: layoutMarginsGuide, insetBy: insets)
                 }
                 let expectedConstraints = [
                     subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
@@ -240,10 +240,10 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
                 NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
             }
-            XCTContext.runActivity(named: "inside inset: CGFloat") { _ in
+            XCTContext.runActivity(named: "insetBy inset: CGFloat") { _ in
                 let layoutMarginsGuide = superview.layoutMarginsGuide
                 let constraints = subview.autoLayout { item in
-                    item.edges.insideOrEqual(to: layoutMarginsGuide, inside: 20)
+                    item.edges.insideOrEqual(to: layoutMarginsGuide, insetBy: 20)
                 }
                 let expectedConstraints = [
                     subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
