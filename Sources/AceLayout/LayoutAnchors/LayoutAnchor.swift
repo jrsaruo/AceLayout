@@ -126,7 +126,7 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a `LayoutItem`. You must use an instance of `LayoutAnchor` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor == `another` anchor + `offset`.
     @inlinable
@@ -144,7 +144,7 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a `LayoutItem`. You must use an instance of `LayoutAnchor` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor <= `another` anchor + `offset`.
     @inlinable
@@ -162,7 +162,7 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a `LayoutItem`. You must use an instance of `LayoutAnchor` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor >= `another` anchor + `offset`.
     @inlinable

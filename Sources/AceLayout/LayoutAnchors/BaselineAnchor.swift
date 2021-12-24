@@ -30,7 +30,7 @@ extension BaselineAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `BaselinesConstrainable` protocol such as `UIView` or `NSView`.
+    ///   - another: An instance of the type that conforms to ``BaselinesConstrainable`` protocol such as `UIView` or `NSView`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline == `another` baseline + `offset`.
     @inlinable
@@ -49,7 +49,7 @@ extension BaselineAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `BaselinesConstrainable` protocol such as `UIView` or `NSView`.
+    ///   - another: An instance of the type that conforms to ``BaselinesConstrainable`` protocol such as `UIView` or `NSView`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline <= `another` baseline + `offset`.
     @inlinable
@@ -68,7 +68,7 @@ extension BaselineAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `BaselinesConstrainable` protocol such as `UIView` or `NSView`.
+    ///   - another: An instance of the type that conforms to ``BaselinesConstrainable`` protocol such as `UIView` or `NSView`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline >= `another` baseline + `offset`.
     @inlinable

@@ -33,7 +33,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `SizeConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension + `offset`.
     @inlinable
@@ -55,7 +55,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `SizeConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension + `offset`.
     @inlinable
@@ -77,7 +77,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `SizeConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension + `offset`.
     @inlinable
@@ -96,7 +96,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `SizeConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension \* `multiplier`.
     @inlinable
@@ -115,7 +115,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `SizeConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension \* `multiplier`.
     @inlinable
@@ -134,7 +134,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `SizeConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension \* `multiplier`.
     @inlinable
@@ -214,7 +214,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a `LayoutItem`. You must use an instance of `LayoutDimension` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutDimension`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension \* `multiplier`.
     @inlinable
@@ -233,7 +233,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a `LayoutItem`. You must use an instance of `LayoutDimension` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutDimension`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension \* `multiplier`.
     @inlinable
@@ -252,7 +252,7 @@ extension LayoutDimension {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a `LayoutItem`. You must use an instance of `LayoutDimension` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutDimension`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension \* `multiplier`.
     @inlinable

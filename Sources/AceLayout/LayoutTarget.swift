@@ -40,7 +40,7 @@ extension LayoutTarget where LayoutBase == Self {
     
     /// Creates layout constraints.
     ///
-    /// The `LayoutItem` instance passed to the `builder` has various layout anchors, and you can use them to create layout constraints.
+    /// The ``LayoutItem`` instance passed to the `builder` has various layout anchors, and you can use them to create layout constraints.
     ///
     /// ```
     /// view.autoLayout { item in
@@ -64,7 +64,7 @@ extension View: LayoutTarget {
     
     /// Creates layout constraints.
     ///
-    /// The `LayoutItem` instance passed to the `builder` has various layout anchors, and you can use them to create layout constraints.
+    /// The ``LayoutItem`` instance passed to the `builder` has various layout anchors, and you can use them to create layout constraints.
     ///
     /// ```
     /// view.autoLayout { item in

@@ -33,7 +33,7 @@ extension YAxisAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `YAxesConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y == `another` y + `offset`.
     @inlinable
@@ -55,7 +55,7 @@ extension YAxisAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `YAxesConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y <= `another` y + `offset`.
     @inlinable
@@ -77,7 +77,7 @@ extension YAxisAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to `YAxesConstrainable` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y >= `another` y + `offset`.
     @inlinable
