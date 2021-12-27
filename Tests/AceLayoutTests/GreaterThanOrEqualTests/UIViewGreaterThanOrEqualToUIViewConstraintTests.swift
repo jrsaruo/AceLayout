@@ -233,31 +233,31 @@ final class UIViewGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
             let constraints = subview.autoLayout { item in
                 item.center.greaterThanOrEqual(to: superview)
                 let offset = CGSize(width: 10, height: 20)
-                item.center.greaterThanOrEqual(to: superview, shiftedBy: offset)
+                item.topLeading.greaterThanOrEqual(to: superview, shiftedBy: offset)
             }
             let expectedConstraints = [
                 subview.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor),
                 subview.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor),
-                subview.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor,
+                subview.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor,
                                                  constant: 10),
-                subview.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor,
-                                                 constant: 20)
+                subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor,
+                                             constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "greaterThanOrEqualSuperview(shiftedBy:)") { _ in
             let constraints = subview.autoLayout { item in
-                item.center.greaterThanOrEqualToSuperview()
-                item.center.greaterThanOrEqualToSuperview(shiftedBy: .init(width: 10, height: 20))
+                item.topLeft.greaterThanOrEqualToSuperview()
+                item.bottomRight.greaterThanOrEqualToSuperview(shiftedBy: .init(width: 10, height: 20))
             }
             let expectedConstraints = [
-                subview.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor),
-                subview.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor),
-                subview.centerXAnchor.constraint(greaterThanOrEqualTo: superview.centerXAnchor,
-                                                 constant: 10),
-                subview.centerYAnchor.constraint(greaterThanOrEqualTo: superview.centerYAnchor,
-                                                 constant: 20)
+                subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor),
+                subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+                subview.rightAnchor.constraint(greaterThanOrEqualTo: superview.rightAnchor,
+                                               constant: 10),
+                subview.bottomAnchor.constraint(greaterThanOrEqualTo: superview.bottomAnchor,
+                                                constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
