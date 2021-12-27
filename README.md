@@ -83,7 +83,8 @@ NSLayoutConstraint.activate(constraints)
 
 ```swift
 view.autoLayout { item in
-    item.center.equalToSuperview()
+    item.center.equal(to: anotherView)
+    item.topLeading.equalToSuperview()
 }
 ```
 
@@ -132,6 +133,14 @@ view.autoLayout { item in
 ### Point
 
 - `center`
+- `topLeading`
+- `topTrailing`
+- `topLeft`
+- `topRight`
+- `bottomLeading`
+- `bottomTrailing`
+- `bottomLeft`
+- `bottomRight`
 
 ### Size
 

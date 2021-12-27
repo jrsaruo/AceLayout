@@ -57,6 +57,30 @@ extension LayoutItem where Base: XYAxesConstrainable {
     /// A convenient anchor that contains layout anchors representing the center of the target’s frame.
     public var center: LayoutRect.Point { .init(x: centerX, y: centerY) }
     
+    /// A convenient anchor that contains layout anchors representing the top-leading corner of the target's frame.
+    public var topLeading: LayoutRect.Point { .init(x: leading, y: top) }
+    
+    /// A convenient anchor that contains layout anchors representing the top-trailing corner of the target's frame.
+    public var topTrailing: LayoutRect.Point { .init(x: trailing, y: top) }
+    
+    /// A convenient anchor that contains layout anchors representing the top-left corner of the target's frame.
+    public var topLeft: LayoutRect.Point { .init(x: left, y: top) }
+    
+    /// A convenient anchor that contains layout anchors representing the top-right corner of the target's frame.
+    public var topRight: LayoutRect.Point { .init(x: right, y: top) }
+    
+    /// A convenient anchor that contains layout anchors representing the bottom-leading corner of the target's frame.
+    public var bottomLeading: LayoutRect.Point { .init(x: leading, y: bottom) }
+    
+    /// A convenient anchor that contains layout anchors representing the bottom-trailing corner of the target's frame.
+    public var bottomTrailing: LayoutRect.Point { .init(x: trailing, y: bottom) }
+    
+    /// A convenient anchor that contains layout anchors representing the bottom-left corner of the target's frame.
+    public var bottomLeft: LayoutRect.Point { .init(x: left, y: bottom) }
+    
+    /// A convenient anchor that contains layout anchors representing the bottom-right corner of the target's frame.
+    public var bottomRight: LayoutRect.Point { .init(x: right, y: bottom) }
+    
     /// A convenient anchor that contains layout anchors representing the top, left, right and bottom edge of the target’s frame.
     public var edges: LayoutRect.Edges { .init(top: top, left: left, right: right, bottom: bottom) }
 }
