@@ -172,15 +172,15 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
             let constraints = subview.autoLayout { item in
                 item.center.greaterThanOrEqual(to: layoutMarginsGuide)
                 let offset = CGSize(width: 10, height: 20)
-                item.topLeading.greaterThanOrEqual(to: layoutMarginsGuide, shiftedBy: offset)
+                item.center.greaterThanOrEqual(to: layoutMarginsGuide, shiftedBy: offset)
             }
             let expectedConstraints = [
                 subview.centerXAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.centerXAnchor),
                 subview.centerYAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.centerYAnchor),
-                subview.leadingAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.leadingAnchor,
+                subview.centerXAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.centerXAnchor,
                                                  constant: 10),
-                subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
-                                             constant: 20)
+                subview.centerYAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.centerYAnchor,
+                                                 constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
