@@ -199,31 +199,31 @@ final class UILayoutGuideLessThanOrEqualToUIViewConstraintTests: XCTestCase {
             let constraints = layoutGuide.autoLayout { item in
                 item.center.lessThanOrEqual(to: superview)
                 let offset = CGSize(width: 10, height: 20)
-                item.topLeading.lessThanOrEqual(to: superview, shiftedBy: offset)
+                item.center.lessThanOrEqual(to: superview, shiftedBy: offset)
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(lessThanOrEqualTo: superview.centerXAnchor),
                 layoutGuide.centerYAnchor.constraint(lessThanOrEqualTo: superview.centerYAnchor),
-                layoutGuide.leadingAnchor.constraint(lessThanOrEqualTo: superview.leadingAnchor,
+                layoutGuide.centerXAnchor.constraint(lessThanOrEqualTo: superview.centerXAnchor,
                                                      constant: 10),
-                layoutGuide.topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor,
-                                                 constant: 20)
+                layoutGuide.centerYAnchor.constraint(lessThanOrEqualTo: superview.centerYAnchor,
+                                                     constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "lessThanOrEqualSuperview(shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
-                item.topLeft.lessThanOrEqualToSuperview()
-                item.bottomRight.lessThanOrEqualToSuperview(shiftedBy: .init(width: 10, height: 20))
+                item.center.lessThanOrEqualToSuperview()
+                item.center.lessThanOrEqualToSuperview(shiftedBy: .init(width: 10, height: 20))
             }
             let expectedConstraints = [
-                layoutGuide.leftAnchor.constraint(lessThanOrEqualTo: superview.leftAnchor),
-                layoutGuide.topAnchor.constraint(lessThanOrEqualTo: superview.topAnchor),
-                layoutGuide.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor,
-                                                   constant: 10),
-                layoutGuide.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor,
-                                                    constant: 20)
+                layoutGuide.centerXAnchor.constraint(lessThanOrEqualTo: superview.centerXAnchor),
+                layoutGuide.centerYAnchor.constraint(lessThanOrEqualTo: superview.centerYAnchor),
+                layoutGuide.centerXAnchor.constraint(lessThanOrEqualTo: superview.centerXAnchor,
+                                                     constant: 10),
+                layoutGuide.centerYAnchor.constraint(lessThanOrEqualTo: superview.centerYAnchor,
+                                                     constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
