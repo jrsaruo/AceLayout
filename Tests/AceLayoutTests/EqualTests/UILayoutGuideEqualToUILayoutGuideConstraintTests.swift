@@ -154,15 +154,15 @@ final class UILayoutGuideEqualToUILayoutGuideConstraintTests: XCTestCase {
             let constraints = layoutGuide.autoLayout { item in
                 item.center.equal(to: layoutMarginsGuide)
                 let offset = CGSize(width: 10, height: 20)
-                item.center.equal(to: layoutMarginsGuide, shiftedBy: offset)
+                item.topLeading.equal(to: layoutMarginsGuide, shiftedBy: offset)
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor),
                 layoutGuide.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor),
-                layoutGuide.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor,
+                layoutGuide.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor,
                                                      constant: 10),
-                layoutGuide.centerYAnchor.constraint(equalTo: layoutMarginsGuide.centerYAnchor,
-                                                     constant: 20)
+                layoutGuide.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,
+                                                 constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
