@@ -71,7 +71,7 @@ extension LayoutRect {
         public func equal<Another>(to another: Another,
                                    shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
             [
-                x.equal(to: another, plus: offset.height),
+                x.equal(to: another, plus: offset.width),
                 y.equal(to: another, plus: offset.height)
             ]
         }
