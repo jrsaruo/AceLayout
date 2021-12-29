@@ -1,0 +1,21 @@
+name: Test
+
+# Controls when the action will run. 
+on:
+  pull_request:
+  
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
+      - uses: actions/checkout@v2
+      - name: Build
+        run: swift build
+      - name: Run Tests
+        run: swift test
