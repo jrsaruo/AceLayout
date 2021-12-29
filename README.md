@@ -1,5 +1,7 @@
 # AceLayout
 
+[![Test](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml/badge.svg)](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml)
+
 AceLayout provides a Swifty DSL for Auto Layout.
 
 ## Requirements
