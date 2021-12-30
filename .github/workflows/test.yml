@@ -15,7 +15,15 @@ jobs:
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
       - uses: actions/checkout@v2
+      
       - name: Build
         run: swift build
-      - name: Run Tests
+        
+      - name: Run Tests on macOS
         run: swift test
+        
+      - name: Run Tests on iOS
+        run: xcodebuild clean test -scheme AceLayout -destination "name=iPhone 13"
+        
+      - name: Run Tests on tvOS
+        run: xcodebuild clean test -scheme AceLayout -destination "name=Apple TV"
