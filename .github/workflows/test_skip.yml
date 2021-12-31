@@ -1,0 +1,22 @@
+name: Test Skip
+
+on:
+  pull_request:
+    paths-ignore:
+      - "**.swift"
+
+jobs:
+  test_on_macos:
+    runs-on: macos-latest
+    steps:
+      - run: echo "The test was skipped because the source code has not changed."
+      
+  test_on_ios:
+    runs-on: macos-latest
+    steps:
+      - run: echo "The test was skipped because the source code has not changed."
+      
+  test_on_tvos:
+    runs-on: macos-latest
+    steps:
+      - run: echo "The test was skipped because the source code has not changed."
