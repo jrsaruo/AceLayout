@@ -39,7 +39,11 @@ extension XAxisAnchor {
     @inlinable
     public func equal<Another>(to another: Another,
                                plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: XAxesConstrainable {
+        #if canImport(UIKit)
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
+        #elseif canImport(AppKit)
+        anchor.constraint(equalTo: another[keyPath: anchorKeyPath])
+        #endif
     }
     
     /// Returns a constraint of the form `self` x <= `another` x + `offset`.
