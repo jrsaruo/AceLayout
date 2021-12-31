@@ -2,6 +2,8 @@
 
 AceLayout provides a Swifty DSL for Auto Layout.
 
+[![Test](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml/badge.svg)](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml)
+
 ## Requirements
 
 - iOS 9.0+ / macOS 10.11+ / tvOS 9.0+
