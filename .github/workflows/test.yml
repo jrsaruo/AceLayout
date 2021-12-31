@@ -38,7 +38,7 @@ jobs:
         run: xcodebuild build -scheme ${{ env.scheme }} -destination "name=${{ env.IOS_SIMULATOR }}"
         
       - name: Run Tests on iOS
-        run: xcodebuild clean test -scheme ${{ env.scheme }} -destination "name=${{ env.IOS_SIMULATOR }}"
+        run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.IOS_SIMULATOR }}"
         
   test_on_tvos:
     runs-on: macos-latest
@@ -53,4 +53,4 @@ jobs:
         run: xcodebuild build -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
         
       - name: Run Tests on tvOS
-        run: xcodebuild clean test -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
+        run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
