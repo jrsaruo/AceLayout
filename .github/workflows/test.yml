@@ -28,17 +28,29 @@ jobs:
   test_on_ios:
     runs-on: macos-latest
     
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Run Tests on iOS
-        run: xcodebuild clean test -scheme ${{ env.scheme }} -destination "name=iPhone 13"
-        
-  test_on_tvos:
-    runs-on: macos-latest
+    env:
+      IOS_SIMULATOR: "iPhone 13"
     
     steps:
       - uses: actions/checkout@v2
       
+      - name: Build for iOS
+        run: xcodebuild build -scheme ${{ env.scheme }} -destination "name=${{ env.IOS_SIMULATOR }}"
+        
+      - name: Run Tests on iOS
+        run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.IOS_SIMULATOR }}"
+        
+  test_on_tvos:
+    runs-on: macos-latest
+    
+    env:
+      TVOS_SIMULATOR: "Apple TV"
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Build for tvOS
+        run: xcodebuild build -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
+        
       - name: Run Tests on tvOS
-        run: xcodebuild clean test -scheme ${{ env.scheme }} -destination "name=Apple TV"
+        run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
