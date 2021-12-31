@@ -22,6 +22,7 @@ jobs:
             
       - name: Set up bundle
         run: |
+          gem install bundler
           bundle config path ${{ env.BUNDLE_PATH }}
           bundle install --without=documentation --jobs 4 --retry 3
           
