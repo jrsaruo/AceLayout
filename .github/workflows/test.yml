@@ -15,6 +15,9 @@ jobs:
   test_on_macos:
     runs-on: macos-latest
     
+    env:
+      CODECOV_PATH: "./coverage.lcov"
+    
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
       - uses: actions/checkout@v2
@@ -23,8 +26,22 @@ jobs:
         run: swift build
         
       - name: Run Tests on macOS
-        run: swift test
+        run: swift test --enable-code-coverage
         
+      - name: Gather code coverage
+        run: >
+          xcrun llvm-cov export
+          .build/arm64-apple-macosx/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests
+          -format="lcov"
+          -instr-profile .build/arm64-apple-macosx/debug/codecov/default.profdata
+          > ${{ env.CODECOV_PATH }}
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ env.CODECOV_PATH }}
+          
   test_on_ios:
     runs-on: macos-latest
     
