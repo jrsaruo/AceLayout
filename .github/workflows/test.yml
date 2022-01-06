@@ -42,6 +42,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ${{ env.CODECOV_PATH }}
+          verbose: true
           
   test_on_ios:
     runs-on: macos-latest
