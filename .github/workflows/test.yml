@@ -27,14 +27,18 @@ jobs:
         
       - name: Gather code coverage
         id: gather_code_coverage
-        run: >
-          echo "::set-output name=COVERAGE::`
-          xcrun llvm-cov export
-          .build/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests
-          -format lcov
-          -instr-profile .build/debug/codecov/default.profdata
-          -ignore-filename-regex Tests
-          `"
+        run: |
+          coverage=`xcrun llvm-cov export \
+            .build/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests \
+            -instr-profile .build/debug/codecov/default.profdata \
+            -ignore-filename-regex Tests \
+            -format lcov`
+          
+          # Escape newline characters
+          coverage="${coverage//$'\n'/\\n}"
+          
+          # Output
+          echo "::set-output name=COVERAGE::$coverage"
           
     outputs:
       coverage: ${{ steps.gather_code_coverage.outputs.COVERAGE }}
