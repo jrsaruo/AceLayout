@@ -31,14 +31,14 @@ jobs:
           echo "::set-output name=COVERAGE::`
           xcrun llvm-cov export
           .build/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests
-          -format "lcov"
+          -format lcov
           -instr-profile .build/debug/codecov/default.profdata
-          -ignore-filename-regex "Tests"
+          -ignore-filename-regex Tests
           `"
           
-      outputs:
-        coverage: ${{ steps.gather_code_coverage.outputs.COVERAGE }}
-        
+    outputs:
+      coverage: ${{ steps.gather_code_coverage.outputs.COVERAGE }}
+      
   test_on_ios:
     runs-on: macos-latest
     
