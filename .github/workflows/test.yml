@@ -82,8 +82,8 @@ jobs:
     
     steps:
       - name: Export code coverage files
-        run: echo ${{ needs.test_on_macos.outputs.coverage }} > ${{ env.CODECOV_MACOS_PATH }}
-          
+        run: printf '%b\n' ${{ needs.test_on_macos.outputs.coverage }} > ${{ env.CODECOV_MACOS_PATH }}
+        
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
