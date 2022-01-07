@@ -9,10 +9,9 @@ on:
 
 env:
   scheme: AceLayout
-  coverage_files:
-    mac:
-      name: coverage-macos
-      path: coverage-macos.lcov
+  
+  coverage_macos_name: coverage-macos
+  coverage_macos_path: coverage-macos.lcov
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -36,13 +35,13 @@ jobs:
           -instr-profile .build/debug/codecov/default.profdata
           -ignore-filename-regex "Tests"
           -format "lcov"
-          > ${{ env.coverage_files.mac.path }}
+          > ${{ env.coverage_macos_path }}
           
       - name: Save the coverage file
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.coverage_files.mac.name }}
-          path: ${{ env.coverage_files.mac.path }}
+          name: ${{ env.coverage_macos_name }}
+          path: ${{ env.coverage_macos_path }}
           
   test_on_ios:
     runs-on: macos-latest
@@ -82,11 +81,11 @@ jobs:
       - name: Load the coverage file
         uses: actions/download-artifact@v2
         with:
-          name: ${{ env.coverage_files.mac.name }}
+          name: ${{ env.coverage_macos_name }}
           
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ env.coverage_files.mac.path }}
+          files: ${{ env.coverage_macos_path }}
           verbose: true
