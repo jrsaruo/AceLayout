@@ -9,14 +9,15 @@ on:
 
 env:
   scheme: AceLayout
+  coverage_files:
+    mac:
+      name: coverage-macos
+      path: coverage-macos.lcov
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test_on_macos:
     runs-on: macos-latest
-    
-    env:
-      CODECOV_PATH: "./coverage.lcov"
     
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
@@ -32,17 +33,16 @@ jobs:
         run: >
           xcrun llvm-cov export
           .build/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests
-          -format "lcov"
           -instr-profile .build/debug/codecov/default.profdata
           -ignore-filename-regex "Tests"
-          > ${{ env.CODECOV_PATH }}
+          -format "lcov"
+          > ${{ env.coverage_files.mac.path }}
           
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+      - name: Save the coverage file
+        uses: actions/upload-artifact@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ env.CODECOV_PATH }}
-          verbose: true
+          name: ${{ env.coverage_files.mac.name }}
+          path: ${{ env.coverage_files.mac.path }}
           
   test_on_ios:
     runs-on: macos-latest
@@ -73,3 +73,20 @@ jobs:
         
       - name: Run tests on tvOS
         run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
+
+  upload_coverage:
+    runs-on: macos-latest
+    needs: test_on_macos
+    
+    steps:
+      - name: Load the coverage file
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.coverage_files.mac.name }}
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ env.coverage_files.mac.path }}
+          verbose: true
