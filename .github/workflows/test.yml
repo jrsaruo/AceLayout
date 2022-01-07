@@ -15,9 +15,6 @@ jobs:
   test_on_macos:
     runs-on: macos-latest
     
-    env:
-      CODECOV_PATH: "./coverage.lcov"
-    
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
       - uses: actions/checkout@v2
@@ -29,21 +26,19 @@ jobs:
         run: swift test --enable-code-coverage
         
       - name: Gather code coverage
+        id: gather_code_coverage
         run: >
+          echo "::set-output name=COVERAGE::`
           xcrun llvm-cov export
           .build/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests
           -format "lcov"
           -instr-profile .build/debug/codecov/default.profdata
           -ignore-filename-regex "Tests"
-          > ${{ env.CODECOV_PATH }}
+          `"
           
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ env.CODECOV_PATH }}
-          verbose: true
-          
+      outputs:
+        coverage: ${{ steps.gather_code_coverage.outputs.COVERAGE }}
+        
   test_on_ios:
     runs-on: macos-latest
     
@@ -73,3 +68,21 @@ jobs:
         
       - name: Run tests on tvOS
         run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
+
+  upload_code_coverage:
+    runs-on: macos-latest
+    needs: test_on_macos
+    
+    env:
+      CODECOV_MACOS_PATH: "./coverage-macos.lcov"
+    
+    steps:
+      - name: Export code coverage files
+        run: echo ${{ needs.test_on_macos.outputs.coverage }} > ${{ env.CODECOV_MACOS_PATH }}
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ env.CODECOV_MACOS_PATH }}
+          verbose: true
