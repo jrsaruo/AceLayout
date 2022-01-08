@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 env:
+  package: AceLayout
   scheme: AceLayout
   
   coverage_macos_name: coverage-macos
@@ -31,7 +32,7 @@ jobs:
       - name: Gather code coverage
         run: >
           xcrun llvm-cov export
-          .build/debug/AceLayoutPackageTests.xctest/Contents/MacOS/AceLayoutPackageTests
+          .build/debug/${{ env.package }}PackageTests.xctest/Contents/MacOS/${{ env.package }}PackageTests
           -instr-profile .build/debug/codecov/default.profdata
           -ignore-filename-regex "Tests"
           -format "lcov"
