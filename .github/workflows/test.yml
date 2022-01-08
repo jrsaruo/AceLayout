@@ -34,8 +34,8 @@ jobs:
           xcrun llvm-cov export
           .build/debug/${{ env.package }}PackageTests.xctest/Contents/MacOS/${{ env.package }}PackageTests
           -instr-profile .build/debug/codecov/default.profdata
-          -ignore-filename-regex "Tests"
-          -format "lcov"
+          -ignore-filename-regex Tests
+          -format lcov
           > ${{ env.coverage_macos_path }}
           
       - name: Save the coverage file
