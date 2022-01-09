@@ -23,6 +23,14 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
         view = nil
     }
     
+    func testVoidExpression() {
+        func doNothing() {}
+        let constraints = view.autoLayout { item in
+            doNothing()
+        }
+        XCTAssert(constraints.isEmpty)
+    }
+    
     func testIfStatement() {
         let constraints = view.autoLayout { item in
             if conditionTrue {
