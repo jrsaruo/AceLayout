@@ -113,5 +113,5 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ env.coverage_macos_path }},${{ env.coverage_tvos_path }}
+          files: ${{ env.coverage_tvos_path }}
           verbose: true
