@@ -30,9 +30,15 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
             } else {
                 item.height.equal(to: 100)
             }
+            if !conditionTrue {
+                item.width.equal(to: 50)
+            } else {
+                item.height.equal(to: 50)
+            }
         }
         let expectedConstraints = [
-            view.widthAnchor.constraint(equalToConstant: 100)
+            view.widthAnchor.constraint(equalToConstant: 100),
+            view.heightAnchor.constraint(equalToConstant: 50)
         ]
         NSLayoutConstraint.activate(expectedConstraints)
         assertEqual(constraints, expectedConstraints)
