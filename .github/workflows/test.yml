@@ -13,6 +13,9 @@ env:
   
   coverage_macos_name: coverage-macos
   coverage_macos_path: coverage-macos.lcov
+  
+  coverage_tvos_name: coverage-tvos
+  coverage_tvos_path: coverage-tvos.json
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -64,6 +67,7 @@ jobs:
     
     env:
       TVOS_SIMULATOR: "Apple TV"
+      RESULT_BUNDLE_PATH: TestResults/tvOS.xcresult
     
     steps:
       - uses: actions/checkout@v2
@@ -72,11 +76,30 @@ jobs:
         run: xcodebuild build -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
         
       - name: Run tests on tvOS
-        run: xcodebuild test -scheme ${{ env.scheme }} -destination "name=${{ env.TVOS_SIMULATOR }}"
-
+        run: >
+          xcodebuild test
+          -scheme ${{ env.scheme }}
+          -destination "name=${{ env.TVOS_SIMULATOR }}"
+          -enableCodeCoverage YES
+          -resultBundlePath ${{ env.RESULT_BUNDLE_PATH }}
+          
+      - name: Gather code coverage
+        run: >
+          xcrun xccov view ${{ env.RESULT_BUNDLE_PATH }}
+          --report
+          --json
+          --files-for-target ${{ env.package }}
+          > ${{ env.coverage_tvos_path }}
+          
+      - name: Save the coverage file
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.coverage_tvos_name }}
+          path: ${{ env.coverage_tvos_path }}
+          
   upload_coverage:
     runs-on: macos-latest
-    needs: test_on_macos
+    needs: [test_on_macos, test_on_tvos]
     
     steps:
       - uses: actions/checkout@v2
@@ -90,5 +113,5 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ env.coverage_macos_path }}
+          files: ${{ env.coverage_macos_path }},${{ env.coverage_tvos_path }}
           verbose: true
