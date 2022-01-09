@@ -220,6 +220,37 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
+        XCTContext.runActivity(named: "equal(to another:, insetBy:)") { _ in
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
+                let layoutMarginsGuide = superview.layoutMarginsGuide
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let constraints = subview.autoLayout { item in
+                    item.edges.equal(to: layoutMarginsGuide, insetBy: insets)
+                }
+                let expectedConstraints = [
+                    subview.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 10),
+                    subview.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor, constant: 20),
+                    subview.rightAnchor.constraint(equalTo: layoutMarginsGuide.rightAnchor, constant: -40),
+                    subview.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -30)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+            XCTContext.runActivity(named: "insetBy inset: CGFloat") { _ in
+                let layoutMarginsGuide = superview.layoutMarginsGuide
+                let constraints = subview.autoLayout { item in
+                    item.edges.equal(to: layoutMarginsGuide, insetBy: 20)
+                }
+                let expectedConstraints = [
+                    subview.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 20),
+                    subview.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor, constant: 20),
+                    subview.rightAnchor.constraint(equalTo: layoutMarginsGuide.rightAnchor, constant: -20),
+                    subview.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -20)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+        }
         XCTContext.runActivity(named: "insideOrEqual(to another:, insetBy:)") { _ in
             XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
                 let layoutMarginsGuide = superview.layoutMarginsGuide
