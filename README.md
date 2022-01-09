@@ -2,7 +2,7 @@
 
 AceLayout provides a Swifty DSL for Auto Layout.
 
-[![Test](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml/badge.svg)](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml)
+[![Test](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml/badge.svg)](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/jrsaruo/AceLayout/branch/main/graph/badge.svg?token=NN5TRPRC5O)](https://codecov.io/gh/jrsaruo/AceLayout)
 
 ## Requirements
 
