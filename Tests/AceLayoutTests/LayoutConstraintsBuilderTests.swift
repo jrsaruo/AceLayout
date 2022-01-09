@@ -23,6 +23,22 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
         view = nil
     }
     
+    func testIfStatement() {
+        let constraints = view.autoLayout { item in
+            if conditionTrue {
+                item.width.equal(to: 100)
+            }
+            if !conditionTrue {
+                item.height.equal(to: 50)
+            }
+        }
+        let expectedConstraints = [
+            view.widthAnchor.constraint(equalToConstant: 100)
+        ]
+        NSLayoutConstraint.activate(expectedConstraints)
+        assertEqual(constraints, expectedConstraints)
+    }
+    
     func testIfElseStatement() {
         let constraints = view.autoLayout { item in
             if conditionTrue {
