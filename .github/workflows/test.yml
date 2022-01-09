@@ -104,10 +104,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Load the coverage file
+      - name: Load the coverage file on macOS
         uses: actions/download-artifact@v2
         with:
           name: ${{ env.coverage_macos_name }}
+          
+      - name: Load the coverage file on tvOS
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.coverage_tvos_name }}
           
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
