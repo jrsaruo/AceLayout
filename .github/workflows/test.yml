@@ -41,7 +41,7 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "dummy"
+          files: ${{ env.CODECOV_PATH }}
           fail_ci_if_error: true
           verbose: true
           
