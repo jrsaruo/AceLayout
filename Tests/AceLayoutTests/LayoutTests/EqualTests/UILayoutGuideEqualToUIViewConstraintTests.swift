@@ -285,6 +285,35 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
+        XCTContext.runActivity(named: "equal(to another:, insetBy:)") { _ in
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let constraints = layoutGuide.autoLayout { item in
+                    item.edges.equal(to: superview, insetBy: insets)
+                }
+                let expectedConstraints = [
+                    layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
+                    layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 20),
+                    layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -40),
+                    layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -30)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+            XCTContext.runActivity(named: "insetBy inset: CGFloat") { _ in
+                let constraints = layoutGuide.autoLayout { item in
+                    item.edges.equal(to: superview, insetBy: 20)
+                }
+                let expectedConstraints = [
+                    layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 20),
+                    layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 20),
+                    layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -20),
+                    layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+        }
         XCTContext.runActivity(named: "insideOrEqual(to another:, insetBy:)") { _ in
             XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
                 let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
