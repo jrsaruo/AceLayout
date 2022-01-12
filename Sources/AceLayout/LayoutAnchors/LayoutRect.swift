@@ -502,7 +502,7 @@ extension LayoutRect {
         ///
         /// - Parameters:
         ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
-        ///   - inset: A constant edge inset for the constraint.
+        ///   - inset: A constant edge inset for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges == `another` ones adjusted by `inset`.
         public func equal<Another>(to another: Another,
                                    insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: XAxesConstrainable {
@@ -523,7 +523,7 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - inset: A constant edge inset for the constraint.
+        ///   - inset: A constant edge inset for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges == `superview` ones adjusted by `inset`.
         public func equalToSuperview(insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
             [
