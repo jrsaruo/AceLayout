@@ -271,6 +271,53 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    func testVerticalEdgesConstraints() {
+        XCTContext.runActivity(named: "equal(to:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equal(to: superview)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equal(to:, insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equal(to: superview, insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 8),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equalToSuperview()
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview(insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equalToSuperview(insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 8),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
     func testEdgesConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
