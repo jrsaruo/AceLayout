@@ -98,6 +98,15 @@ view.autoLayout { item in
 }
 ```
 
+#### HorizontalEdges and VerticalEdges
+
+```swift
+view.autoLayout { item in
+    item.leadingTrailing.equal(to: anotherView)
+    item.topBottom.equalToSuperview(insetBy: 16)
+}
+```
+
 #### Edges
 
 ```swift
@@ -147,6 +156,15 @@ view.autoLayout { item in
 ### Size
 
 - `size`
+
+### HorizontalEdges
+
+- `leadingTrailing`
+- `leftRight`
+
+### VerticalEdges
+
+- `topBottom`
 
 ### Edges
 
