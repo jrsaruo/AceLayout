@@ -190,27 +190,28 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
             let constraints = layoutGuide.autoLayout { item in
                 item.center.equal(to: superview)
                 let offset = CGSize(width: 10, height: 20)
-                item.center.equal(to: superview, shiftedBy: offset)
+                item.topLeading.equal(to: superview, shiftedBy: offset)
             }
             let expectedConstraints = [
                 layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                 layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-                layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
-                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
+                layoutGuide.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
         }
         XCTContext.runActivity(named: "equalSuperview(shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
-                item.center.equalToSuperview()
-                item.center.equalToSuperview(shiftedBy: .init(width: 10, height: 20))
+                item.topLeft.equalToSuperview()
+                let offset = CGSize(width: 10, height: 20)
+                item.bottomRight.equalToSuperview(shiftedBy: offset)
             }
             let expectedConstraints = [
-                layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-                layoutGuide.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
-                layoutGuide.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 20)
+                layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor),
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor),
+                layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: 10),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 20)
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -270,6 +271,190 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    func testHorizontalEdgesConstraints() {
+        XCTContext.runActivity(named: "equal(to:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leadingTrailing.equal(to: superview)
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                layoutGuide.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equal(to:, insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leftRight.equal(to: superview, insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 8),
+                layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqual(to:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leadingTrailing.insideOrEqual(to: superview)
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor),
+                layoutGuide.trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqual(to:, insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leftRight.insideOrEqual(to: superview, insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor,
+                                                  constant: 8),
+                layoutGuide.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor,
+                                                   constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leadingTrailing.equalToSuperview()
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                layoutGuide.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview(insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leftRight.equalToSuperview(insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 8),
+                layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqualToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leadingTrailing.insideOrEqualToSuperview()
+            }
+            let expectedConstraints = [
+                layoutGuide.leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor),
+                layoutGuide.trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqualToSuperview(insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.leftRight.insideOrEqualToSuperview(insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 8),
+                layoutGuide.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
+    func testVerticalEdgesConstraints() {
+        XCTContext.runActivity(named: "equal(to:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equal(to: superview)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equal(to:, insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equal(to: superview, insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 8),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqual(to:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.insideOrEqual(to: superview)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqual(to:, insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.insideOrEqual(to: superview, insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 8),
+                layoutGuide.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equalToSuperview()
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equalToSuperview(insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.equalToSuperview(insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 8),
+                layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqualToSuperview()") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.insideOrEqualToSuperview()
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor),
+                layoutGuide.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "insideOrEqualToSuperview(insetBy:)") { _ in
+            let constraints = layoutGuide.autoLayout { item in
+                item.topBottom.insideOrEqualToSuperview(insetBy: 8)
+            }
+            let expectedConstraints = [
+                layoutGuide.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 8),
+                layoutGuide.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -8)
+            ]
+            NSLayoutConstraint.activate(expectedConstraints)
+            assertEqual(constraints, expectedConstraints)
+        }
+    }
+    
     func testEdgesConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
@@ -283,6 +468,35 @@ final class UILayoutGuideEqualToUIViewConstraintTests: XCTestCase {
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
+        }
+        XCTContext.runActivity(named: "equal(to another:, insetBy:)") { _ in
+            XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in
+                let insets = AL.EdgeInsets(top: 10, left: 20, bottom: 30, right: 40)
+                let constraints = layoutGuide.autoLayout { item in
+                    item.edges.equal(to: superview, insetBy: insets)
+                }
+                let expectedConstraints = [
+                    layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
+                    layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 20),
+                    layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -40),
+                    layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -30)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
+            XCTContext.runActivity(named: "insetBy inset: CGFloat") { _ in
+                let constraints = layoutGuide.autoLayout { item in
+                    item.edges.equal(to: superview, insetBy: 20)
+                }
+                let expectedConstraints = [
+                    layoutGuide.topAnchor.constraint(equalTo: superview.topAnchor, constant: 20),
+                    layoutGuide.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 20),
+                    layoutGuide.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -20),
+                    layoutGuide.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20)
+                ]
+                NSLayoutConstraint.activate(expectedConstraints)
+                assertEqual(constraints, expectedConstraints)
+            }
         }
         XCTContext.runActivity(named: "insideOrEqual(to another:, insetBy:)") { _ in
             XCTContext.runActivity(named: "insetBy insets: AL.EdgeInsets") { _ in

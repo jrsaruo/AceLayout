@@ -2,6 +2,8 @@
 
 AceLayout provides a Swifty DSL for Auto Layout.
 
+[![Test](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml/badge.svg)](https://github.com/jrsaruo/AceLayout/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/jrsaruo/AceLayout/branch/main/graph/badge.svg?token=NN5TRPRC5O)](https://codecov.io/gh/jrsaruo/AceLayout)
+
 ## Requirements
 
 - iOS 9.0+ / macOS 10.11+ / tvOS 9.0+
@@ -83,7 +85,8 @@ NSLayoutConstraint.activate(constraints)
 
 ```swift
 view.autoLayout { item in
-    item.center.equalToSuperview()
+    item.center.equal(to: anotherView)
+    item.topLeading.equalToSuperview()
 }
 ```
 
@@ -92,6 +95,15 @@ view.autoLayout { item in
 ```swift
 view.autoLayout { item in
     item.size.equal(to: CGSize(width: 100, height: 200))
+}
+```
+
+#### HorizontalEdges and VerticalEdges
+
+```swift
+view.autoLayout { item in
+    item.leadingTrailing.equal(to: anotherView)
+    item.topBottom.equalToSuperview(insetBy: 16)
 }
 ```
 
@@ -132,10 +144,27 @@ view.autoLayout { item in
 ### Point
 
 - `center`
+- `topLeading`
+- `topTrailing`
+- `topLeft`
+- `topRight`
+- `bottomLeading`
+- `bottomTrailing`
+- `bottomLeft`
+- `bottomRight`
 
 ### Size
 
 - `size`
+
+### HorizontalEdges
+
+- `leadingTrailing`
+- `leftRight`
+
+### VerticalEdges
+
+- `topBottom`
 
 ### Edges
 
