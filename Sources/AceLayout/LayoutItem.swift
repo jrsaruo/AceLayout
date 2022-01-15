@@ -38,6 +38,12 @@ extension LayoutItem where Base: XAxesConstrainable {
     
     /// A layout anchor representing the horizontal center of the target’s frame.
     public var centerX: LayoutRect.XAxis { .init(target: base, anchorKeyPath: \.centerXAnchor) }
+    
+    /// A convenient anchor that contains layout anchors representing the leading and trailing edge of the target’s frame.
+    public var leadingTrailing: LayoutRect.HorizontalEdges { .init(left: leading, right: trailing) }
+    
+    /// A convenient anchor that contains layout anchors representing the left and right edge of the target’s frame.
+    public var leftRight: LayoutRect.HorizontalEdges { .init(left: left, right: right) }
 }
 
 extension LayoutItem where Base: YAxesConstrainable {
@@ -50,6 +56,9 @@ extension LayoutItem where Base: YAxesConstrainable {
     
     /// A layout anchor representing the vertical center of the target’s frame.
     public var centerY: LayoutRect.YAxis { .init(target: base, anchorKeyPath: \.centerYAnchor) }
+    
+    /// A convenient anchor that contains layout anchors representing the top and bottom edge of the target’s frame.
+    public var topBottom: LayoutRect.VerticalEdges { .init(top: top, bottom: bottom) }
 }
 
 extension LayoutItem where Base: XYAxesConstrainable {

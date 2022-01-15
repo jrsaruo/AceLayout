@@ -485,6 +485,185 @@ extension LayoutRect {
         }
     }
     
+    /// A structure that contains layout anchors for left and right.
+    public struct HorizontalEdges {
+        let left: XAxis
+        let right: XAxis
+        
+        /// Returns a constraint of the form `self` horizontal edges == `another` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.leading == anotherView.leading + 16
+        ///     // view.trailing == anotherView.trailing - 16
+        ///     item.leadingTrailing.equal(to: anotherView, insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - inset: A constant edge inset for the constraint. The default value is `0`.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges == `another` ones adjusted by `inset`.
+        public func equal<Another>(to another: Another,
+                                   insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: XAxesConstrainable {
+            [
+                left.equal(to: another, plus: inset),
+                right.equal(to: another, plus: -inset)
+            ]
+        }
+        
+        /// Returns a constraint that represents `self` horizontal edges are inside of `another` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.leading >= anotherView.leading + 16
+        ///     // view.trailing <= anotherView.trailing - 16
+        ///     item.leadingTrailing.insideOrEqual(to: anotherView, insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - insets: A constant edge insets for the constraint. The default value is `0`.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges are inside of `another` ones adjusted by `inset`.
+        public func insideOrEqual<Another>(to another: Another,
+                                           insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: XAxesConstrainable {
+            [
+                left.greaterThanOrEqual(to: another, plus: inset),
+                right.lessThanOrEqual(to: another, plus: -inset)
+            ]
+        }
+        
+        /// Returns a constraint of the form `self` horizontal edges == `superview` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.leading == superview.leading + 16
+        ///     // view.trailing == superview.trailing - 16
+        ///     item.leadingTrailing.equalToSuperview(insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - inset: A constant edge inset for the constraint. The default value is `0`.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges == `superview` ones adjusted by `inset`.
+        public func equalToSuperview(insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
+            [
+                left.equalToSuperview(plus: inset),
+                right.equalToSuperview(plus: -inset)
+            ]
+        }
+        
+        /// Returns a constraint that represents `self`horizontal edges are inside of `another` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.leading >= superview.leading + 16
+        ///     // view.trailing <= superview.trailing - 16
+        ///     item.leadingTrailing.insideOrEqualToSuperview(insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - insets: A constant edge insets for the constraint. The default value is `0`.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges are inside of `superview` ones adjusted by `inset`.
+        public func insideOrEqualToSuperview(insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
+            [
+                left.greaterThanOrEqualToSuperview(plus: inset),
+                right.lessThanOrEqualToSuperview(plus: -inset)
+            ]
+        }
+    }
+    
+    /// A structure that contains layout anchors for top and bottom.
+    public struct VerticalEdges {
+        let top: YAxis
+        let bottom: YAxis
+        
+        /// Returns a constraint of the form `self` vertical edges == `another` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.top == anotherView.top + 16
+        ///     // view.bottom == anotherView.bottom - 16
+        ///     item.topBottom.equal(to: anotherView, insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - inset: A constant edge inset for the constraint.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges == `another` ones adjusted by `inset`.
+        public func equal<Another>(to another: Another,
+                                   insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: YAxesConstrainable {
+            [
+                top.equal(to: another, plus: inset),
+                bottom.equal(to: another, plus: -inset)
+            ]
+        }
+        /// Returns a constraint that represents `self` vertical edges are inside of `another` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.top >= layoutGuide.top + 16
+        ///     // view.bottom <= layoutGuide.bottom - 16
+        ///     item.topBottom.insideOrEqual(to: layoutGuide, insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - insets: A constant edge insets for the constraint. The default value is `0`.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges are inside of `another` ones adjusted by `inset`.
+        public func insideOrEqual<Another>(to another: Another,
+                                           insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: YAxesConstrainable {
+            [
+                top.greaterThanOrEqual(to: another, plus: inset),
+                bottom.lessThanOrEqual(to: another, plus: -inset)
+            ]
+        }
+        
+        /// Returns a constraint of the form `self` vertical edges == `superview` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.top == superview.top + 16
+        ///     // view.bottom == superview.bottom - 16
+        ///     item.topBottom.equalToSuperview(insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - inset: A constant edge inset for the constraint.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges == `superview` ones adjusted by `inset`.
+        public func equalToSuperview(insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
+            [
+                top.equalToSuperview(plus: inset),
+                bottom.equalToSuperview(plus: -inset)
+            ]
+        }
+        
+        /// Returns a constraint that represents `self`vertical edges are inside of `another` ones adjusted by `inset`.
+        ///
+        /// ```
+        /// view.autoLayout { item in
+        ///     // view.top >= superview.top + 16
+        ///     // view.bottom <= superview.bottom - 16
+        ///     item.topBottom.insideOrEqualToSuperview(insetBy: 16)
+        /// }
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - insets: A constant edge insets for the constraint. The default value is `0`.
+        /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges are inside of `superview` ones adjusted by `inset`.
+        public func insideOrEqualToSuperview(insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
+            [
+                top.greaterThanOrEqualToSuperview(plus: inset),
+                bottom.lessThanOrEqualToSuperview(plus: -inset)
+            ]
+        }
+    }
+    
     /// A structure that contains layout anchors for top, left, right and bottom.
     public struct Edges {
         var top: YAxis
