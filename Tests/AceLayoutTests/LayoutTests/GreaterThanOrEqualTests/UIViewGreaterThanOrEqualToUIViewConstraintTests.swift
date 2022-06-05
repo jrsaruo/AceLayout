@@ -101,8 +101,10 @@ final class UIViewGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
-    @available(iOS 11.0, tvOS 11.0, *)
-    func testXYConstraintsWithSystemSpacing() {
+    func testXYConstraintsWithSystemSpacing() throws {
+        guard #available(iOS 11.0, tvOS 11.0, *) else {
+            throw XCTSkip("This tests can only run on iOS 11.0+ or tvOS 11.0+")
+        }
         XCTContext.runActivity(named: "greaterThanOrEqual(toSystemSpacingAfter/Below:)") { _ in
             let constraints = subview.autoLayout { item in
                 item.top.greaterThanOrEqual(toSystemSpacingBelow: superview.topAnchor)

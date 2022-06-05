@@ -87,8 +87,10 @@ final class UIViewLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
-    @available(iOS 11.0, tvOS 11.0, *)
-    func testXYConstraintsWithSystemSpacing() {
+    func testXYConstraintsWithSystemSpacing() throws {
+        guard #available(iOS 11.0, tvOS 11.0, *) else {
+            throw XCTSkip("This tests can only run on iOS 11.0+ or tvOS 11.0+")
+        }
         XCTContext.runActivity(named: "lessThanOrEqual(toSystemSpacingAfter/Below:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
