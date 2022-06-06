@@ -101,7 +101,7 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
     
     func testXYConstraintsWithSystemSpacing() throws {
         guard #available(iOS 11.0, tvOS 11.0, *) else {
-            throw XCTSkip("This tests can only run on iOS 11.0+ or tvOS 11.0+")
+            throw XCTSkip("This test can only run on iOS 11.0+ or tvOS 11.0+")
         }
         XCTContext.runActivity(named: "equal(toSystemSpacingAfter:), equal(toSystemSpacingBelow:)") { _ in
             let constraints = subview.autoLayout { item in
