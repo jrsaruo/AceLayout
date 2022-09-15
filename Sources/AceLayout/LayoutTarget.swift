@@ -14,8 +14,8 @@ import AppKit
 /// A type that represents layout target such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
 public protocol LayoutTarget {
     /// A type that represents layout target such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
-    /// This is equal to `Self`.
-    associatedtype LayoutBase where LayoutBase == Self
+    /// This is typically equal to `LayoutTarget` itself.
+    associatedtype LayoutBase
     
     func autoLayout(activates: Bool,
                     @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint]
