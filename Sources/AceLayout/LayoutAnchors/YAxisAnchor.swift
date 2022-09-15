@@ -37,8 +37,8 @@ extension YAxisAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y == `another` y + `offset`.
     @inlinable
-    public func equal<Another>(to another: Another,
-                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: YAxesConstrainable {
+    public func equal(to another: some YAxesConstrainable,
+                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -59,8 +59,8 @@ extension YAxisAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y <= `another` y + `offset`.
     @inlinable
-    public func lessThanOrEqual<Another>(to another: Another,
-                                         plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: YAxesConstrainable {
+    public func lessThanOrEqual(to another: some YAxesConstrainable,
+                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -81,8 +81,8 @@ extension YAxisAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y >= `another` y + `offset`.
     @inlinable
-    public func greaterThanOrEqual<Another>(to another: Another,
-                                            plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: YAxesConstrainable {
+    public func greaterThanOrEqual(to another: some YAxesConstrainable,
+                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     

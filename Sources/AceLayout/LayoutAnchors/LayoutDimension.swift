@@ -37,8 +37,8 @@ extension LayoutDimension {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension + `offset`.
     @inlinable
-    public func equal<Another>(to another: Another,
-                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: SizeConstrainable {
+    public func equal(to another: some SizeConstrainable,
+                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -59,8 +59,8 @@ extension LayoutDimension {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension + `offset`.
     @inlinable
-    public func lessThanOrEqual<Another>(to another: Another,
-                                         plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: SizeConstrainable {
+    public func lessThanOrEqual(to another: some SizeConstrainable,
+                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -81,8 +81,8 @@ extension LayoutDimension {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension + `offset`.
     @inlinable
-    public func greaterThanOrEqual<Another>(to another: Another,
-                                            plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: SizeConstrainable {
+    public func greaterThanOrEqual(to another: some SizeConstrainable,
+                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -100,8 +100,8 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension \* `multiplier`.
     @inlinable
-    public func equal<Another>(to another: Another,
-                               multipliedBy multiplier: CGFloat) -> NSLayoutConstraint where Another: SizeConstrainable {
+    public func equal(to another: some SizeConstrainable,
+                      multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
     }
     
@@ -119,8 +119,8 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension \* `multiplier`.
     @inlinable
-    public func lessThanOrEqual<Another>(to another: Another,
-                                         multipliedBy multiplier: CGFloat) -> NSLayoutConstraint where Another: SizeConstrainable {
+    public func lessThanOrEqual(to another: some SizeConstrainable,
+                                multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
     }
     
@@ -138,8 +138,8 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension \* `multiplier`.
     @inlinable
-    public func greaterThanOrEqual<Another>(to another: Another,
-                                            multipliedBy multiplier: CGFloat) -> NSLayoutConstraint where Another: SizeConstrainable {
+    public func greaterThanOrEqual(to another: some SizeConstrainable,
+                                   multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
     }
     
