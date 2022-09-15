@@ -14,7 +14,7 @@ import AppKit
 /// A type that represents a layout anchor for creating vertical layout constraints.
 public protocol YAxisAnchor: LayoutAnchor where AnchorType == NSLayoutYAxisAnchor,
                                                 BaseLayoutAnchor == NSLayoutYAxisAnchor,
-                                                Target == YAxesConstrainable {}
+                                                Target == any YAxesConstrainable {}
 
 extension YAxisAnchor {
     

@@ -14,7 +14,7 @@ import AppKit
 /// A type that represents a layout anchor for creating horizontal layout constraints.
 public protocol XAxisAnchor: LayoutAnchor where AnchorType == NSLayoutXAxisAnchor,
                                                 BaseLayoutAnchor == NSLayoutXAxisAnchor,
-                                                Target == XAxesConstrainable {}
+                                                Target == any XAxesConstrainable {}
 
 extension XAxisAnchor {
     
