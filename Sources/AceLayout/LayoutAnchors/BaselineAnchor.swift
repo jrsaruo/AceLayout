@@ -14,7 +14,7 @@ import AppKit
 /// A type that represents a baseline layout anchor for creating vertical layout constraints.
 public protocol BaselineAnchor: LayoutAnchor where AnchorType == NSLayoutYAxisAnchor,
                                                    BaseLayoutAnchor == NSLayoutYAxisAnchor,
-                                                   Target == BaselinesConstrainable {}
+                                                   Target == any BaselinesConstrainable {}
 
 extension BaselineAnchor {
     
@@ -34,8 +34,8 @@ extension BaselineAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline == `another` baseline + `offset`.
     @inlinable
-    public func equal<Another>(to another: Another,
-                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: BaselinesConstrainable {
+    public func equal(to another: some BaselinesConstrainable,
+                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -53,8 +53,8 @@ extension BaselineAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline <= `another` baseline + `offset`.
     @inlinable
-    public func lessThanOrEqual<Another>(to another: Another,
-                                         plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: BaselinesConstrainable {
+    public func lessThanOrEqual(to another: some BaselinesConstrainable,
+                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -72,8 +72,8 @@ extension BaselineAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline >= `another` baseline + `offset`.
     @inlinable
-    public func greaterThanOrEqual<Another>(to another: Another,
-                                            plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: BaselinesConstrainable {
+    public func greaterThanOrEqual(to another: some BaselinesConstrainable,
+                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     

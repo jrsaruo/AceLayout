@@ -14,7 +14,7 @@ import AppKit
 /// A type that represents a layout anchor for creating horizontal layout constraints.
 public protocol XAxisAnchor: LayoutAnchor where AnchorType == NSLayoutXAxisAnchor,
                                                 BaseLayoutAnchor == NSLayoutXAxisAnchor,
-                                                Target == XAxesConstrainable {}
+                                                Target == any XAxesConstrainable {}
 
 extension XAxisAnchor {
     
@@ -37,8 +37,8 @@ extension XAxisAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x == `another` x + `offset`.
     @inlinable
-    public func equal<Another>(to another: Another,
-                               plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: XAxesConstrainable {
+    public func equal(to another: some XAxesConstrainable,
+                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -59,8 +59,8 @@ extension XAxisAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x <= `another` x + `offset`.
     @inlinable
-    public func lessThanOrEqual<Another>(to another: Another,
-                                         plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: XAxesConstrainable {
+    public func lessThanOrEqual(to another: some XAxesConstrainable,
+                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -81,8 +81,8 @@ extension XAxisAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x >= `another` x + `offset`.
     @inlinable
-    public func greaterThanOrEqual<Another>(to another: Another,
-                                            plus offset: CGFloat = 0) -> NSLayoutConstraint where Another: XAxesConstrainable {
+    public func greaterThanOrEqual(to another: some XAxesConstrainable,
+                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     

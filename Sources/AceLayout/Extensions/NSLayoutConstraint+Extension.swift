@@ -23,7 +23,7 @@ extension NSLayoutConstraint {
     }
 }
 
-extension Sequence where Element: NSLayoutConstraint {
+extension Sequence<NSLayoutConstraint> {
     
     /// Updates each constraint with the specified `priority`.
     /// - Parameter priority: The layout priority.

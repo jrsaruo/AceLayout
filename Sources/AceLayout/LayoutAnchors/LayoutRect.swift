@@ -68,8 +68,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - offset: A constant offset for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` point == `another` point shifted by `offset`.
-        public func equal<Another>(to another: Another,
-                                   shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func equal(to another: some XYAxesConstrainable,
+                          shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] {
             [
                 x.equal(to: another, plus: offset.width),
                 y.equal(to: another, plus: offset.height)
@@ -95,8 +95,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - offset: A constant offset for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` point <= `another` point shifted by `offset`.
-        public func lessThanOrEqual<Another>(to another: Another,
-                                             shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func lessThanOrEqual(to another: some XYAxesConstrainable,
+                                    shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] {
             [
                 x.lessThanOrEqual(to: another, plus: offset.width),
                 y.lessThanOrEqual(to: another, plus: offset.height)
@@ -122,8 +122,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - offset: A constant offset for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` point >= `another` point shifted by `offset`.
-        public func greaterThanOrEqual<Another>(to another: Another,
-                                                shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func greaterThanOrEqual(to another: some XYAxesConstrainable,
+                                       shiftedBy offset: CGSize = .zero) -> [NSLayoutConstraint] {
             [
                 x.greaterThanOrEqual(to: another, plus: offset.width),
                 y.greaterThanOrEqual(to: another, plus: offset.height)
@@ -231,8 +231,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - multiplier: The multiplier constant for the constraint. The default value is `1`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` size == `another` size \* `multiplier`.
-        public func equal<Another>(to another: Another,
-                                   multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] where Another: SizeConstrainable {
+        public func equal(to another: some SizeConstrainable,
+                          multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] {
             [
                 width.equal(to: another, multipliedBy: multiplier),
                 height.equal(to: another, multipliedBy: multiplier)
@@ -256,8 +256,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - multiplier: The multiplier constant for the constraint. The default value is `1`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` size <= `another` size \* `multiplier`.
-        public func lessThanOrEqual<Another>(to another: Another,
-                                             multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] where Another: SizeConstrainable {
+        public func lessThanOrEqual(to another: some SizeConstrainable,
+                                    multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] {
             [
                 width.lessThanOrEqual(to: another, multipliedBy: multiplier),
                 height.lessThanOrEqual(to: another, multipliedBy: multiplier)
@@ -281,8 +281,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - multiplier: The multiplier constant for the constraint. The default value is `1`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` size >= `another` size \* `multiplier`.
-        public func greaterThanOrEqual<Another>(to another: Another,
-                                                multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] where Another: SizeConstrainable {
+        public func greaterThanOrEqual(to another: some SizeConstrainable,
+                                       multipliedBy multiplier: CGFloat = 1) -> [NSLayoutConstraint] {
             [
                 width.greaterThanOrEqual(to: another, multipliedBy: multiplier),
                 height.greaterThanOrEqual(to: another, multipliedBy: multiplier)
@@ -504,8 +504,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - inset: A constant edge inset for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges == `another` ones adjusted by `inset`.
-        public func equal<Another>(to another: Another,
-                                   insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: XAxesConstrainable {
+        public func equal(to another: some XAxesConstrainable,
+                          insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
             [
                 left.equal(to: another, plus: inset),
                 right.equal(to: another, plus: -inset)
@@ -526,8 +526,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges are inside of `another` ones adjusted by `inset`.
-        public func insideOrEqual<Another>(to another: Another,
-                                           insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: XAxesConstrainable {
+        public func insideOrEqual(to another: some XAxesConstrainable,
+                                  insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
             [
                 left.greaterThanOrEqual(to: another, plus: inset),
                 right.lessThanOrEqual(to: another, plus: -inset)
@@ -594,8 +594,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges == `another` ones adjusted by `inset`.
-        public func equal<Another>(to another: Another,
-                                   insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: YAxesConstrainable {
+        public func equal(to another: some YAxesConstrainable,
+                          insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
             [
                 top.equal(to: another, plus: inset),
                 bottom.equal(to: another, plus: -inset)
@@ -615,8 +615,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges are inside of `another` ones adjusted by `inset`.
-        public func insideOrEqual<Another>(to another: Another,
-                                           insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] where Another: YAxesConstrainable {
+        public func insideOrEqual(to another: some YAxesConstrainable,
+                                  insetBy inset: CGFloat = 0) -> [NSLayoutConstraint] {
             [
                 top.greaterThanOrEqual(to: another, plus: inset),
                 bottom.lessThanOrEqual(to: another, plus: -inset)
@@ -693,8 +693,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `insets`.
-        public func equal<Another>(to another: Another,
-                                   insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func equal(to another: some XYAxesConstrainable,
+                          insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.equal(to: another, plus: insets.top),
                 left.equal(to: another, plus: insets.left),
@@ -720,8 +720,8 @@ extension LayoutRect {
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `inset`.
         @inlinable
-        public func equal<Another>(to another: Another,
-                                   insetBy inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func equal(to another: some XYAxesConstrainable,
+                          insetBy inset: CGFloat) -> [NSLayoutConstraint] {
             equal(to: another, insetBy: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
@@ -748,8 +748,8 @@ extension LayoutRect {
         ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `insets`.
-        public func insideOrEqual<Another>(to another: Another,
-                                           insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func insideOrEqual(to another: some XYAxesConstrainable,
+                                  insetBy insets: AL.EdgeInsets = .zero) -> [NSLayoutConstraint] {
             [
                 top.greaterThanOrEqual(to: another, plus: insets.top),
                 left.greaterThanOrEqual(to: another, plus: insets.left),
@@ -775,8 +775,8 @@ extension LayoutRect {
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `inset`.
         @inlinable
-        public func insideOrEqual<Another>(to another: Another,
-                                           insetBy inset: CGFloat) -> [NSLayoutConstraint] where Another: XYAxesConstrainable {
+        public func insideOrEqual(to another: some XYAxesConstrainable,
+                                  insetBy inset: CGFloat) -> [NSLayoutConstraint] {
             insideOrEqual(to: another, insetBy: .init(top: inset, left: inset, bottom: inset, right: inset))
         }
         
