@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "B2B35B20-602C-48A1-BE23-3F627FAA7ACF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "AceLayout",
+          "name" : "AceLayout"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AceLayoutTests",
+        "name" : "AceLayoutTests"
+      }
+    }
+  ],
+  "version" : 1
+}
