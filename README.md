@@ -175,7 +175,7 @@ view.autoLayout { item in
 To use the `AceLayout` library in a SwiftPM project, add the following line to the dependencies in your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/jrsaruo/AceLayout", from "1.0.0"),
+.package(url: "https://github.com/jrsaruo/AceLayout", from: "1.1.1"),
 ```
 
 and add `AceLayout` as a dependency for your target:
@@ -187,4 +187,4 @@ and add `AceLayout` as a dependency for your target:
 ]),
 ```
 
-FInally, add `import AceLayout` in your source code.
+Finally, add `import AceLayout` in your source code.
