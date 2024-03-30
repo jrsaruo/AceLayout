@@ -8,9 +8,7 @@ let package = Package(
     platforms: [.iOS(.v11), .macOS(.v10_13), .tvOS(.v11)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "AceLayout",
-            targets: ["AceLayout"]),
+        .library(name: "AceLayout", targets: ["AceLayout"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -22,9 +20,11 @@ let package = Package(
         .target(
             name: "AceLayout",
             dependencies: [],
-            swiftSettings: [.enableUpcomingFeature("ExistentialAny")]),
+            swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
+        ),
         .testTarget(
             name: "AceLayoutTests",
-            dependencies: ["AceLayout"]),
+            dependencies: ["AceLayout"]
+        ),
     ]
 )
