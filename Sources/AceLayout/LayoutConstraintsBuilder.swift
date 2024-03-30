@@ -13,11 +13,14 @@ import AppKit
 
 /// A custom parameter attribute that constructs layout constraints from closures.
 ///
-/// You can use this as a parameter attribute for layout-constraint-producing closure parameters, allowing those closures to provide multiple layout constraints.
+/// You can use this as a parameter attribute for layout-constraint-producing closure parameters,
+/// allowing those closures to provide multiple layout constraints.
 /// For example, the following `buildConstraints` function accepts a closure that produces one or more constraints via the builder.
 ///
 /// ```
-/// func buildConstraints(@LayoutConstraintsBuilder builder: () -> [NSLayoutConstraint]) -> [NSLayoutConstraint]
+/// func buildConstraints(
+///     @LayoutConstraintsBuilder builder: () -> [NSLayoutConstraint]
+/// ) -> [NSLayoutConstraint]
 /// ```
 ///
 /// Clients of this function can use multiple-statement closures to provide several constraints, as shown in the following example:

@@ -112,7 +112,9 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - anotherAnchor: A layout anchor from a `UIView`, `UILayoutGuide`, `NSView`, or `NSLayoutGuide` object. You must use a subclass of `NSLayoutAnchor` that matches the current anchor. For example, if you call this method on a `LayoutRect.XAxis`, this parameter must be `NSLayoutXAxisAnchor`.
+    ///   - anotherAnchor: A layout anchor from a `UIView`, `UILayoutGuide`, `NSView`, or `NSLayoutGuide` object.
+    ///                    You must use a subclass of `NSLayoutAnchor` that matches the current anchor. For example,
+    ///                    if you call this method on a `LayoutRect.XAxis`, this parameter must be `NSLayoutXAxisAnchor`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor >= `anotherAnchor` + `offset`.
     @inlinable
@@ -135,7 +137,8 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. 
+    ///              For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor == `another` anchor + `offset`.
     @inlinable
@@ -153,7 +156,8 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. 
+    ///              For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor <= `another` anchor + `offset`.
     @inlinable
@@ -171,7 +175,8 @@ extension LayoutAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
+    ///   - another: A layout anchor from a ``LayoutItem``. You must use an instance of ``LayoutAnchor`` that matches the current anchor. 
+    ///              For example, if you call this method on a `LayoutRect.Dimension`, this parameter must be `LayoutRect.Dimension`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor >= `another` anchor + `offset`.
     @inlinable

@@ -16,9 +16,12 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     
     /// Returns a constraint of the form `self` x == `anotherAnchor` + systemSpacing \* `multiplier`.
     ///
-    /// The constraint causes the current anchor to trail the object in the `anotherAnchor` parameter. For example, in a left-to-right layout, the current anchor is to the right of `anotherAnchor`, but in a right-to-left layout, it is to the left of `anotherAnchor`.
+    /// The constraint causes the current anchor to trail the object in the `anotherAnchor` parameter.
+    /// For example, in a left-to-right layout, the current anchor is to the right of `anotherAnchor`, but in a right-to-left layout,
+    /// it is to the left of `anotherAnchor`.
     ///
-    /// The distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. The value of the system space is determined from information available from the anchors.
+    /// The distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter.
+    /// The value of the system space is determined from information available from the anchors.
     ///
     /// ```
     /// view.autoLayout { item in
@@ -44,9 +47,13 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     
     /// Returns a constraint of the form `self` x <= `anotherAnchor` + systemSpacing \* `multiplier`.
     ///
-    /// The constraint causes the current anchor to trail the object in the `anotherAnchor` parameter. For example, in a left-to-right layout, the current anchor is to the right of `anotherAnchor`, but in a right-to-left layout, it is to the left of `anotherAnchor`.
+    /// The constraint causes the current anchor to trail the object in the `anotherAnchor` parameter.
+    /// For example, in a left-to-right layout, the current anchor is to the right of `anotherAnchor`, but in a right-to-left layout,
+    /// it is to the left of `anotherAnchor`.
     ///
-    /// The maximum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. (The actual distance must be less than or equal to that value.) The value of the system space is determined from information available from the anchors.
+    /// The maximum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter.
+    /// (The actual distance must be less than or equal to that value.)
+    /// The value of the system space is determined from information available from the anchors.
     ///
     /// ```
     /// view.autoLayout { item in
@@ -75,9 +82,13 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     
     /// Returns a constraint of the form `self` x >= `anotherAnchor` + systemSpacing \* `multiplier`.
     ///
-    /// The constraint causes the current anchor to trail the object in the `anotherAnchor` parameter. For example, in a left-to-right layout, the current anchor is to the right of `anotherAnchor`, but in a right-to-left layout, it is to the left of `anotherAnchor`.
+    /// The constraint causes the current anchor to trail the object in the `anotherAnchor` parameter.
+    /// For example, in a left-to-right layout, the current anchor is to the right of `anotherAnchor`, but in a right-to-left layout,
+    /// it is to the left of `anotherAnchor`.
     ///
-    /// The minimum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. (The actual distance must be greater than or equal to that value.) The value of the system space is determined from information available from the anchors.
+    /// The minimum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter.
+    /// (The actual distance must be greater than or equal to that value.)
+    /// The value of the system space is determined from information available from the anchors.
     ///
     /// ```
     /// view.autoLayout { item in
@@ -91,7 +102,8 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     ///
     /// - Parameters:
     ///   - anotherAnchor: The X axis anchor to use as the starting point for the constraint.
-    ///   - multiplier: The multiple of the system spacing to use as the minimum distance between the two anchors. The default value is `1`.
+    ///   - multiplier: The multiple of the system spacing to use as the minimum distance between the two anchors.
+    ///                 The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x >= `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
     public func greaterThanOrEqual(
@@ -112,7 +124,9 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///
     /// The constraint causes the current anchor to be positioned below the object in the `anotherAnchor` parameter.
     ///
-    /// The distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. The value of the system spacing is determined from information available from the anchors. For example, if the anchors represent text baselines, the spacing is determined by the fonts used at those baselines.
+    /// The distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter.
+    /// The value of the system spacing is determined from information available from the anchors.
+    /// For example, if the anchors represent text baselines, the spacing is determined by the fonts used at those baselines.
     ///
     /// ```
     /// view.autoLayout { item in
@@ -126,7 +140,8 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///
     /// - Parameters:
     ///   - anotherAnchor: The Y axis anchor to use as the starting point for the constraint.
-    ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors. The default value is `1`.
+    ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors.
+    ///                 The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y == `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
     public func equal(
@@ -140,7 +155,9 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///
     /// The constraint causes the current anchor to be positioned below the object in the `anotherAnchor` parameter.
     ///
-    /// The maximum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. The value of the system spacing is determined from information available from the anchors. For example, if the anchors represent text baselines, the spacing is determined by the fonts used at those baselines.
+    /// The maximum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. 
+    /// The value of the system spacing is determined from information available from the anchors.
+    /// For example, if the anchors represent text baselines, the spacing is determined by the fonts used at those baselines.
     ///
     /// ```
     /// view.autoLayout { item in
@@ -154,7 +171,8 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///
     /// - Parameters:
     ///   - anotherAnchor: The Y axis anchor to use as the starting point for the constraint.
-    ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors. The default value is `1`.
+    ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors.
+    ///                 The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y <= `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
     public func lessThanOrEqual(
@@ -171,7 +189,9 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///
     /// The constraint causes the current anchor to be positioned below the object in the `anotherAnchor` parameter.
     ///
-    /// The minimum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter. The value of the system spacing is determined from information available from the anchors. For example, if the anchors represent text baselines, the spacing is determined by the fonts used at those baselines.
+    /// The minimum distance between the two anchors is determined by multiplying the system spacing by the value in the `multiplier` parameter.
+    /// The value of the system spacing is determined from information available from the anchors.
+    /// For example, if the anchors represent text baselines, the spacing is determined by the fonts used at those baselines.
     ///
     /// ```
     /// view.autoLayout { item in

@@ -65,7 +65,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - offset: A constant offset for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` point == `another` point shifted by `offset`.
         public func equal(
@@ -94,7 +95,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - offset: A constant offset for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` point <= `another` point shifted by `offset`.
         public func lessThanOrEqual(
@@ -123,7 +125,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - offset: A constant offset for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` point >= `another` point shifted by `offset`.
         public func greaterThanOrEqual(
@@ -238,7 +241,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - multiplier: The multiplier constant for the constraint. The default value is `1`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` size == `another` size \* `multiplier`.
         public func equal(
@@ -265,7 +269,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - multiplier: The multiplier constant for the constraint. The default value is `1`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` size <= `another` size \* `multiplier`.
         public func lessThanOrEqual(
@@ -292,7 +297,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``SizeConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - multiplier: The multiplier constant for the constraint. The default value is `1`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` size >= `another` size \* `multiplier`.
         public func greaterThanOrEqual(
@@ -521,7 +527,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - inset: A constant edge inset for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges == `another` ones adjusted by `inset`.
         public func equal(
@@ -545,7 +552,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` horizontal edges are inside of `another` ones adjusted by `inset`.
         public func insideOrEqual(
@@ -615,7 +623,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges == `another` ones adjusted by `inset`.
         public func equal(
@@ -638,7 +647,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `0`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` vertical edges are inside of `another` ones adjusted by `inset`.
         public func insideOrEqual(
@@ -718,7 +728,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `insets`.
         public func equal(
@@ -746,7 +757,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges == `another` edges adjusted by `inset`.
         @inlinable
@@ -777,7 +789,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - insets: A constant edge insets for the constraint. The default value is `.zero`.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `insets`.
         public func insideOrEqual(
@@ -805,7 +818,8 @@ extension LayoutRect {
         /// ```
         ///
         /// - Parameters:
-        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+        ///   - another: An instance of the type that conforms to ``XYAxesConstrainable`` protocol
+        ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
         ///   - inset: A constant edge inset for the constraint.
         /// - Returns: An  `NSLayoutConstraint` object that represents `self` edges are inside of `another` edges adjusted by `inset`.
         @inlinable
