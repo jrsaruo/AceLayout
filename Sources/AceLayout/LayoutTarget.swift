@@ -17,8 +17,10 @@ public protocol LayoutTarget {
     /// This is typically equal to `LayoutTarget` itself.
     associatedtype LayoutBase
     
-    func autoLayout(activates: Bool,
-                    @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint]
+    func autoLayout(
+        activates: Bool,
+        @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]
+    ) -> [NSLayoutConstraint]
 }
 
 extension LayoutTarget {
@@ -28,8 +30,10 @@ extension LayoutTarget {
     ///   - activates: Whether to immediately activate constraints after building.
     ///   - builder: A layout constraints builder that creates constraints on the specified item.
     /// - Returns: An array of built `NSLayoutConstraint` objects.
-    fileprivate func _autoLayout(activates: Bool,
-                                 @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+    fileprivate func _autoLayout(
+        activates: Bool,
+        @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]
+    ) -> [NSLayoutConstraint] {
         let constraints = builder(LayoutItem(base: self))
         if activates {
             NSLayoutConstraint.activate(constraints)
@@ -53,8 +57,10 @@ extension LayoutTarget {
     ///   - builder: A layout constraints builder that creates constraints on the specified item.
     /// - Returns: An array of built `NSLayoutConstraint` objects.
     @discardableResult
-    public func autoLayout(activates: Bool = true,
-                           @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+    public func autoLayout(
+        activates: Bool = true,
+        @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]
+    ) -> [NSLayoutConstraint] {
         _autoLayout(activates: activates, builder: builder)
     }
 }
@@ -78,8 +84,10 @@ extension AL.View: LayoutTarget {
     ///   - builder: A layout constraints builder that creates constraints on the specified item.
     /// - Returns: An array of built `NSLayoutConstraint` objects.
     @discardableResult
-    public func autoLayout(activates: Bool = true,
-                           @LayoutConstraintsBuilder builder: (LayoutItem<AL.View>) -> [NSLayoutConstraint]) -> [NSLayoutConstraint] {
+    public func autoLayout(
+        activates: Bool = true,
+        @LayoutConstraintsBuilder builder: (LayoutItem<AL.View>) -> [NSLayoutConstraint]
+    ) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         return _autoLayout(activates: activates, builder: builder)
     }

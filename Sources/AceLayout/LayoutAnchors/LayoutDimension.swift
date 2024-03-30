@@ -37,8 +37,10 @@ extension LayoutDimension {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension + `offset`.
     @inlinable
-    public func equal(to another: some SizeConstrainable,
-                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func equal(
+        to another: some SizeConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -59,8 +61,10 @@ extension LayoutDimension {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension + `offset`.
     @inlinable
-    public func lessThanOrEqual(to another: some SizeConstrainable,
-                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func lessThanOrEqual(
+        to another: some SizeConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -81,8 +85,10 @@ extension LayoutDimension {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension + `offset`.
     @inlinable
-    public func greaterThanOrEqual(to another: some SizeConstrainable,
-                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to another: some SizeConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -100,8 +106,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension \* `multiplier`.
     @inlinable
-    public func equal(to another: some SizeConstrainable,
-                      multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func equal(
+        to another: some SizeConstrainable,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
     }
     
@@ -119,9 +127,14 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension \* `multiplier`.
     @inlinable
-    public func lessThanOrEqual(to another: some SizeConstrainable,
-                                multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
-        anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
+    public func lessThanOrEqual(
+        to another: some SizeConstrainable,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
+        anchor.constraint(
+            lessThanOrEqualTo: another[keyPath: anchorKeyPath],
+            multiplier: multiplier
+        )
     }
     
     /// Returns a constraint of the form `self` dimension >= `another` dimension \* `multiplier`.
@@ -138,9 +151,14 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension \* `multiplier`.
     @inlinable
-    public func greaterThanOrEqual(to another: some SizeConstrainable,
-                                   multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
-        anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], multiplier: multiplier)
+    public func greaterThanOrEqual(
+        to another: some SizeConstrainable,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
+        anchor.constraint(
+            greaterThanOrEqualTo: another[keyPath: anchorKeyPath],
+            multiplier: multiplier
+        )
     }
     
     // MARK: - Constraints with BaseLayoutAnchor
@@ -159,8 +177,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `anotherAnchor` \* `multiplier`.
     @inlinable
-    public func equal(to anotherAnchor: BaseLayoutAnchor,
-                      multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func equal(
+        to anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: anotherAnchor, multiplier: multiplier)
     }
     
@@ -178,8 +198,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `anotherAnchor` \* `multiplier`.
     @inlinable
-    public func lessThanOrEqual(to anotherAnchor: BaseLayoutAnchor,
-                                multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func lessThanOrEqual(
+        to anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: anotherAnchor, multiplier: multiplier)
     }
     
@@ -197,8 +219,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `anotherAnchor` \* `multiplier`.
     @inlinable
-    public func greaterThanOrEqual(to anotherAnchor: BaseLayoutAnchor,
-                                   multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: anotherAnchor, multiplier: multiplier)
     }
     
@@ -218,8 +242,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `another` dimension \* `multiplier`.
     @inlinable
-    public func equal(to another: Self,
-                      multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func equal(
+        to another: Self,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another.anchor, multiplier: multiplier)
     }
     
@@ -237,8 +263,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `another` dimension \* `multiplier`.
     @inlinable
-    public func lessThanOrEqual(to another: Self,
-                                multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func lessThanOrEqual(
+        to another: Self,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another.anchor, multiplier: multiplier)
     }
     
@@ -256,8 +284,10 @@ extension LayoutDimension {
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `another` dimension \* `multiplier`.
     @inlinable
-    public func greaterThanOrEqual(to another: Self,
-                                   multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to another: Self,
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another.anchor, multiplier: multiplier)
     }
     
@@ -333,7 +363,9 @@ extension LayoutDimension {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `superview` dimension + `offset`.
     public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return equal(to: superview, plus: offset)
     }
@@ -355,7 +387,9 @@ extension LayoutDimension {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `superview` dimension + `offset`.
     public func lessThanOrEqualToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return lessThanOrEqual(to: superview, plus: offset)
     }
@@ -377,7 +411,9 @@ extension LayoutDimension {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `superview` dimension + `offset`.
     public func greaterThanOrEqualToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return greaterThanOrEqual(to: superview, plus: offset)
     }
@@ -396,7 +432,9 @@ extension LayoutDimension {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension == `superview` dimension \* `multiplier`.
     public func equalToSuperview(multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return equal(to: superview, multipliedBy: multiplier)
     }
@@ -415,7 +453,9 @@ extension LayoutDimension {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension <= `superview` dimension \* `multiplier`.
     public func lessThanOrEqualToSuperview(multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return lessThanOrEqual(to: superview, multipliedBy: multiplier)
     }
@@ -432,9 +472,13 @@ extension LayoutDimension {
     /// - Parameters:
     ///   - multiplier: The multiplier constant for the constraint.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` dimension >= `superview` dimension \* `multiplier`.
-    public func greaterThanOrEqualToSuperview(multipliedBy multiplier: CGFloat) -> NSLayoutConstraint {
+    public func greaterThanOrEqualToSuperview(
+        multipliedBy multiplier: CGFloat
+    ) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return greaterThanOrEqual(to: superview, multipliedBy: multiplier)
     }

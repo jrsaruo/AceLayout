@@ -68,7 +68,10 @@ extension LayoutAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor == `anotherAnchor` + `offset`.
     @inlinable
-    public func equal(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func equal(
+        to anotherAnchor: BaseLayoutAnchor,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: anotherAnchor, constant: offset)
     }
     
@@ -89,7 +92,10 @@ extension LayoutAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor <= `anotherAnchor` + `offset`.
     @inlinable
-    public func lessThanOrEqual(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func lessThanOrEqual(
+        to anotherAnchor: BaseLayoutAnchor,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: anotherAnchor, constant: offset)
     }
     
@@ -110,7 +116,10 @@ extension LayoutAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor >= `anotherAnchor` + `offset`.
     @inlinable
-    public func greaterThanOrEqual(to anotherAnchor: BaseLayoutAnchor, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to anotherAnchor: BaseLayoutAnchor,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: anotherAnchor, constant: offset)
     }
     
@@ -166,7 +175,10 @@ extension LayoutAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` anchor >= `another` anchor + `offset`.
     @inlinable
-    public func greaterThanOrEqual(to another: Self, plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to another: Self,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another.anchor, constant: offset)
     }
 }

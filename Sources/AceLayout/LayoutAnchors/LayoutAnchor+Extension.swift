@@ -35,8 +35,10 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors. The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x == `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
-    public func equal(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-                      multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func equal(
+        toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat = 1
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
     }
     
@@ -61,9 +63,14 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     ///   - multiplier: The multiple of the system spacing to use as the maximum distance between the two anchors. The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x <= `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
-    public func lessThanOrEqual(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-                                multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        anchor.constraint(lessThanOrEqualToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
+    public func lessThanOrEqual(
+        toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat = 1
+    ) -> NSLayoutConstraint {
+        anchor.constraint(
+            lessThanOrEqualToSystemSpacingAfter: anotherAnchor,
+            multiplier: multiplier
+        )
     }
     
     /// Returns a constraint of the form `self` x >= `anotherAnchor` + systemSpacing \* `multiplier`.
@@ -87,9 +94,14 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutXAxisAnchor {
     ///   - multiplier: The multiple of the system spacing to use as the minimum distance between the two anchors. The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` x >= `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
-    public func greaterThanOrEqual(toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
-                                   multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        anchor.constraint(greaterThanOrEqualToSystemSpacingAfter: anotherAnchor, multiplier: multiplier)
+    public func greaterThanOrEqual(
+        toSystemSpacingAfter anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat = 1
+    ) -> NSLayoutConstraint {
+        anchor.constraint(
+            greaterThanOrEqualToSystemSpacingAfter: anotherAnchor,
+            multiplier: multiplier
+        )
     }
 }
 
@@ -117,8 +129,10 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors. The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y == `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
-    public func equal(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-                      multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
+    public func equal(
+        toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat = 1
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
     }
     
@@ -143,9 +157,14 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors. The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y <= `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
-    public func lessThanOrEqual(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-                                multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        anchor.constraint(lessThanOrEqualToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
+    public func lessThanOrEqual(
+        toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat = 1
+    ) -> NSLayoutConstraint {
+        anchor.constraint(
+            lessThanOrEqualToSystemSpacingBelow: anotherAnchor,
+            multiplier: multiplier
+        )
     }
     
     /// Returns a constraint of the form `self` y >= `anotherAnchor` + systemSpacing \* `multiplier`.
@@ -169,8 +188,13 @@ extension LayoutAnchor where BaseLayoutAnchor == NSLayoutYAxisAnchor {
     ///   - multiplier: The multiple of the system spacing to use as the distance between the two anchors. The default value is `1`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y >= `anotherAnchor` + systemSpacing \* `multiplier`.
     @inlinable
-    public func greaterThanOrEqual(toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
-                                   multipliedBy multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        anchor.constraint(greaterThanOrEqualToSystemSpacingBelow: anotherAnchor, multiplier: multiplier)
+    public func greaterThanOrEqual(
+        toSystemSpacingBelow anotherAnchor: BaseLayoutAnchor,
+        multipliedBy multiplier: CGFloat = 1
+    ) -> NSLayoutConstraint {
+        anchor.constraint(
+            greaterThanOrEqualToSystemSpacingBelow: anotherAnchor,
+            multiplier: multiplier
+        )
     }
 }
