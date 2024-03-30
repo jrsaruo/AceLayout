@@ -36,9 +36,13 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.trailing.lessThanOrEqual(to: layoutMarginsGuide, plus: 8)
             }
             let expectedConstraints = [
-                layoutGuide.leadingAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.leadingAnchor),
-                layoutGuide.trailingAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
-                                                      constant: 8)
+                layoutGuide.leadingAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.leadingAnchor
+                ),
+                layoutGuide.trailingAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -49,8 +53,10 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.leading.lessThanOrEqual(to: layoutMarginsGuide.trailingAnchor, plus: 8)
             }
             let expectedConstraints = [
-                layoutGuide.leadingAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
-                                                     constant: 8)
+                layoutGuide.leadingAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -66,8 +72,10 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
             }
             let expectedConstraints = [
                 layoutGuide.topAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.topAnchor),
-                layoutGuide.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
-                                                    constant: 8)
+                layoutGuide.bottomAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -78,8 +86,10 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.top.lessThanOrEqual(to: layoutMarginsGuide.bottomAnchor, plus: 8)
             }
             let expectedConstraints = [
-                layoutGuide.topAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
-                                                 constant: 8)
+                layoutGuide.topAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -95,17 +105,32 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
             let constraints = layoutGuide.autoLayout { item in
                 item.top.lessThanOrEqual(toSystemSpacingBelow: layoutMarginsGuide.topAnchor)
                 item.leading.lessThanOrEqual(toSystemSpacingAfter: layoutMarginsGuide.leadingAnchor)
-                item.trailing.lessThanOrEqual(toSystemSpacingAfter: layoutMarginsGuide.trailingAnchor, multipliedBy: -1)
-                item.bottom.lessThanOrEqual(toSystemSpacingBelow: layoutMarginsGuide.bottomAnchor, multipliedBy: -1)
+                item.trailing.lessThanOrEqual(
+                    toSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
+                    multipliedBy: -1
+                )
+                item.bottom.lessThanOrEqual(
+                    toSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
+                    multipliedBy: -1
+                )
             }
             let expectedConstraints = [
-                layoutGuide.topAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.topAnchor, multiplier: 1),
-                layoutGuide.leadingAnchor.constraint(lessThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.leadingAnchor,
-                                                     multiplier: 1),
-                layoutGuide.trailingAnchor.constraint(lessThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
-                                                      multiplier: -1),
-                layoutGuide.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
-                                                    multiplier: -1)
+                layoutGuide.topAnchor.constraint(
+                    lessThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.topAnchor,
+                    multiplier: 1
+                ),
+                layoutGuide.leadingAnchor.constraint(
+                    lessThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.leadingAnchor,
+                    multiplier: 1
+                ),
+                layoutGuide.trailingAnchor.constraint(
+                    lessThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
+                    multiplier: -1
+                ),
+                layoutGuide.bottomAnchor.constraint(
+                    lessThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
+                    multiplier: -1
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -121,11 +146,17 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.height.lessThanOrEqual(to: layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
-                layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.widthAnchor),
-                layoutGuide.heightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                    constant: 8),
-                layoutGuide.heightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                    multiplier: 2)
+                layoutGuide.widthAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.widthAnchor
+                ),
+                layoutGuide.heightAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    constant: 8
+                ),
+                layoutGuide.heightAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    multiplier: 2
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -137,10 +168,14 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.width.lessThanOrEqual(to: layoutMarginsGuide.heightAnchor, multipliedBy: 2)
             }
             let expectedConstraints = [
-                layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                   constant: 8),
-                layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                   multiplier: 2)
+                layoutGuide.widthAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    constant: 8
+                ),
+                layoutGuide.widthAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    multiplier: 2
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -156,12 +191,20 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.topLeading.lessThanOrEqual(to: layoutMarginsGuide, shiftedBy: offset)
             }
             let expectedConstraints = [
-                layoutGuide.centerXAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.centerXAnchor),
-                layoutGuide.centerYAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.centerYAnchor),
-                layoutGuide.leadingAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.leadingAnchor,
-                                                     constant: 10),
-                layoutGuide.topAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.topAnchor,
-                                                 constant: 20)
+                layoutGuide.centerXAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.centerXAnchor
+                ),
+                layoutGuide.centerYAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.centerYAnchor
+                ),
+                layoutGuide.leadingAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.leadingAnchor,
+                    constant: 10
+                ),
+                layoutGuide.topAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.topAnchor,
+                    constant: 20
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -176,12 +219,20 @@ final class UILayoutGuideLessThanOrEqualToUILayoutGuideConstraintTests: XCTestCa
                 item.size.lessThanOrEqual(to: layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
-                layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.widthAnchor),
-                layoutGuide.heightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor),
-                layoutGuide.widthAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.widthAnchor,
-                                                   multiplier: 2),
-                layoutGuide.heightAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                    multiplier: 2)
+                layoutGuide.widthAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.widthAnchor
+                ),
+                layoutGuide.heightAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.heightAnchor
+                ),
+                layoutGuide.widthAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.widthAnchor,
+                    multiplier: 2
+                ),
+                layoutGuide.heightAnchor.constraint(
+                    lessThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    multiplier: 2
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
