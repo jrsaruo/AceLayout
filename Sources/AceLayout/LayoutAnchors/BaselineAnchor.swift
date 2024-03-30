@@ -34,8 +34,10 @@ extension BaselineAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline == `another` baseline + `offset`.
     @inlinable
-    public func equal(to another: some BaselinesConstrainable,
-                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func equal(
+        to another: some BaselinesConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -53,8 +55,10 @@ extension BaselineAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline <= `another` baseline + `offset`.
     @inlinable
-    public func lessThanOrEqual(to another: some BaselinesConstrainable,
-                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func lessThanOrEqual(
+        to another: some BaselinesConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -72,8 +76,10 @@ extension BaselineAnchor {
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline >= `another` baseline + `offset`.
     @inlinable
-    public func greaterThanOrEqual(to another: some BaselinesConstrainable,
-                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to another: some BaselinesConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -93,7 +99,9 @@ extension BaselineAnchor {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline == `superview` baseline + `offset`.
     public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return equal(to: superview, plus: offset)
     }
@@ -112,7 +120,9 @@ extension BaselineAnchor {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline <= `superview` baseline + `offset`.
     public func lessThanOrEqualToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return lessThanOrEqual(to: superview, plus: offset)
     }
@@ -131,7 +141,9 @@ extension BaselineAnchor {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` baseline >= `superview` baseline + `offset`.
     public func greaterThanOrEqualToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return greaterThanOrEqual(to: superview, plus: offset)
     }

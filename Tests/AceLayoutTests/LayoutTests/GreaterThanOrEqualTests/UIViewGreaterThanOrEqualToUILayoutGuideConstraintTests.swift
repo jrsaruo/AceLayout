@@ -37,9 +37,13 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.trailing.greaterThanOrEqual(to: layoutMarginsGuide, plus: 8)
             }
             let expectedConstraints = [
-                subview.leadingAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.leadingAnchor),
-                subview.trailingAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
-                                                  constant: 8)
+                subview.leadingAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.leadingAnchor
+                ),
+                subview.trailingAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -50,8 +54,10 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.leading.greaterThanOrEqual(to: layoutMarginsGuide.trailingAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.leadingAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
-                                                 constant: 8)
+                subview.leadingAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.trailingAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -67,8 +73,10 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
             }
             let expectedConstraints = [
                 subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor),
-                subview.bottomAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
-                                                constant: 8)
+                subview.bottomAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -79,8 +87,10 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.top.greaterThanOrEqual(to: layoutMarginsGuide.bottomAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
-                                             constant: 8)
+                subview.topAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -95,21 +105,35 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
             let layoutMarginsGuide = superview.layoutMarginsGuide
             let constraints = subview.autoLayout { item in
                 item.top.greaterThanOrEqual(toSystemSpacingBelow: layoutMarginsGuide.topAnchor)
-                item.leading.greaterThanOrEqual(toSystemSpacingAfter: layoutMarginsGuide.leadingAnchor)
-                item.trailing.greaterThanOrEqual(toSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
-                                                 multipliedBy: -1)
-                item.bottom.greaterThanOrEqual(toSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
-                                               multipliedBy: -1)
+                item.leading.greaterThanOrEqual(
+                    toSystemSpacingAfter: layoutMarginsGuide.leadingAnchor
+                )
+                item.trailing.greaterThanOrEqual(
+                    toSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
+                    multipliedBy: -1
+                )
+                item.bottom.greaterThanOrEqual(
+                    toSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
+                    multipliedBy: -1
+                )
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.topAnchor,
-                                             multiplier: 1),
-                subview.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.leadingAnchor,
-                                                 multiplier: 1),
-                subview.trailingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
-                                                  multiplier: -1),
-                subview.bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
-                                                multiplier: -1)
+                subview.topAnchor.constraint(
+                    greaterThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.topAnchor,
+                    multiplier: 1
+                ),
+                subview.leadingAnchor.constraint(
+                    greaterThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.leadingAnchor,
+                    multiplier: 1
+                ),
+                subview.trailingAnchor.constraint(
+                    greaterThanOrEqualToSystemSpacingAfter: layoutMarginsGuide.trailingAnchor,
+                    multiplier: -1
+                ),
+                subview.bottomAnchor.constraint(
+                    greaterThanOrEqualToSystemSpacingBelow: layoutMarginsGuide.bottomAnchor,
+                    multiplier: -1
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -125,11 +149,17 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.height.greaterThanOrEqual(to: layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.widthAnchor),
-                subview.heightAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                constant: 8),
-                subview.heightAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                multiplier: 2)
+                subview.widthAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.widthAnchor
+                ),
+                subview.heightAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    constant: 8
+                ),
+                subview.heightAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    multiplier: 2
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -141,10 +171,14 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.width.greaterThanOrEqual(to: layoutMarginsGuide.heightAnchor, multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                               constant: 8),
-                subview.widthAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                               multiplier: 2)
+                subview.widthAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    constant: 8
+                ),
+                subview.widthAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    multiplier: 2
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -159,9 +193,13 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.firstBaseline.greaterThanOrEqual(to: layoutMarginsGuide.bottomAnchor, plus: 8)
             }
             let expectedConstraints = [
-                subview.firstBaselineAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor),
-                subview.firstBaselineAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
-                                                       constant: 8)
+                subview.firstBaselineAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.topAnchor
+                ),
+                subview.firstBaselineAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.bottomAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -177,12 +215,20 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.topLeading.greaterThanOrEqual(to: layoutMarginsGuide, shiftedBy: offset)
             }
             let expectedConstraints = [
-                subview.centerXAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.centerXAnchor),
-                subview.centerYAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.centerYAnchor),
-                subview.leadingAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.leadingAnchor,
-                                                 constant: 10),
-                subview.topAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
-                                             constant: 20)
+                subview.centerXAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.centerXAnchor
+                ),
+                subview.centerYAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.centerYAnchor
+                ),
+                subview.leadingAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.leadingAnchor,
+                    constant: 10
+                ),
+                subview.topAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.topAnchor,
+                    constant: 20
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -197,12 +243,20 @@ final class UIViewGreaterThanOrEqualToUILayoutGuideConstraintTests: XCTestCase {
                 item.size.greaterThanOrEqual(to: layoutMarginsGuide, multipliedBy: 2)
             }
             let expectedConstraints = [
-                subview.widthAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.widthAnchor),
-                subview.heightAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor),
-                subview.widthAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.widthAnchor,
-                                               multiplier: 2),
-                subview.heightAnchor.constraint(greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
-                                                multiplier: 2)
+                subview.widthAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.widthAnchor
+                ),
+                subview.heightAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor
+                ),
+                subview.widthAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.widthAnchor,
+                    multiplier: 2
+                ),
+                subview.heightAnchor.constraint(
+                    greaterThanOrEqualTo: layoutMarginsGuide.heightAnchor,
+                    multiplier: 2
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)

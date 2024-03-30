@@ -33,12 +33,15 @@ extension YAxisAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol
+    ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y == `another` y + `offset`.
     @inlinable
-    public func equal(to another: some YAxesConstrainable,
-                      plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func equal(
+        to another: some YAxesConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(equalTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -55,12 +58,15 @@ extension YAxisAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol
+    ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y <= `another` y + `offset`.
     @inlinable
-    public func lessThanOrEqual(to another: some YAxesConstrainable,
-                                plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func lessThanOrEqual(
+        to another: some YAxesConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(lessThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -77,12 +83,15 @@ extension YAxisAnchor {
     /// ```
     ///
     /// - Parameters:
-    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+    ///   - another: An instance of the type that conforms to ``YAxesConstrainable`` protocol
+    ///              such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     ///   - offset: A constant offset for the constraint. The default value is `0`.
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y >= `another` y + `offset`.
     @inlinable
-    public func greaterThanOrEqual(to another: some YAxesConstrainable,
-                                   plus offset: CGFloat = 0) -> NSLayoutConstraint {
+    public func greaterThanOrEqual(
+        to another: some YAxesConstrainable,
+        plus offset: CGFloat = 0
+    ) -> NSLayoutConstraint {
         anchor.constraint(greaterThanOrEqualTo: another[keyPath: anchorKeyPath], constant: offset)
     }
     
@@ -105,7 +114,9 @@ extension YAxisAnchor {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y == `superview` y + `offset`.
     public func equalToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return equal(to: superview, plus: offset)
     }
@@ -127,7 +138,9 @@ extension YAxisAnchor {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y <= `superview` y + `offset`.
     public func lessThanOrEqualToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return lessThanOrEqual(to: superview, plus: offset)
     }
@@ -149,7 +162,9 @@ extension YAxisAnchor {
     /// - Returns: An  `NSLayoutConstraint` object that represents `self` y >= `superview` y + `offset`.
     public func greaterThanOrEqualToSuperview(plus offset: CGFloat = 0) -> NSLayoutConstraint {
         guard let superview = target.superview else {
-            preconditionFailure("The layout target must have a superview before making constraints on it.")
+            preconditionFailure(
+                "The layout target must have a superview before making constraints on it."
+            )
         }
         return greaterThanOrEqual(to: superview, plus: offset)
     }

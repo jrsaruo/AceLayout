@@ -103,7 +103,9 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
         guard #available(iOS 11.0, tvOS 11.0, *) else {
             throw XCTSkip("This test can only run on iOS 11.0+ or tvOS 11.0+")
         }
-        XCTContext.runActivity(named: "equal(toSystemSpacingAfter:), equal(toSystemSpacingBelow:)") { _ in
+        XCTContext.runActivity(
+            named: "equal(toSystemSpacingAfter:), equal(toSystemSpacingBelow:)"
+        ) { _ in
             let constraints = subview.autoLayout { item in
                 item.top.equal(toSystemSpacingBelow: superview.topAnchor)
                 item.leading.equal(toSystemSpacingAfter: superview.leadingAnchor)
@@ -111,14 +113,22 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                 item.bottom.equal(toSystemSpacingBelow: superview.bottomAnchor, multipliedBy: -1)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(equalToSystemSpacingBelow: superview.topAnchor,
-                                             multiplier: 1),
-                subview.leadingAnchor.constraint(equalToSystemSpacingAfter: superview.leadingAnchor,
-                                                 multiplier: 1),
-                subview.trailingAnchor.constraint(equalToSystemSpacingAfter: superview.trailingAnchor,
-                                                  multiplier: -1),
-                subview.bottomAnchor.constraint(equalToSystemSpacingBelow: superview.bottomAnchor,
-                                                multiplier: -1)
+                subview.topAnchor.constraint(
+                    equalToSystemSpacingBelow: superview.topAnchor,
+                    multiplier: 1
+                ),
+                subview.leadingAnchor.constraint(
+                    equalToSystemSpacingAfter: superview.leadingAnchor,
+                    multiplier: 1
+                ),
+                subview.trailingAnchor.constraint(
+                    equalToSystemSpacingAfter: superview.trailingAnchor,
+                    multiplier: -1
+                ),
+                subview.bottomAnchor.constraint(
+                    equalToSystemSpacingBelow: superview.bottomAnchor,
+                    multiplier: -1
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -196,7 +206,10 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
             }
             let expectedConstraints = [
                 subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor),
-                subview.lastBaselineAnchor.constraint(equalTo: superview.lastBaselineAnchor, constant: 8)
+                subview.lastBaselineAnchor.constraint(
+                    equalTo: superview.lastBaselineAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -216,8 +229,10 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                 item.firstBaseline.equalToSuperview(plus: 8)
             }
             let expectedConstraints = [
-                subview.firstBaselineAnchor.constraint(equalTo: superview.firstBaselineAnchor,
-                                                       constant: 8)
+                subview.firstBaselineAnchor.constraint(
+                    equalTo: superview.firstBaselineAnchor,
+                    constant: 8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -349,8 +364,14 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                 item.leftRight.insideOrEqual(to: superview, insetBy: 8)
             }
             let expectedConstraints = [
-                subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 8),
-                subview.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -8)
+                subview.leftAnchor.constraint(
+                    greaterThanOrEqualTo: superview.leftAnchor,
+                    constant: 8
+                ),
+                subview.rightAnchor.constraint(
+                    lessThanOrEqualTo: superview.rightAnchor,
+                    constant: -8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -393,8 +414,14 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                 item.leftRight.insideOrEqualToSuperview(insetBy: 8)
             }
             let expectedConstraints = [
-                subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 8),
-                subview.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -8)
+                subview.leftAnchor.constraint(
+                    greaterThanOrEqualTo: superview.leftAnchor,
+                    constant: 8
+                ),
+                subview.rightAnchor.constraint(
+                    lessThanOrEqualTo: superview.rightAnchor,
+                    constant: -8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -440,8 +467,14 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                 item.topBottom.insideOrEqual(to: superview, insetBy: 8)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 8),
-                subview.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -8)
+                subview.topAnchor.constraint(
+                    greaterThanOrEqualTo: superview.topAnchor,
+                    constant: 8
+                ),
+                subview.bottomAnchor.constraint(
+                    lessThanOrEqualTo: superview.bottomAnchor,
+                    constant: -8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -484,8 +517,14 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                 item.topBottom.insideOrEqualToSuperview(insetBy: 8)
             }
             let expectedConstraints = [
-                subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 8),
-                subview.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -8)
+                subview.topAnchor.constraint(
+                    greaterThanOrEqualTo: superview.topAnchor,
+                    constant: 8
+                ),
+                subview.bottomAnchor.constraint(
+                    lessThanOrEqualTo: superview.bottomAnchor,
+                    constant: -8
+                )
             ]
             NSLayoutConstraint.activate(expectedConstraints)
             assertEqual(constraints, expectedConstraints)
@@ -542,10 +581,22 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                     item.edges.insideOrEqual(to: superview, insetBy: insets)
                 }
                 let expectedConstraints = [
-                    subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 10),
-                    subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 20),
-                    subview.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -40),
-                    subview.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -30)
+                    subview.topAnchor.constraint(
+                        greaterThanOrEqualTo: superview.topAnchor,
+                        constant: 10
+                    ),
+                    subview.leftAnchor.constraint(
+                        greaterThanOrEqualTo: superview.leftAnchor,
+                        constant: 20
+                    ),
+                    subview.rightAnchor.constraint(
+                        lessThanOrEqualTo: superview.rightAnchor,
+                        constant: -40
+                    ),
+                    subview.bottomAnchor.constraint(
+                        lessThanOrEqualTo: superview.bottomAnchor,
+                        constant: -30
+                    )
                 ]
                 NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
@@ -555,10 +606,22 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                     item.edges.insideOrEqual(to: superview, insetBy: 20)
                 }
                 let expectedConstraints = [
-                    subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 20),
-                    subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 20),
-                    subview.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -20),
-                    subview.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -20)
+                    subview.topAnchor.constraint(
+                        greaterThanOrEqualTo: superview.topAnchor,
+                        constant: 20
+                    ),
+                    subview.leftAnchor.constraint(
+                        greaterThanOrEqualTo: superview.leftAnchor,
+                        constant: 20
+                    ),
+                    subview.rightAnchor.constraint(
+                        lessThanOrEqualTo: superview.rightAnchor,
+                        constant: -20
+                    ),
+                    subview.bottomAnchor.constraint(
+                        lessThanOrEqualTo: superview.bottomAnchor,
+                        constant: -20
+                    )
                 ]
                 NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
@@ -613,10 +676,22 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                     item.edges.insideOrEqualToSuperview(insetBy: insets)
                 }
                 let expectedConstraints = [
-                    subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 10),
-                    subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 20),
-                    subview.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -40),
-                    subview.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -30)
+                    subview.topAnchor.constraint(
+                        greaterThanOrEqualTo: superview.topAnchor,
+                        constant: 10
+                    ),
+                    subview.leftAnchor.constraint(
+                        greaterThanOrEqualTo: superview.leftAnchor,
+                        constant: 20
+                    ),
+                    subview.rightAnchor.constraint(
+                        lessThanOrEqualTo: superview.rightAnchor,
+                        constant: -40
+                    ),
+                    subview.bottomAnchor.constraint(
+                        lessThanOrEqualTo: superview.bottomAnchor,
+                        constant: -30
+                    )
                 ]
                 NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)
@@ -626,10 +701,22 @@ final class UIViewEqualToUIViewConstraintTests: XCTestCase {
                     item.edges.insideOrEqualToSuperview(insetBy: 20)
                 }
                 let expectedConstraints = [
-                    subview.topAnchor.constraint(greaterThanOrEqualTo: superview.topAnchor, constant: 20),
-                    subview.leftAnchor.constraint(greaterThanOrEqualTo: superview.leftAnchor, constant: 20),
-                    subview.rightAnchor.constraint(lessThanOrEqualTo: superview.rightAnchor, constant: -20),
-                    subview.bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -20)
+                    subview.topAnchor.constraint(
+                        greaterThanOrEqualTo: superview.topAnchor,
+                        constant: 20
+                    ),
+                    subview.leftAnchor.constraint(
+                        greaterThanOrEqualTo: superview.leftAnchor,
+                        constant: 20
+                    ),
+                    subview.rightAnchor.constraint(
+                        lessThanOrEqualTo: superview.rightAnchor,
+                        constant: -20
+                    ),
+                    subview.bottomAnchor.constraint(
+                        lessThanOrEqualTo: superview.bottomAnchor,
+                        constant: -20
+                    )
                 ]
                 NSLayoutConstraint.activate(expectedConstraints)
                 assertEqual(constraints, expectedConstraints)

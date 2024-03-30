@@ -11,7 +11,9 @@ import AceLayout
 final class LayoutTargetTests: XCTestCase {
     
     func testAutoLayout() {
-        XCTContext.runActivity(named: "translatesAutoresizingMaskIntoConstraints should become false") { _ in
+        XCTContext.runActivity(
+            named: "translatesAutoresizingMaskIntoConstraints should become false"
+        ) { _ in
             let view = AL.View()
             XCTAssert(view.translatesAutoresizingMaskIntoConstraints)
             view.autoLayout { item in
@@ -27,7 +29,9 @@ final class LayoutTargetTests: XCTestCase {
                 }
                 XCTAssert(constraints.allSatisfy { $0.isActive })
             }
-            XCTContext.runActivity(named: "All isActive should be false when activates: false") { _ in
+            XCTContext.runActivity(
+                named: "All isActive should be false when activates: false"
+            ) { _ in
                 let constraints = view.autoLayout(activates: false) { item in
                     item.size.equal(toSquare: 100)
                 }

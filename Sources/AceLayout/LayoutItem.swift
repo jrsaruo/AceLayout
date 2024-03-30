@@ -109,10 +109,12 @@ extension LayoutItem where Base: SizeConstrainable {
 extension LayoutItem where Base: BaselinesConstrainable {
     
     /// A layout anchor representing the baseline for the topmost line of text in the target.
-    public var firstBaseline: LayoutRect.Baseline { .init(target: base,
-                                                          anchorKeyPath: \.firstBaselineAnchor) }
+    public var firstBaseline: LayoutRect.Baseline {
+        .init(target: base, anchorKeyPath: \.firstBaselineAnchor)
+    }
     
     /// A layout anchor representing the baseline for the bottommost line of text in the target.
-    public var lastBaseline: LayoutRect.Baseline { .init(target: base,
-                                                         anchorKeyPath: \.lastBaselineAnchor) }
+    public var lastBaseline: LayoutRect.Baseline {
+        .init(target: base, anchorKeyPath: \.lastBaselineAnchor)
+    }
 }
