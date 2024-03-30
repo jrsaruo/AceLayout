@@ -13,7 +13,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test_on_macos:
-    runs-on: macos-latest
+    runs-on: macos-14
     
     env:
       CODECOV_PATH: "./coverage.lcov"
@@ -47,10 +47,10 @@ jobs:
           verbose: true
           
   test_on_ios:
-    runs-on: macos-latest
+    runs-on: macos-14
     
     env:
-      IOS_SIMULATOR: "iPhone 13"
+      IOS_SIMULATOR: "iPhone 15"
     
     steps:
       - uses: actions/checkout@v4
@@ -62,7 +62,7 @@ jobs:
         run: xcodebuild test -scheme ${{ env.package }} -destination "name=${{ env.IOS_SIMULATOR }}"
         
   test_on_tvos:
-    runs-on: macos-latest
+    runs-on: macos-14
     
     env:
       TVOS_SIMULATOR: "Apple TV"

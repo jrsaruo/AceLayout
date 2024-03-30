@@ -1,11 +1,11 @@
-// swift-tools-version:5.5
+// swift-tools-version: 5.8
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "AceLayout",
-    platforms: [.iOS(.v9), .macOS(.v10_11), .tvOS(.v9)],
+    platforms: [.iOS(.v11), .macOS(.v10_13), .tvOS(.v11)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -21,7 +21,8 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "AceLayout",
-            dependencies: []),
+            dependencies: [],
+            swiftSettings: [.enableUpcomingFeature("ExistentialAny")]),
         .testTarget(
             name: "AceLayoutTests",
             dependencies: ["AceLayout"]),

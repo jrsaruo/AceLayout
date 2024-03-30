@@ -6,9 +6,9 @@ AceLayout provides a Swifty DSL for Auto Layout.
 
 ## Requirements
 
-- iOS 9.0+ / macOS 10.11+ / tvOS 9.0+
-- Xcode 14+
-- Swift 5.7+
+- iOS 11.0+ / macOS 10.13+ / tvOS 11.0+
+- Xcode 14.3+
+- Swift 5.8+
 
 ## Features
 
