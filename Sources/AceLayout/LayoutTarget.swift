@@ -25,7 +25,7 @@ public protocol LayoutTarget {
 
 extension LayoutTarget {
     
-    /// The default implementation of `autoLayout(activates:, builder:)`.
+    /// The default implementation of `autoLayout(activates:builder:)`.
     /// - Parameters:
     ///   - activates: Whether to immediately activate constraints after building.
     ///   - builder: A layout constraints builder that creates constraints on the specified item.
