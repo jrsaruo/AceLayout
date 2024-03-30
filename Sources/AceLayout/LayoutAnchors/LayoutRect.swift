@@ -16,26 +16,26 @@ public enum LayoutRect {
     
     /// A structure that represents a layout anchor for creating horizontal layout constraints.
     public struct XAxis: XAxisAnchor {
-        public let target: XAxesConstrainable
-        public let anchorKeyPath: KeyPath<XAxesConstrainable, NSLayoutXAxisAnchor>
+        public let target: any XAxesConstrainable
+        public let anchorKeyPath: KeyPath<any XAxesConstrainable, NSLayoutXAxisAnchor>
     }
     
     /// A structure that represents a layout anchor for creating vertical layout constraints.
     public struct YAxis: YAxisAnchor {
-        public let target: YAxesConstrainable
-        public let anchorKeyPath: KeyPath<YAxesConstrainable, NSLayoutYAxisAnchor>
+        public let target: any YAxesConstrainable
+        public let anchorKeyPath: KeyPath<any YAxesConstrainable, NSLayoutYAxisAnchor>
     }
     
     /// A structure that represents a layout anchor for creating size-based layout constraints.
     public struct Dimension: LayoutDimension {
-        public let target: SizeConstrainable
-        public let anchorKeyPath: KeyPath<SizeConstrainable, NSLayoutDimension>
+        public let target: any SizeConstrainable
+        public let anchorKeyPath: KeyPath<any SizeConstrainable, NSLayoutDimension>
     }
     
     /// A structure that represents a baseline layout anchor for creating vertical layout constraints.
     public struct Baseline: BaselineAnchor {
-        public let target: BaselinesConstrainable
-        public let anchorKeyPath: KeyPath<BaselinesConstrainable, NSLayoutYAxisAnchor>
+        public let target: any BaselinesConstrainable
+        public let anchorKeyPath: KeyPath<any BaselinesConstrainable, NSLayoutYAxisAnchor>
     }
 }
 
