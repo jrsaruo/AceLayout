@@ -13,14 +13,14 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test_on_macos:
-    runs-on: macos-latest
+    runs-on: macos-14
     
     env:
       CODECOV_PATH: "./coverage.lcov"
     
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Build for macOS
         run: swift build
@@ -38,21 +38,22 @@ jobs:
           > ${{ env.CODECOV_PATH }}
           
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
           files: ${{ env.CODECOV_PATH }}
           fail_ci_if_error: true
           verbose: true
           
   test_on_ios:
-    runs-on: macos-latest
+    runs-on: macos-14
     
     env:
-      IOS_SIMULATOR: "iPhone 13"
+      IOS_SIMULATOR: "iPhone 15"
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Build for iOS
         run: xcodebuild build -scheme ${{ env.package }} -destination "name=${{ env.IOS_SIMULATOR }}"
@@ -61,13 +62,13 @@ jobs:
         run: xcodebuild test -scheme ${{ env.package }} -destination "name=${{ env.IOS_SIMULATOR }}"
         
   test_on_tvos:
-    runs-on: macos-latest
+    runs-on: macos-14
     
     env:
       TVOS_SIMULATOR: "Apple TV"
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Build for tvOS
         run: xcodebuild build -scheme ${{ env.package }} -destination "name=${{ env.TVOS_SIMULATOR }}"

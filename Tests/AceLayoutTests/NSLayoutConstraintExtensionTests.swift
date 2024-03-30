@@ -35,7 +35,9 @@ final class NSLayoutConstraintExtensionTests: XCTestCase {
             item.height.equal(to: 100).priority(.defaultLow)
             item.center.equal(to: superview).priority(.defaultHigh)
         }
-        XCTAssertEqual(constraints.map { $0.priority },
-                       [.required, .defaultLow, .defaultHigh, .defaultHigh])
+        XCTAssertEqual(
+            constraints.map { $0.priority },
+            [.required, .defaultLow, .defaultHigh, .defaultHigh]
+        )
     }
 }
