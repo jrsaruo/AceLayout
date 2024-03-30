@@ -19,7 +19,7 @@ public protocol LayoutTarget {
     
     func autoLayout(
         activates: Bool,
-        @LayoutConstraintsBuilder builder: (LayoutItem<LayoutBase>) -> [NSLayoutConstraint]
+        @LayoutConstraintsBuilder builder: (_ item: LayoutItem<LayoutBase>) -> [NSLayoutConstraint]
     ) -> [NSLayoutConstraint]
 }
 
@@ -32,7 +32,7 @@ extension LayoutTarget {
     /// - Returns: An array of built `NSLayoutConstraint` objects.
     fileprivate func _autoLayout(
         activates: Bool,
-        @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]
+        @LayoutConstraintsBuilder builder: (_ item: LayoutItem<Self>) -> [NSLayoutConstraint]
     ) -> [NSLayoutConstraint] {
         let constraints = builder(LayoutItem(base: self))
         if activates {
@@ -60,7 +60,7 @@ extension LayoutTarget {
     @discardableResult
     public func autoLayout(
         activates: Bool = true,
-        @LayoutConstraintsBuilder builder: (LayoutItem<Self>) -> [NSLayoutConstraint]
+        @LayoutConstraintsBuilder builder: (_ item: LayoutItem<Self>) -> [NSLayoutConstraint]
     ) -> [NSLayoutConstraint] {
         _autoLayout(activates: activates, builder: builder)
     }
@@ -88,7 +88,7 @@ extension AL.View: LayoutTarget {
     @discardableResult
     public func autoLayout(
         activates: Bool = true,
-        @LayoutConstraintsBuilder builder: (LayoutItem<AL.View>) -> [NSLayoutConstraint]
+        @LayoutConstraintsBuilder builder: (_ item: LayoutItem<AL.View>) -> [NSLayoutConstraint]
     ) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         return _autoLayout(activates: activates, builder: builder)
