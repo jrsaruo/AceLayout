@@ -52,7 +52,9 @@ private func assertEqual(
         XCTAssertEqual(view1, view2, message(), file: file, line: line)
     case let (layoutGuide1 as AL.LayoutGuide?, layoutGuide2 as AL.LayoutGuide?):
         XCTAssertEqual(layoutGuide1, layoutGuide2, message(), file: file, line: line)
+    case (nil, nil):
+        break
     default:
-        XCTAssert(false, message(), file: file, line: line)
+        XCTFail(message(), file: file, line: line)
     }
 }
