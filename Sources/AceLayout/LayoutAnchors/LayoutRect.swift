@@ -44,6 +44,7 @@ public enum LayoutRect {
 extension LayoutRect {
     
     /// A structure that contains layout anchors for XY axes.
+    @MainActor
     public struct Point {
         var x: XAxis
         var y: YAxis
@@ -221,6 +222,7 @@ extension LayoutRect {
     }
     
     /// A structure that contains layout anchors for width and height.
+    @MainActor
     public struct Size {
         var width: Dimension
         var height: Dimension
@@ -512,6 +514,7 @@ extension LayoutRect {
     }
     
     /// A structure that contains layout anchors for left and right.
+    @MainActor
     public struct HorizontalEdges {
         let left: XAxis
         let right: XAxis
@@ -608,6 +611,7 @@ extension LayoutRect {
     }
     
     /// A structure that contains layout anchors for top and bottom.
+    @MainActor
     public struct VerticalEdges {
         let top: YAxis
         let bottom: YAxis
@@ -703,6 +707,7 @@ extension LayoutRect {
     }
     
     /// A structure that contains layout anchors for top, left, right and bottom.
+    @MainActor
     public struct Edges {
         var top: YAxis
         var left: XAxis

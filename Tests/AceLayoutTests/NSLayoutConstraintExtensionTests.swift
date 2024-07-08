@@ -13,6 +13,7 @@ final class NSLayoutConstraintExtensionTests: XCTestCase {
     private var superview: AL.View!
     private var subview: AL.View!
     
+    @MainActor
     override func setUp() {
         super.setUp()
         
@@ -21,6 +22,7 @@ final class NSLayoutConstraintExtensionTests: XCTestCase {
         superview.addSubview(subview)
     }
     
+    @MainActor
     override func tearDown() {
         super.tearDown()
         
@@ -29,6 +31,7 @@ final class NSLayoutConstraintExtensionTests: XCTestCase {
         superview = nil
     }
     
+    @MainActor
     func testPriority() {
         let constraints = subview.autoLayout { item in
             item.width.equal(to: 100)

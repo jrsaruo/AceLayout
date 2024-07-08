@@ -8,6 +8,7 @@
 import XCTest
 import AceLayout
 
+@MainActor
 func assertEqual(
     _ constraints1: [NSLayoutConstraint],
     _ constraints2: [NSLayoutConstraint],

@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -20,11 +20,18 @@ let package = Package(
         .target(
             name: "AceLayout",
             dependencies: [],
-            swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
+            swiftSettings: [
+                .swiftLanguageVersion(.v6),
+                .enableUpcomingFeature("ExistentialAny"),
+            ]
         ),
         .testTarget(
             name: "AceLayoutTests",
-            dependencies: ["AceLayout"]
+            dependencies: ["AceLayout"],
+            swiftSettings: [
+                .swiftLanguageVersion(.v6),
+                .enableUpcomingFeature("ExistentialAny"),
+            ]
         ),
     ]
 )

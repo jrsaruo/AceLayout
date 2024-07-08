@@ -12,6 +12,7 @@ import AppKit
 #endif
 
 /// A type that represents a baseline layout anchor for creating vertical layout constraints.
+@MainActor
 public protocol BaselineAnchor: LayoutAnchor where AnchorType == NSLayoutYAxisAnchor,
                                                    BaseLayoutAnchor == NSLayoutYAxisAnchor,
                                                    Target == any BaselinesConstrainable {}

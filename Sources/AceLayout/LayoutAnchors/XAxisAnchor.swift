@@ -12,6 +12,7 @@ import AppKit
 #endif
 
 /// A type that represents a layout anchor for creating horizontal layout constraints.
+@MainActor
 public protocol XAxisAnchor: LayoutAnchor where AnchorType == NSLayoutXAxisAnchor,
                                                 BaseLayoutAnchor == NSLayoutXAxisAnchor,
                                                 Target == any XAxesConstrainable {}

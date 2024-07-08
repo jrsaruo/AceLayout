@@ -12,6 +12,7 @@ import AppKit
 #endif
 
 /// A type that represents a layout anchor for creating size-based layout constraints.
+@MainActor
 public protocol LayoutDimension: LayoutAnchor where AnchorType == NSLayoutDimension,
                                                     BaseLayoutAnchor == NSLayoutDimension,
                                                     Target == any SizeConstrainable {}
