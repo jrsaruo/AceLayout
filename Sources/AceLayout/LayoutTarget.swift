@@ -12,6 +12,7 @@ import AppKit
 #endif
 
 /// A type that represents layout target such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
+@MainActor
 public protocol LayoutTarget {
     /// A type that represents layout target such as `UIView`, `UILayoutGuide`, `NSView` or `NSLayoutGuide`.
     /// This is typically equal to `LayoutTarget` itself.

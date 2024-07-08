@@ -13,6 +13,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
     private var superview: AL.View!
     private var subview: AL.View!
     
+    @MainActor
     override func setUp() {
         super.setUp()
         
@@ -21,6 +22,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         superview.addSubview(subview)
     }
     
+    @MainActor
     override func tearDown() {
         super.tearDown()
         
@@ -29,6 +31,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         superview = nil
     }
     
+    @MainActor
     func testXAxisConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -62,6 +65,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testYAxisConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -95,6 +99,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testXYConstraintsWithSystemSpacing() throws {
         guard #available(iOS 11.0, tvOS 11.0, *) else {
             throw XCTSkip("This test can only run on iOS 11.0+ or tvOS 11.0+")
@@ -138,6 +143,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testDimensionConstraints() {
         XCTContext.runActivity(named: "equal(to another: SizeConstrainable)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -181,6 +187,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testBaselineConstraints() {
         XCTContext.runActivity(named: "equal(to anotherAnchor:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -200,6 +207,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testPointConstraints() {
         XCTContext.runActivity(named: "equal(to another:, shiftedBy:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -225,6 +233,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testSizeConstraints() {
         XCTContext.runActivity(named: "equal(to another:, multipliedBy:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -249,6 +258,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testHorizontalEdgesConstraints() {
         XCTContext.runActivity(named: "equal(to:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -310,6 +320,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testVerticalEdgesConstraints() {
         XCTContext.runActivity(named: "equal(to:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide
@@ -370,6 +381,7 @@ final class UIViewEqualToUILayoutGuideConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testEdgesConstraints() {
         XCTContext.runActivity(named: "equal(to another:)") { _ in
             let layoutMarginsGuide = superview.layoutMarginsGuide

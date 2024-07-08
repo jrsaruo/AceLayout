@@ -12,6 +12,7 @@ import AppKit
 #endif
 
 /// A type that represents a layout anchor for creating constraints.
+@MainActor
 public protocol LayoutAnchor {
     associatedtype AnchorType: AnyObject
     associatedtype BaseLayoutAnchor: NSLayoutAnchor<AnchorType>
