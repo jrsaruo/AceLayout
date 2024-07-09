@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - maintenance/**
+
+jobs:
+  create-pull-requests-for-release:
+    runs-on: ubuntu-latest
+    
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    steps:
+      - name: Create the release PR
+        run: |
+          echo "github.actor: ${{ github.actor }}"
+          echo "branch: ${{ github.ref_name }}"
+          echo "extracted: ${GITHUB_REF_NAME#maintenance/}"
