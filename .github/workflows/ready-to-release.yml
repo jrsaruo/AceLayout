@@ -1,0 +1,29 @@
+name: Ready to Release
+
+on:
+  push:
+    branches:
+      - release-**
+
+jobs:
+  create-pull-requests-for-release:
+    runs-on: ubuntu-latest
+    
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    steps:
+      - name: Create the release PR
+        run: |
+          gh pr create \
+            --base main \
+            --assignee ${{ github.actor }} \
+            --title "Release ${GITHUB_REF_NAME#release-}" \
+            --label "release"
+      - name: Create the release PR to develop
+        run: |
+          gh pr create \
+            --base develop \
+            --assignee ${{ github.actor }} \
+            --fill \
+            --label "ignore-for-release"
