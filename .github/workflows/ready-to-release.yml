@@ -18,12 +18,12 @@ jobs:
           gh pr create \
             --base main \
             --assignee ${{ github.actor }} \
-            --title 'Release ${GITHUB_REF_NAME#release-}' \
-            --label 'release'
+            --title "Release ${GITHUB_REF_NAME#release-}" \
+            --label "release"
       - name: Create the release PR to develop
         run: |
           gh pr create \
             --base develop \
             --assignee ${{ github.actor }} \
             --fill \
-            --label 'ignore-for-release'
+            --label "ignore-for-release"
