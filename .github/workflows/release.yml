@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - maintenance/**
+      - release-**
 
 jobs:
   create-pull-requests-for-release:
@@ -15,6 +15,15 @@ jobs:
     steps:
       - name: Create the release PR
         run: |
-          echo "github.actor: ${{ github.actor }}"
-          echo "branch: ${{ github.ref_name }}"
-          echo "extracted: ${GITHUB_REF_NAME#maintenance/}"
+          gh pr create \
+            --base main \
+            --assignee ${{ github.actor }} \
+            --title 'Release ${GITHUB_REF_NAME#release-}' \
+            --label 'release'
+      - name: Create the release PR to develop
+        run: |
+          gh pr create \
+            --base develop \
+            --assignee ${{ github.actor }} \
+            --fill \
+            --label 'ignore-for-release'
