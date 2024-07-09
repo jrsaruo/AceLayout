@@ -22,7 +22,7 @@ jobs:
       - name: Draft the release
         run: |
           gh release create \
-            "${GITHUB_HEAD_REF#maintenance/}" \
+            "${GITHUB_HEAD_REF#release-}" \
             --draft \
             --generate-notes \
-            --title "Release ${GITHUB_HEAD_REF#maintenance/}"
+            --title "Release ${GITHUB_HEAD_REF#release-}"
