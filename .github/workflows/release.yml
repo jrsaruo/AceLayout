@@ -1,0 +1,24 @@
+name: Release
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Draft the release
+        run: |
+          gh release create \
+            "${GITHUB_HEAD_REF#maintenance/}" \
+            --draft \
+            --generate-notes \
+            --title "Release ${GITHUB_HEAD_REF#maintenance/}"
