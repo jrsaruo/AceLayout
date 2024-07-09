@@ -19,10 +19,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - id: extract-version
+        name: Extract version
+        run: |
+          echo "version=${GITHUB_HEAD_REF#release-}" >> $GITHUB_OUTPUT
+      
       - name: Draft the release
+        env:
+          VERSION: ${{ steps.extract-version.outputs.version }}
         run: |
           gh release create \
-            "${GITHUB_HEAD_REF#release-}" \
+            $VERSION \
             --draft \
             --generate-notes \
-            --title "Release ${GITHUB_HEAD_REF#release-}"
+            --title "Release $VERSION"
