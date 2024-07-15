@@ -20,11 +20,18 @@ let package = Package(
         .target(
             name: "AceLayout",
             dependencies: [],
-            swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency"),
+                .enableUpcomingFeature("ExistentialAny"),
+            ]
         ),
         .testTarget(
             name: "AceLayoutTests",
-            dependencies: ["AceLayout"]
+            dependencies: ["AceLayout"],
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency"),
+                .enableUpcomingFeature("ExistentialAny"),
+            ]
         ),
     ]
 )

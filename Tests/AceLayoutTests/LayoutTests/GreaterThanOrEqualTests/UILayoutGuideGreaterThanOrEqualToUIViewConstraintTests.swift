@@ -13,6 +13,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
     private var superview: AL.View!
     private var layoutGuide: AL.LayoutGuide!
     
+    @MainActor
     override func setUp() {
         super.setUp()
         
@@ -28,6 +29,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         superview = nil
     }
     
+    @MainActor
     func testXAxisConstraints() {
         XCTContext.runActivity(named: "greaterThanOrEqual(to another:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
@@ -72,6 +74,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testYAxisConstraints() {
         XCTContext.runActivity(named: "greaterThanOrEqual(to another:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
@@ -116,6 +119,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testXYConstraintsWithSystemSpacing() throws {
         guard #available(iOS 11.0, tvOS 11.0, *) else {
             throw XCTSkip("This test can only run on iOS 11.0+ or tvOS 11.0+")
@@ -156,6 +160,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testDimensionConstraints() {
         XCTContext.runActivity(named: "greaterThanOrEqual(to another: SizeConstrainable)") { _ in
             let constraints = layoutGuide.autoLayout { item in
@@ -243,6 +248,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testPointConstraints() {
         XCTContext.runActivity(named: "greaterThanOrEqual(to another:, shiftedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in
@@ -288,6 +294,7 @@ final class UILayoutGuideGreaterThanOrEqualToUIViewConstraintTests: XCTestCase {
         }
     }
     
+    @MainActor
     func testSizeConstraints() {
         XCTContext.runActivity(named: "greaterThanOrEqual(to another:, multipliedBy:)") { _ in
             let constraints = layoutGuide.autoLayout { item in

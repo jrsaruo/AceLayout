@@ -28,7 +28,7 @@ extension Sequence<NSLayoutConstraint> {
     /// Updates each constraint with the specified `priority`.
     /// - Parameter priority: The layout priority.
     /// - Returns: The updated `self` with the specified `priority`.
-    @discardableResult
+    @discardableResult @MainActor
     public func priority(_ priority: AL.LayoutPriority) -> Self {
         forEach { $0.priority = priority }
         return self

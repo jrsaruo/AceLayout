@@ -10,6 +10,7 @@ import AceLayout
 
 final class LayoutTargetTests: XCTestCase {
     
+    @MainActor
     func testAutoLayout() {
         XCTContext.runActivity(
             named: "translatesAutoresizingMaskIntoConstraints should become false"

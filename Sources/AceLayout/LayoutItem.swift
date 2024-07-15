@@ -12,6 +12,7 @@ import AppKit
 #endif
 
 /// A proxy of views or layout guides to create layout constraints.
+@MainActor
 public struct LayoutItem<Base> {
     let base: Base
     

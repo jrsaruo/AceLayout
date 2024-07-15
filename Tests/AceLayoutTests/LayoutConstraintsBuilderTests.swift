@@ -13,6 +13,7 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
     private var view: AL.View!
     private let conditionTrue = true
     
+    @MainActor
     override func setUp() {
         super.setUp()
         view = AL.View()
@@ -23,6 +24,7 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
         view = nil
     }
     
+    @MainActor
     func testVoidExpression() {
         func doNothing() {}
         let constraints = view.autoLayout { item in
@@ -31,6 +33,7 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
         XCTAssert(constraints.isEmpty)
     }
     
+    @MainActor
     func testIfStatement() {
         let constraints = view.autoLayout { item in
             if conditionTrue {
@@ -47,6 +50,7 @@ final class LayoutConstraintsBuilderTests: XCTestCase {
         assertEqual(constraints, expectedConstraints)
     }
     
+    @MainActor
     func testIfElseStatement() {
         let constraints = view.autoLayout { item in
             if conditionTrue {
