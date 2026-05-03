@@ -20,7 +20,7 @@ jobs:
     
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so this job can access it
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       
       - name: Build for macOS
         run: swift build
@@ -38,6 +38,8 @@ jobs:
           > ${{ env.CODECOV_PATH }}
           
       - name: Upload coverage to Codecov
+        # Dependabot pull requests cannot access Actions secrets such as CODECOV_TOKEN.
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: codecov/codecov-action@v6
         with:
           files: ${{ env.CODECOV_PATH }}
