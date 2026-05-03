@@ -1,6 +1,6 @@
 name: Test
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   pull_request:
   
@@ -38,11 +38,10 @@ jobs:
           > ${{ env.CODECOV_PATH }}
           
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        uses: codecov/codecov-action@v6
         with:
           files: ${{ env.CODECOV_PATH }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
           
